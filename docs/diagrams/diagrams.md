@@ -23,7 +23,7 @@ graph TD
     BookS --> BookDB
 ```
 
-# Діаграма послідовності — монолітна архітектура
+## Монолітна архітектура
 
 ```mermaid
 sequenceDiagram
@@ -33,60 +33,41 @@ sequenceDiagram
     participant DB as БД
 
     Client->>Gateway: POST /api/bookings (JWT)
-    activate Gateway
-
     Gateway->>Monolith: Маршрутизує запит
-    activate Monolith
-    
-    Monolith->>Monolith: Перевірка JWT
-    
+
+    Note over Monolith: перевірка JWT
+
     Monolith->>DB: SELECT tour
-    activate DB
     DB-->>Monolith: Дані туру
-    deactivate DB
-    
+
     Monolith->>DB: INSERT booking
-    activate DB
-    DB-->>Monolith: Підтвердження
-    deactivate DB
-    
+
     Monolith-->>Gateway: 200 Створено
-    deactivate Monolith
-    
     Gateway-->>Client: 200 Створено
-    deactivate Gateway
 ```
 
-# Діаграма послідовності — мікросервісна архітектура
+## Мікросервісна архітектура
 
 ```mermaid
 sequenceDiagram
-    autonumber
-    
     participant Client as Клієнт
     participant Gateway as Gateway
-    participant BookingS as BookingService
-    participant TourS as TourService
+    participant BookingS as Booking
+    participant TourS as Tour
 
     Client->>Gateway: POST /api/bookings (JWT)
-    activate Gateway
-    
+
+    Note over Gateway: перевірка JWT
+
     Gateway->>BookingS: Пересилає запит по REST
-    activate BookingS
-    
-    BookingS->>BookingS: Перевірка JWT
-    
-    BookingS->>TourS: REST CheckAvailability (ціна, дати, ok)
-    activate TourS
-    
-    TourS-->>BookingS: Відповідь ok
-    deactivate TourS
-    
-    BookingS->>BookingS: Зберегти бронювання у БД
-    
+
+    Note over BookingS: перевірка JWT
+
+    BookingS->>TourS: REST CheckAvailability
+    TourS-->>BookingS: ціна, дати, ok
+
+    Note over BookingS: зберегти бронювання у БД
+
     BookingS-->>Gateway: 201 Створено
-    deactivate BookingS
-    
     Gateway-->>Client: 201 Створено
-    deactivate Gateway
 ```
