@@ -1,0 +1,259 @@
+2026-09-08 19:54:22.749 +03:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-08 19:54:23.257 +03:00 [INF] Now listening on: https://localhost:7041
+2026-09-08 19:54:23.261 +03:00 [INF] Now listening on: http://localhost:5272
+2026-09-08 19:54:23.639 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-08 19:54:23.642 +03:00 [INF] Hosting environment: Development
+2026-09-08 19:54:23.645 +03:00 [INF] Content root path: C:\Users\toder\source\repos\TravelManager\TravelManager
+2026-09-08 19:54:24.784 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger - null null
+2026-09-08 19:54:25.008 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger - 301 0 null 245.6998ms
+2026-09-08 19:54:25.016 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-09-08 19:54:25.173 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 156.9913ms
+2026-09-08 19:54:25.178 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-09-08 19:54:25.177 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-09-08 19:54:25.177 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/swagger-ui-bundle.js - null null
+2026-09-08 19:54:25.176 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/swagger-ui.css - null null
+2026-09-08 19:54:25.228 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 50.6007ms
+2026-09-08 19:54:25.177 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/swagger-ui-standalone-preset.js - null null
+2026-09-08 19:54:25.301 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-09-08 19:54:25.304 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-09-08 19:54:25.304 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/swagger-ui.css - 200 152034 text/css 127.8751ms
+2026-09-08 19:54:25.307 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 129.6708ms
+2026-09-08 19:54:25.334 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 155.8005ms
+2026-09-08 19:54:25.347 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-09-08 19:54:25.351 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 173.6135ms
+2026-09-08 19:54:25.452 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - null null
+2026-09-08 19:54:25.468 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/favicon-32x32.png - null null
+2026-09-08 19:54:25.476 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2026-09-08 19:54:25.483 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/favicon-32x32.png - 200 628 image/png 15.8309ms
+2026-09-08 19:54:25.496 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 44.3966ms
+2026-09-08 19:57:45.334 +03:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-08 19:57:45.559 +03:00 [INF] Now listening on: https://localhost:7041
+2026-09-08 19:57:45.561 +03:00 [INF] Now listening on: http://localhost:5272
+2026-09-08 19:57:45.711 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-08 19:57:45.720 +03:00 [INF] Hosting environment: Development
+2026-09-08 19:57:45.724 +03:00 [INF] Content root path: C:\Users\toder\source\repos\TravelManager\TravelManager
+2026-09-08 19:57:46.290 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-09-08 19:57:46.511 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 229.991ms
+2026-09-08 19:57:46.514 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-09-08 19:57:46.524 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-09-08 19:57:46.536 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 21.8585ms
+2026-09-08 19:57:46.576 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 53.3769ms
+2026-09-08 19:57:46.721 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - null null
+2026-09-08 19:57:46.773 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 52.657ms
+2026-09-08 19:58:25.244 +03:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-08 19:58:25.468 +03:00 [INF] Now listening on: https://localhost:7041
+2026-09-08 19:58:25.470 +03:00 [INF] Now listening on: http://localhost:5272
+2026-09-08 19:58:25.524 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-08 19:58:25.525 +03:00 [INF] Hosting environment: Development
+2026-09-08 19:58:25.526 +03:00 [INF] Content root path: C:\Users\toder\source\repos\TravelManager\TravelManager
+2026-09-08 19:58:26.402 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-09-08 19:58:26.820 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 434.7241ms
+2026-09-08 19:58:26.824 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-09-08 19:58:26.825 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-09-08 19:58:26.861 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 36.9135ms
+2026-09-08 19:58:26.929 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 104.7938ms
+2026-09-08 19:58:26.978 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - null null
+2026-09-08 19:58:27.012 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 34.162ms
+2026-09-08 20:00:50.355 +03:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-08 20:00:50.536 +03:00 [INF] Now listening on: https://localhost:7041
+2026-09-08 20:00:50.561 +03:00 [INF] Now listening on: http://localhost:5272
+2026-09-08 20:00:51.141 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-08 20:00:51.143 +03:00 [INF] Hosting environment: Development
+2026-09-08 20:00:51.144 +03:00 [INF] Content root path: C:\Users\toder\source\repos\TravelManager\TravelManager
+2026-09-08 20:00:51.364 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-09-08 20:00:51.700 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 351.2089ms
+2026-09-08 20:00:51.703 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-09-08 20:00:51.703 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-09-08 20:00:51.718 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 14.7574ms
+2026-09-08 20:00:51.779 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 76.3279ms
+2026-09-08 20:00:51.812 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - null null
+2026-09-08 20:00:51.851 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 39.9692ms
+2026-09-08 20:00:59.163 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/tours - null null
+2026-09-08 20:00:59.194 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/tours - 307 0 null 32.7417ms
+2026-09-08 20:00:59.239 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/api/tours - null null
+2026-09-08 20:00:59.486 +03:00 [INF] Executing endpoint 'TravelManager.Controllers.TourController.GetAll (TravelManager)'
+2026-09-08 20:00:59.533 +03:00 [INF] Route matched with {action = "GetAll", controller = "Tour"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String) on controller TravelManager.Controllers.TourController (TravelManager).
+2026-09-08 20:01:03.467 +03:00 [INF] Executed DbCommand (50ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`tour_id`, `t`.`available_from`, `t`.`available_to`, `t`.`description`, `t`.`duration_days`, `t`.`name`, `t`.`price`, `t`.`type_id`, `t0`.`asset_id`, `t0`.`asset_type`, `t0`.`tour_id`, `t0`.`url`
+FROM `tours` AS `t`
+LEFT JOIN `tour_assets` AS `t0` ON `t`.`tour_id` = `t0`.`tour_id`
+ORDER BY `t`.`tour_id`
+2026-09-08 20:01:03.775 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TravelManager.DTOs.TourDto, TravelManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-09-08 20:01:03.835 +03:00 [INF] Executed action TravelManager.Controllers.TourController.GetAll (TravelManager) in 4282.3721ms
+2026-09-08 20:01:03.837 +03:00 [INF] Executed endpoint 'TravelManager.Controllers.TourController.GetAll (TravelManager)'
+2026-09-08 20:01:03.841 +03:00 [INF] GET /api/tours | Status=200 | User=anonymous | 4357.9409ms
+2026-09-08 20:01:03.855 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/api/tours - 200 null application/json; charset=utf-8 4616.437ms
+2026-09-08 20:01:03.871 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/favicon.ico - null null
+2026-09-08 20:01:03.882 +03:00 [INF] GET /favicon.ico | Status=404 | User=anonymous | 0.3753ms
+2026-09-08 20:01:03.886 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/favicon.ico - 404 0 null 15.5436ms
+2026-09-08 20:01:03.894 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7041/favicon.ico, Response status code: 404
+2026-09-08 20:01:47.772 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/api/auth - null null
+2026-09-08 20:01:47.819 +03:00 [INF] GET /api/auth | Status=404 | User=anonymous | 0.1686ms
+2026-09-08 20:01:47.834 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/api/auth - 404 0 null 63.1555ms
+2026-09-08 20:01:47.845 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7041/api/auth, Response status code: 404
+2026-09-08 20:01:55.662 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/api/admin - null null
+2026-09-08 20:01:55.681 +03:00 [INF] GET /api/admin | Status=404 | User=anonymous | 0.1396ms
+2026-09-08 20:01:55.698 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/api/admin - 404 0 null 36.5511ms
+2026-09-08 20:01:55.727 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7041/api/admin, Response status code: 404
+2026-09-08 20:02:01.446 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/api/tours - null null
+2026-09-08 20:02:01.462 +03:00 [INF] Executing endpoint 'TravelManager.Controllers.TourController.GetAll (TravelManager)'
+2026-09-08 20:02:01.465 +03:00 [INF] Route matched with {action = "GetAll", controller = "Tour"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String) on controller TravelManager.Controllers.TourController (TravelManager).
+2026-09-08 20:02:01.510 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`tour_id`, `t`.`available_from`, `t`.`available_to`, `t`.`description`, `t`.`duration_days`, `t`.`name`, `t`.`price`, `t`.`type_id`, `t0`.`asset_id`, `t0`.`asset_type`, `t0`.`tour_id`, `t0`.`url`
+FROM `tours` AS `t`
+LEFT JOIN `tour_assets` AS `t0` ON `t`.`tour_id` = `t0`.`tour_id`
+ORDER BY `t`.`tour_id`
+2026-09-08 20:02:01.517 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TravelManager.DTOs.TourDto, TravelManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-09-08 20:02:01.529 +03:00 [INF] Executed action TravelManager.Controllers.TourController.GetAll (TravelManager) in 60.0803ms
+2026-09-08 20:02:01.533 +03:00 [INF] Executed endpoint 'TravelManager.Controllers.TourController.GetAll (TravelManager)'
+2026-09-08 20:02:01.537 +03:00 [INF] GET /api/tours | Status=200 | User=anonymous | 74.8134ms
+2026-09-08 20:02:01.540 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/api/tours - 200 null application/json; charset=utf-8 94.2758ms
+2026-09-08 20:02:14.618 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/api/auth - null null
+2026-09-08 20:02:14.632 +03:00 [INF] GET /api/auth | Status=404 | User=anonymous | 0.0245ms
+2026-09-08 20:02:14.635 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/api/auth - 404 0 null 16.6908ms
+2026-09-08 20:02:14.638 +03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7041/api/auth, Response status code: 404
+2026-09-08 20:02:53.965 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/auth/profile - null null
+2026-09-08 20:02:53.984 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/auth/profile - 307 0 null 24.4077ms
+2026-09-08 20:02:53.995 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/api/auth/profile - null null
+2026-09-08 20:02:54.010 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-09-08 20:02:54.018 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-09-08 20:02:54.019 +03:00 [INF] GET /api/auth/profile | Status=401 | User=anonymous | 15.9384ms
+2026-09-08 20:02:54.022 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/api/auth/profile - 401 0 null 28.1312ms
+2026-09-08 20:02:58.261 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/api/auth/profile - null null
+2026-09-08 20:02:58.275 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-09-08 20:02:58.277 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-09-08 20:02:58.280 +03:00 [INF] GET /api/auth/profile | Status=401 | User=anonymous | 7.9143ms
+2026-09-08 20:02:58.285 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/api/auth/profile - 401 0 null 24.7179ms
+2026-09-08 20:04:13.982 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/api/auth/profile - null null
+2026-09-08 20:04:13.999 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-09-08 20:04:14.003 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-09-08 20:04:14.007 +03:00 [INF] GET /api/auth/profile | Status=401 | User=anonymous | 10.7155ms
+2026-09-08 20:04:14.020 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/api/auth/profile - 401 0 null 40.8091ms
+2026-09-08 20:04:36.913 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/auth/profile - null null
+2026-09-08 20:04:36.925 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/auth/profile - 307 0 null 12.2087ms
+2026-09-08 20:04:36.931 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/api/auth/profile - null null
+2026-09-08 20:04:36.938 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-09-08 20:04:36.940 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-09-08 20:04:36.942 +03:00 [INF] GET /api/auth/profile | Status=401 | User=anonymous | 4.3014ms
+2026-09-08 20:04:36.947 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/api/auth/profile - 401 0 null 16.5381ms
+2026-09-08 20:04:45.739 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/auth/profile - null null
+2026-09-08 20:04:45.745 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/auth/profile - 307 0 null 6.4484ms
+2026-09-08 20:04:45.752 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/api/auth/profile - null null
+2026-09-08 20:04:45.758 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-09-08 20:04:45.760 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-09-08 20:04:45.763 +03:00 [INF] GET /api/auth/profile | Status=401 | User=anonymous | 5.2629ms
+2026-09-08 20:04:45.766 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/api/auth/profile - 401 0 null 14.6319ms
+2026-09-08 20:08:04.782 +03:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-08 20:08:05.044 +03:00 [INF] Now listening on: https://localhost:7041
+2026-09-08 20:08:05.050 +03:00 [INF] Now listening on: http://localhost:5272
+2026-09-08 20:08:05.108 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-08 20:08:05.114 +03:00 [INF] Hosting environment: Development
+2026-09-08 20:08:05.122 +03:00 [INF] Content root path: C:\Users\toder\source\repos\TravelManager\TravelManager
+2026-09-08 20:08:05.443 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-09-08 20:08:05.668 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 231.1343ms
+2026-09-08 20:08:05.671 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-09-08 20:08:05.671 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-09-08 20:08:05.683 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 11.4439ms
+2026-09-08 20:08:05.722 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 51.3175ms
+2026-09-08 20:08:05.749 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - null null
+2026-09-08 20:08:05.779 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 30.0328ms
+2026-09-08 20:08:54.925 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/tours - null null
+2026-09-08 20:08:55.033 +03:00 [INF] Executing endpoint 'TravelManager.Controllers.TourController.GetAll (TravelManager)'
+2026-09-08 20:08:55.071 +03:00 [INF] Route matched with {action = "GetAll", controller = "Tour"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String) on controller TravelManager.Controllers.TourController (TravelManager).
+2026-09-08 20:08:57.460 +03:00 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`tour_id`, `t`.`available_from`, `t`.`available_to`, `t`.`description`, `t`.`duration_days`, `t`.`name`, `t`.`price`, `t`.`type_id`, `t0`.`asset_id`, `t0`.`asset_type`, `t0`.`tour_id`, `t0`.`url`
+FROM `tours` AS `t`
+LEFT JOIN `tour_assets` AS `t0` ON `t`.`tour_id` = `t0`.`tour_id`
+ORDER BY `t`.`tour_id`
+2026-09-08 20:08:57.710 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TravelManager.DTOs.TourDto, TravelManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-09-08 20:08:57.759 +03:00 [INF] Executed action TravelManager.Controllers.TourController.GetAll (TravelManager) in 2678.9297ms
+2026-09-08 20:08:57.764 +03:00 [INF] Executed endpoint 'TravelManager.Controllers.TourController.GetAll (TravelManager)'
+2026-09-08 20:08:57.766 +03:00 [INF] GET /api/tours | Status=200 | User=anonymous | 2736.6729ms
+2026-09-08 20:08:57.781 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/tours - 200 null application/json; charset=utf-8 2858.0201ms
+2026-09-08 20:09:06.828 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/tours/types - null null
+2026-09-08 20:09:06.868 +03:00 [INF] Executing endpoint 'TravelManager.Controllers.TourController.GetTypes (TravelManager)'
+2026-09-08 20:09:06.877 +03:00 [INF] Route matched with {action = "GetTypes", controller = "Tour"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetTypes() on controller TravelManager.Controllers.TourController (TravelManager).
+2026-09-08 20:09:06.954 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`type_id` AS `TypeId`, `t`.`name` AS `Name`
+FROM `tour_types` AS `t`
+2026-09-08 20:09:06.958 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType1`2[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], TravelManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-09-08 20:09:06.968 +03:00 [INF] Executed action TravelManager.Controllers.TourController.GetTypes (TravelManager) in 87.2395ms
+2026-09-08 20:09:06.970 +03:00 [INF] Executed endpoint 'TravelManager.Controllers.TourController.GetTypes (TravelManager)'
+2026-09-08 20:09:06.973 +03:00 [INF] GET /api/tours/types | Status=200 | User=anonymous | 104.6543ms
+2026-09-08 20:09:06.979 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/tours/types - 200 null application/json; charset=utf-8 151.3313ms
+2026-09-08 20:09:19.775 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/auth/profile - null null
+2026-09-08 20:09:19.797 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-09-08 20:09:19.806 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-09-08 20:09:19.809 +03:00 [INF] GET /api/auth/profile | Status=401 | User=anonymous | 20.0547ms
+2026-09-08 20:09:19.814 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/auth/profile - 401 0 null 38.784ms
+2026-09-08 20:09:20.319 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/auth/profile - null null
+2026-09-08 20:09:20.338 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-09-08 20:09:20.347 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-09-08 20:09:20.349 +03:00 [INF] GET /api/auth/profile | Status=401 | User=anonymous | 17.0668ms
+2026-09-08 20:09:20.354 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/auth/profile - 401 0 null 35.4818ms
+2026-09-08 20:09:30.467 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/admin/statistics - null null
+2026-09-08 20:09:30.482 +03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (admin)
+2026-09-08 20:09:30.483 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-09-08 20:09:30.485 +03:00 [INF] GET /api/admin/statistics | Status=401 | User=anonymous | 7.385ms
+2026-09-08 20:09:30.489 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/admin/statistics - 401 0 null 21.9623ms
+2026-09-08 20:09:42.759 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/bookings/my - null null
+2026-09-08 20:09:42.769 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-09-08 20:09:42.771 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-09-08 20:09:42.772 +03:00 [INF] GET /api/bookings/my | Status=401 | User=anonymous | 3.004ms
+2026-09-08 20:09:42.775 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/bookings/my - 401 0 null 16.1408ms
+2026-09-08 20:09:50.844 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/savedpersons - null null
+2026-09-08 20:09:50.861 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2026-09-08 20:09:50.863 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-09-08 20:09:50.867 +03:00 [INF] GET /api/savedpersons | Status=401 | User=anonymous | 5.8545ms
+2026-09-08 20:09:50.870 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/savedpersons - 401 0 null 26.4738ms
+2026-09-08 20:15:26.831 +03:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-08 20:15:27.054 +03:00 [INF] Now listening on: https://localhost:7041
+2026-09-08 20:15:27.056 +03:00 [INF] Now listening on: http://localhost:5272
+2026-09-08 20:15:27.299 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-08 20:15:27.306 +03:00 [INF] Hosting environment: Development
+2026-09-08 20:15:27.311 +03:00 [INF] Content root path: C:\Users\toder\source\repos\TravelManager\TravelManager
+2026-09-08 20:15:27.460 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-09-08 20:15:27.759 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 310.9194ms
+2026-09-08 20:15:27.764 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-09-08 20:15:27.765 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-09-08 20:15:27.813 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 49.302ms
+2026-09-08 20:15:27.858 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 93.7904ms
+2026-09-08 20:15:27.905 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - null null
+2026-09-08 20:15:27.942 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 36.9478ms
+2026-09-08 20:16:40.664 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/tours - null null
+2026-09-08 20:16:40.829 +03:00 [INF] Executing endpoint 'TravelManager.Controllers.TourController.GetAll (TravelManager)'
+2026-09-08 20:16:40.884 +03:00 [INF] Route matched with {action = "GetAll", controller = "Tour"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String) on controller TravelManager.Controllers.TourController (TravelManager).
+2026-09-08 20:16:43.402 +03:00 [INF] Executed DbCommand (36ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`tour_id`, `t`.`available_from`, `t`.`available_to`, `t`.`description`, `t`.`duration_days`, `t`.`name`, `t`.`price`, `t`.`type_id`, `t0`.`asset_id`, `t0`.`asset_type`, `t0`.`tour_id`, `t0`.`url`
+FROM `tours` AS `t`
+LEFT JOIN `tour_assets` AS `t0` ON `t`.`tour_id` = `t0`.`tour_id`
+ORDER BY `t`.`tour_id`
+2026-09-08 20:16:43.647 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TravelManager.DTOs.TourDto, TravelManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-09-08 20:16:43.684 +03:00 [INF] Executed action TravelManager.Controllers.TourController.GetAll (TravelManager) in 2791.7397ms
+2026-09-08 20:16:43.690 +03:00 [INF] Executed endpoint 'TravelManager.Controllers.TourController.GetAll (TravelManager)'
+2026-09-08 20:16:43.695 +03:00 [INF] GET /api/tours | Status=200 | User=anonymous | 2869.1712ms
+2026-09-08 20:16:43.709 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/tours - 200 null application/json; charset=utf-8 3047.7482ms
+2026-09-08 20:18:48.989 +03:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-08 20:18:49.210 +03:00 [INF] Now listening on: https://localhost:7041
+2026-09-08 20:18:49.211 +03:00 [INF] Now listening on: http://localhost:5272
+2026-09-08 20:18:49.270 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-08 20:18:49.272 +03:00 [INF] Hosting environment: Development
+2026-09-08 20:18:49.272 +03:00 [INF] Content root path: C:\Users\toder\source\repos\TravelManager\TravelManager
+2026-09-08 20:18:49.713 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-09-08 20:18:49.922 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 219.3099ms
+2026-09-08 20:18:49.932 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-09-08 20:18:49.932 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-09-08 20:18:49.955 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 23.8266ms
+2026-09-08 20:18:49.983 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.2699ms
+2026-09-08 20:18:50.012 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - null null
+2026-09-08 20:18:50.035 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 22.8111ms

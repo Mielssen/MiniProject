@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>TravelManager | Кабінет</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h2>Travel<span>Manager</span></h2>
+    <div class="nav-links">
+        <a href="dashboard.html">← Тури</a>
+        <button class="logout-btn" onclick="logout()">Вийти</button>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="tabs">
+        <button class="tab active" onclick="switchTab('profile')">Профіль</button>
+        <button class="tab" onclick="switchTab('bookings')">Мої бронювання</button>
+    </div>
+
+    <div id="tab-profile" class="tab-content">
+        <div class="profile-card">
+            <div class="profile-avatar">👤</div>
+            <div class="profile-email" id="profileEmail"></div>
+
+            <div class="form-group">
+                <label>Ім'я</label>
+                <input id="profileName" placeholder="Ім'я">
+            </div>
+
+            <div class="form-group">
+                <label>Телефон (10 цифр)</label>
+                <input id="profilePhone" placeholder="0991234567">
+            </div>
+
+            <div class="form-group">
+                <label>Паспортні дані</label>
+                <input id="profilePassport" placeholder="Паспортні дані">
+            </div>
+
+            <div class="form-group">
+                <label>Дата народження</label>
+                <input id="profileBirth" type="date" disabled>
+            </div>
+
+            <div class="error" id="profileError"></div>
+            <div class="success" id="profileSuccess"></div>
+
+            <button class="btn-save" onclick="saveProfile()">Зберегти зміни</button>
+        </div>
+    </div>
+
+    <div id="tab-bookings" class="tab-content hidden">
+        <div id="bookingsGrid" class="booking-grid"></div>
+    </div>
+
+    <div id="tab-penalties" class="tab-content hidden">
+        <div class="empty-state">
+            <div class="empty-icon">📋</div>
+            <p>Штрафів немає</p>
+        </div>
+    </div>
+
+</div>
+
+<script src="profile.js"></script>
+</body>
+</html>

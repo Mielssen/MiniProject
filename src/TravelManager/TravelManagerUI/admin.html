@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>TravelManager | Admin</title>
+    <link rel="stylesheet" href="adminStyle.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h2>Travel<span>Manager</span> <span class="admin-badge">Admin</span></h2>
+    <button class="logout-btn" onclick="logout()">Вийти</button>
+</div>
+
+<div class="container">
+
+    <div class="tabs">
+        <button class="tab active" onclick="switchTab('statistics', this)">📊 Статистика</button>
+        <button class="tab" onclick="switchTab('clients', this)">👤 Користувачі</button>
+        <button class="tab" onclick="switchTab('managers', this)">🧑‍💼 Менеджери</button>
+    </div>
+
+    <!-- СТАТИСТИКА -->
+    <div id="tab-statistics">
+        <div class="stats-grid" id="statsGrid"></div>
+        <div class="top-tours-section">
+            <h3 class="section-title">🏆 Топ-3 найпопулярніших тури</h3>
+            <div id="topToursList"></div>
+        </div>
+    </div>
+
+    <!-- КОРИСТУВАЧІ -->
+    <div id="tab-clients" class="hidden">
+        <div class="toolbar">
+            <div class="filter-tabs">
+                <button class="filter-btn active" onclick="filterUsers('client', null, this)">Всі</button>
+                <button class="filter-btn" onclick="filterUsers('client', 'active', this)">Активні</button>
+                <button class="filter-btn" onclick="filterUsers('client', 'deleted', this)">Деактивовані</button>
+            </div>
+        </div>
+        <div id="clientsList"></div>
+    </div>
+
+    <!-- МЕНЕДЖЕРИ -->
+    <div id="tab-managers" class="hidden">
+        <div class="toolbar">
+            <div class="filter-tabs">
+                <button class="filter-btn active" onclick="filterUsers('manager', null, this)">Всі</button>
+                <button class="filter-btn" onclick="filterUsers('manager', 'active', this)">Активні</button>
+                <button class="filter-btn" onclick="filterUsers('manager', 'deleted', this)">Деактивовані</button>
+            </div>
+        </div>
+        <div id="managersList"></div>
+    </div>
+
+</div>
+
+<!-- МОДАЛКА РЕДАГУВАННЯ -->
+<div id="userModal" class="modal hidden">
+    <div class="modal-content">
+        <h3>Редагувати користувача</h3>
+
+        <label>Ім'я</label>
+        <input id="editName" placeholder="Ім'я">
+
+        <label>Телефон (10 цифр без +38)</label>
+        <input id="editPhone" placeholder="0XXXXXXXXX">
+
+        <label>Паспортні дані</label>
+        <input id="editPassport" placeholder="Паспортні дані">
+
+        <label>Дата народження</label>
+        <input id="editBirth" type="date">
+
+        <label>Роль</label>
+        <select id="editRole">
+            <option value="client">client</option>
+            <option value="manager">manager</option>
+        </select>
+
+        <label>Статус</label>
+        <select id="editStatus">
+            <option value="active">active</option>
+            <option value="deleted">deleted</option>
+        </select>
+
+        <div class="error" id="userModalError"></div>
+
+        <div class="actions">
+            <button class="btn-save" onclick="saveUser()">Зберегти</button>
+            <button class="btn-cancel" onclick="closeUserModal()">Скасувати</button>
+        </div>
+    </div>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>

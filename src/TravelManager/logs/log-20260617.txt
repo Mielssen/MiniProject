@@ -1,0 +1,148 @@
+2026-06-17 10:42:49.028 +03:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-06-17 10:42:49.531 +03:00 [INF] Now listening on: https://localhost:7041
+2026-06-17 10:42:49.536 +03:00 [INF] Now listening on: http://localhost:5272
+2026-06-17 10:42:49.671 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-17 10:42:49.675 +03:00 [INF] Hosting environment: Development
+2026-06-17 10:42:49.679 +03:00 [INF] Content root path: C:\Users\toder\source\repos\TravelManager\TravelManager
+2026-06-17 10:42:53.192 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger - null null
+2026-06-17 10:42:53.802 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger - 301 0 null 635.8401ms
+2026-06-17 10:42:53.819 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-06-17 10:42:54.122 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/swagger-ui-standalone-preset.js - null null
+2026-06-17 10:42:54.136 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/swagger-ui.css - null null
+2026-06-17 10:42:54.147 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/swagger-ui-bundle.js - null null
+2026-06-17 10:42:54.157 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 337.6177ms
+2026-06-17 10:42:54.339 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-06-17 10:42:54.341 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-06-17 10:42:54.424 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-17 10:42:54.399 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/swagger-ui.css - 200 152034 text/css 272.1549ms
+2026-06-17 10:42:54.508 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 84.0355ms
+2026-06-17 10:42:54.455 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-06-17 10:42:54.432 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 309.5277ms
+2026-06-17 10:42:54.510 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-06-17 10:42:54.631 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 492.4295ms
+2026-06-17 10:42:54.831 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 375.5691ms
+2026-06-17 10:42:55.378 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - null null
+2026-06-17 10:42:55.467 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 89.2675ms
+2026-06-17 10:43:16.031 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7041/api/auth/login - null null
+2026-06-17 10:43:16.061 +03:00 [INF] CORS policy execution successful.
+2026-06-17 10:43:16.065 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7041/api/auth/login - 204 null null 34.4191ms
+2026-06-17 10:43:16.080 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7041/api/auth/login - application/json 55
+2026-06-17 10:43:16.093 +03:00 [INF] CORS policy execution successful.
+2026-06-17 10:43:16.272 +03:00 [INF] Executing endpoint 'TravelManager.Controllers.AuthController.Login (TravelManager)'
+2026-06-17 10:43:16.332 +03:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(TravelManager.DTOs.LoginDto) on controller TravelManager.Controllers.AuthController (TravelManager).
+2026-06-17 10:43:22.941 +03:00 [INF] Executed DbCommand (181ms) [Parameters=[@__email_0='?' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`credential_id`, `c`.`created_at`, `c`.`email`, `c`.`password_hash`, `c`.`role`, `c`.`status`
+FROM `credentials` AS `c`
+WHERE `c`.`email` = @__email_0
+LIMIT 1
+2026-06-17 10:43:24.028 +03:00 [INF] Успішний вхід: Email=admin@gmail.com, Role=admin
+2026-06-17 10:43:24.245 +03:00 [INF] Executing OkObjectResult, writing value of type 'TravelManager.DTOs.TokenResponceDto'.
+2026-06-17 10:43:24.275 +03:00 [INF] Executed action TravelManager.Controllers.AuthController.Login (TravelManager) in 7925.7831ms
+2026-06-17 10:43:24.297 +03:00 [INF] Executed endpoint 'TravelManager.Controllers.AuthController.Login (TravelManager)'
+2026-06-17 10:43:24.324 +03:00 [INF] POST /api/auth/login | Status=200 | User=anonymous | 8051.7896ms
+2026-06-17 10:43:24.437 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7041/api/auth/login - 200 null application/json; charset=utf-8 8356.6337ms
+2026-06-17 10:43:24.571 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7041/api/admin/statistics - null null
+2026-06-17 10:43:24.599 +03:00 [INF] CORS policy execution successful.
+2026-06-17 10:43:24.613 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7041/api/admin/statistics - 204 null null 41.8318ms
+2026-06-17 10:43:24.618 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/api/admin/statistics - application/json null
+2026-06-17 10:43:24.658 +03:00 [INF] CORS policy execution successful.
+2026-06-17 10:43:24.836 +03:00 [INF] Executing endpoint 'TravelManager.Controllers.AdminController.GetStatistics (TravelManager)'
+2026-06-17 10:43:24.854 +03:00 [INF] Route matched with {action = "GetStatistics", controller = "Admin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetStatistics() on controller TravelManager.Controllers.AdminController (TravelManager).
+2026-06-17 10:43:24.875 +03:00 [INF] Запит статистики
+2026-06-17 10:43:25.460 +03:00 [INF] Executed DbCommand (14ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT `b`.`tour_id` AS `TourId`, `t`.`name` AS `Name`, COUNT(*) AS `Count`, COALESCE(SUM(`b`.`total_price`), 0.0) AS `Revenue`
+FROM `bookings` AS `b`
+INNER JOIN `tours` AS `t` ON `b`.`tour_id` = `t`.`tour_id`
+WHERE `b`.`status` <> 'cancelled'
+GROUP BY `b`.`tour_id`, `t`.`name`
+ORDER BY COUNT(*) DESC
+LIMIT @__p_0
+2026-06-17 10:43:25.557 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__role_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `credentials` AS `c`
+WHERE (`c`.`role` = @__role_0) AND (`c`.`status` = 'active')
+2026-06-17 10:43:25.612 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `credentials` AS `c`
+WHERE (`c`.`role` = @__role_0) AND (`c`.`status` = 'active')
+2026-06-17 10:43:25.624 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__role_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `credentials` AS `c`
+WHERE (`c`.`role` = @__role_0) AND (`c`.`status` = 'active')
+2026-06-17 10:43:25.638 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `credentials` AS `c`
+WHERE (`c`.`role` = @__role_0) AND (`c`.`status` = 'active')
+2026-06-17 10:43:25.657 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `bookings` AS `b`
+2026-06-17 10:43:25.677 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__status_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `bookings` AS `b`
+WHERE `b`.`status` = @__status_0
+2026-06-17 10:43:25.687 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__status_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `bookings` AS `b`
+WHERE `b`.`status` = @__status_0
+2026-06-17 10:43:25.700 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__status_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `bookings` AS `b`
+WHERE `b`.`status` = @__status_0
+2026-06-17 10:43:25.742 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM(`b`.`total_price`), 0.0)
+FROM `bookings` AS `b`
+2026-06-17 10:43:25.790 +03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COALESCE(SUM(`b`.`total_price`), 0.0)
+FROM `bookings` AS `b`
+WHERE `b`.`status` = 'confirmed'
+2026-06-17 10:43:25.817 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__start_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `credentials` AS `c`
+WHERE `c`.`created_at` >= @__start_0
+2026-06-17 10:43:25.838 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__start_0='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM `bookings` AS `b`
+WHERE `b`.`booking_date` >= @__start_0
+2026-06-17 10:43:25.848 +03:00 [INF] Executing OkObjectResult, writing value of type 'TravelManager.DTOs.StatisticsDto'.
+2026-06-17 10:43:25.897 +03:00 [INF] Executed action TravelManager.Controllers.AdminController.GetStatistics (TravelManager) in 1032.1153ms
+2026-06-17 10:43:25.907 +03:00 [INF] Executed endpoint 'TravelManager.Controllers.AdminController.GetStatistics (TravelManager)'
+2026-06-17 10:43:25.913 +03:00 [INF] GET /api/admin/statistics | Status=200 | User=20 | 1094.0987ms
+2026-06-17 10:43:25.926 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/api/admin/statistics - 200 null application/json; charset=utf-8 1307.8015ms
+2026-06-17 10:43:25.933 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7041/api/admin/users?role=client - null null
+2026-06-17 10:43:25.958 +03:00 [INF] CORS policy execution successful.
+2026-06-17 10:43:25.964 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7041/api/admin/users?role=client - 204 null null 30.6921ms
+2026-06-17 10:43:25.970 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/api/admin/users?role=client - application/json null
+2026-06-17 10:43:26.009 +03:00 [INF] CORS policy execution successful.
+2026-06-17 10:43:26.024 +03:00 [INF] Executing endpoint 'TravelManager.Controllers.AdminController.GetAll (TravelManager)'
+2026-06-17 10:43:26.036 +03:00 [INF] Route matched with {action = "GetAll", controller = "Admin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String, System.String) on controller TravelManager.Controllers.AdminController (TravelManager).
+2026-06-17 10:43:26.068 +03:00 [INF] Запит списку користувачів. Role=client, Status=null
+2026-06-17 10:43:26.385 +03:00 [INF] Executed DbCommand (5ms) [Parameters=[@__role_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`credential_id`, `c`.`created_at`, `c`.`email`, `c`.`password_hash`, `c`.`role`, `c`.`status`, `u`.`user_id`, `u`.`credential_id`, `u`.`date_of_birth`, `u`.`name`, `u`.`passport_data`, `u`.`phone`
+FROM `credentials` AS `c`
+LEFT JOIN `user_details` AS `u` ON `c`.`credential_id` = `u`.`credential_id`
+WHERE `c`.`role` = @__role_0
+ORDER BY `c`.`created_at`
+2026-06-17 10:43:26.821 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TravelManager.DTOs.ProfileDto, TravelManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-17 10:43:26.876 +03:00 [INF] Executed action TravelManager.Controllers.AdminController.GetAll (TravelManager) in 832.2847ms
+2026-06-17 10:43:26.883 +03:00 [INF] Executed endpoint 'TravelManager.Controllers.AdminController.GetAll (TravelManager)'
+2026-06-17 10:43:26.889 +03:00 [INF] GET /api/admin/users | Status=200 | User=20 | 867.7499ms
+2026-06-17 10:43:26.898 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/api/admin/users?role=client - 200 null application/json; charset=utf-8 928.2705ms
+2026-06-17 10:43:32.636 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7041/api/admin/users?role=manager - null null
+2026-06-17 10:43:32.642 +03:00 [INF] CORS policy execution successful.
+2026-06-17 10:43:32.644 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7041/api/admin/users?role=manager - 204 null null 8.9314ms
+2026-06-17 10:43:32.648 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/api/admin/users?role=manager - application/json null
+2026-06-17 10:43:32.657 +03:00 [INF] CORS policy execution successful.
+2026-06-17 10:43:32.665 +03:00 [INF] Executing endpoint 'TravelManager.Controllers.AdminController.GetAll (TravelManager)'
+2026-06-17 10:43:32.668 +03:00 [INF] Route matched with {action = "GetAll", controller = "Admin"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String, System.String) on controller TravelManager.Controllers.AdminController (TravelManager).
+2026-06-17 10:43:32.678 +03:00 [INF] Запит списку користувачів. Role=manager, Status=null
+2026-06-17 10:43:32.684 +03:00 [INF] Executed DbCommand (1ms) [Parameters=[@__role_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT `c`.`credential_id`, `c`.`created_at`, `c`.`email`, `c`.`password_hash`, `c`.`role`, `c`.`status`, `u`.`user_id`, `u`.`credential_id`, `u`.`date_of_birth`, `u`.`name`, `u`.`passport_data`, `u`.`phone`
+FROM `credentials` AS `c`
+LEFT JOIN `user_details` AS `u` ON `c`.`credential_id` = `u`.`credential_id`
+WHERE `c`.`role` = @__role_0
+ORDER BY `c`.`created_at`
+2026-06-17 10:43:32.689 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TravelManager.DTOs.ProfileDto, TravelManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-06-17 10:43:32.692 +03:00 [INF] Executed action TravelManager.Controllers.AdminController.GetAll (TravelManager) in 20.6278ms
+2026-06-17 10:43:32.695 +03:00 [INF] Executed endpoint 'TravelManager.Controllers.AdminController.GetAll (TravelManager)'
+2026-06-17 10:43:32.697 +03:00 [INF] GET /api/admin/users | Status=200 | User=20 | 37.3172ms
+2026-06-17 10:43:32.701 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/api/admin/users?role=manager - 200 null application/json; charset=utf-8 54.1169ms

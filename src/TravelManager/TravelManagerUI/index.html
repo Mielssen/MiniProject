@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>TravelManager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card" id="loginBox">
+        <h2>Welcome back</h2>
+
+        <div class="field">
+            <input id="loginEmail" placeholder=" ">
+            <label>Email</label>
+        </div>
+
+        <div class="field">
+            <input id="loginPassword" type="password" placeholder=" ">
+            <label>Password</label>
+        </div>
+
+        <div class="error" id="loginError"></div>
+
+        <button onclick="login()">Sign in</button>
+
+        <p class="switch">
+            Немає акаунту?
+            <span onclick="showRegister()">Створити акаунт</span>
+        </p>
+    </div>
+
+    <div class="card hidden" id="registerBox">
+        <h2>Create account</h2>
+
+        <div class="field"><input id="regName" placeholder=" "><label>Ім'я</label></div>
+        <div class="field"><input id="regEmail" placeholder=" "><label>Email</label></div>
+        <div class="field"><input id="regPassword" type="password" placeholder=" "><label>Password</label></div>
+        <div class="field"><input id="regPhone" placeholder=" "><label>Телефон</label></div>
+        <div class="field"><input id="regPassport" placeholder=" "><label>Паспорт</label></div>
+        <div class="field"><input id="regBirth" type="date"></div>
+
+        <div class="error" id="registerError"></div>
+
+        <button onclick="register()">Create account</button>
+
+        <p class="switch">
+            Вже є акаунт?
+            <span onclick="showLogin()">Увійти</span>
+        </p>
+    </div>
+
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>

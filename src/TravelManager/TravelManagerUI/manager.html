@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>TravelManager | Panel</title>
+    <link rel="stylesheet" href="managerStyle.css">
+</head>
+<body>
+
+<div class="navbar">
+    <h2>Travel<span>Manager</span></h2>
+    <button class="logout-btn" onclick="logout()">Вийти</button>
+</div>
+
+<div class="container">
+
+    <div class="tabs">
+        <button class="tab active" onclick="switchTab('tours', this)">Тури</button>
+        <button class="tab" onclick="switchTab('bookings', this)">Бронювання</button>
+    </div>
+
+    <div id="tab-tours">
+        <div class="toolbar">
+            <div class="search-box">
+                <input id="search" placeholder="Пошук туру...">
+                <div id="searchChip" class="search-chip hidden">
+                    <span id="searchText"></span>
+                    <button onclick="clearSearch()">✕</button>
+                </div>
+                <button class="btn-search-inner" onclick="searchTours()">Пошук</button>
+            </div>
+            <button class="btn-create-dark" onclick="openModal()">+ Створити тур</button>
+        </div>
+        <div id="toursGrid" class="grid"></div>
+    </div>
+
+    <div id="tab-bookings" class="hidden">
+        <div class="toolbar">
+            <div class="filter-tabs">
+                <button class="filter-btn active" onclick="filterBookings(null, this)">Всі</button>
+                <button class="filter-btn" onclick="filterBookings('pending', this)">Pending</button>
+                <button class="filter-btn" onclick="filterBookings('confirmed', this)">Confirmed</button>
+                <button class="filter-btn" onclick="filterBookings('cancelled', this)">Cancelled</button>
+            </div>
+        </div>
+        <div id="bookingsList"></div>
+    </div>
+
+</div>
+
+<div id="modal" class="modal hidden">
+    <div class="modal-content">
+        <h3 id="modalTitle">Створити тур</h3>
+        <label>Назва туру</label>
+        <input id="name" placeholder="Введіть назву туру">
+        <label>Опис</label>
+        <input id="description" placeholder="Короткий опис">
+        <label>Ціна ($)</label>
+        <input id="price" type="number" placeholder="Наприклад 1000">
+        <label>Тривалість (дні)</label>
+        <input id="days" type="number" placeholder="Наприклад 7">
+        <label>Дата початку</label>
+        <input id="from" type="date">
+        <label>Дата кінця</label>
+        <input id="to" type="date">
+        <label>Тип туру</label>
+        <select id="typeId"></select>
+        <label>Фото / відео</label>
+        <input id="files" type="file" multiple>
+        <div id="preview"></div>
+        <div class="actions">
+            <button class="btn-save" onclick="saveTour()">Зберегти</button>
+            <button class="btn-cancel" onclick="closeModal()">Скасувати</button>
+        </div>
+    </div>
+</div>
+
+<div id="bookingDetailModal" class="modal hidden">
+    <div class="modal-content" style="max-width:550px;">
+        <div class="modal-body">
+            <h3>Деталі бронювання</h3>
+
+            <div class="detail-section">
+                <div class="detail-title">🌍 Тур</div>
+                <div class="detail-grid">
+                    <div class="detail-item"><span>Назва</span><strong id="detailTourName"></strong></div>
+                    <div class="detail-item"><span>Ціна за особу</span><strong id="detailTourPrice"></strong></div>
+                    <div class="detail-item"><span>Тривалість</span><strong id="detailTourDays"></strong></div>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <div class="detail-title">👤 Турист</div>
+                <div class="detail-grid">
+                    <div class="detail-item"><span>Ім'я</span><strong id="detailUserName"></strong></div>
+                    <div class="detail-item"><span>Email</span><strong id="detailUserEmail"></strong></div>
+                    <div class="detail-item"><span>Телефон</span><strong id="detailUserPhone"></strong></div>
+                    <div class="detail-item"><span>Паспорт</span><strong id="detailUserPassport"></strong></div>
+                    <div class="detail-item"><span>Дата народження</span><strong id="detailUserBirth"></strong></div>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <div class="detail-title">📋 Бронювання</div>
+                <div class="detail-grid">
+                    <div class="detail-item"><span>Дата початку</span><strong id="detailStartDate"></strong></div>
+                    <div class="detail-item"><span>Заброньовано</span><strong id="detailBookingDate"></strong></div>
+                    <div class="detail-item"><span>Кількість людей</span><strong id="detailPeople"></strong></div>
+                    <div class="detail-item"><span>Загальна сума</span><strong id="detailTotal"></strong></div>
+                    <div class="detail-item"><span>Коментар</span><strong id="detailComment"></strong></div>
+                    <div class="detail-item"><span>Статус</span><strong id="detailStatus"></strong></div>
+                </div>
+            </div>
+
+            <div class="detail-section">
+                <div class="detail-title">👥 Учасники</div>
+                <div id="detailPersons"></div>
+            </div>
+
+            <div class="modal-actions" id="detailActions" style="display:flex; gap:10px;"></div>
+            <div style="margin-top:10px;">
+                <button class="btn-cancel" style="width:100%; padding:12px; border-radius:12px; cursor:pointer;" onclick="closeBookingDetailModal()">Закрити</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="manager.js"></script>
+</body>
+</html>
