@@ -1,23 +1,36 @@
-# Архітектурні та послідовні діаграми
+```mermaid
+graph TD
+    %% Заголовок діаграми
+    %% title Архітектура розгортання сервісів
+    
+    %% Вузли
+    Client("Клієнт<br/>(Web)")
+    Gateway("ApiGateway (Ocelot)<br/>:5000")
+    
+    AuthS("AuthService<br/>:5001")
+    TourS("TourService<br/>:5002 / :5102")
+    BookS("BookingService<br/>:5003 / :5103")
+    
+    AuthDB[(auth / MySQL)]
+    TourDB[(tour / MySQL)]
+    BookDB[(booking / MySQL)]
+    
+    %% Зв'язки
+    Client --> Gateway
+    
+    Gateway --> AuthS
+    Gateway --> TourS
+    Gateway --> BookS
+    
+    AuthS --> AuthDB
+    TourS --> TourDB
+    BookS --> BookDB
 
-## 1. Загальна схема розгортання
-
-На цій діаграмі показано, як клієнт через API Gateway звертається до мікросервісів, кожен з яких має власну базу даних.
-
-![Схема розгортання](docs/diagrams/image_3.png)
-
----
-
-## 2. Діаграма послідовності: Моноліт (Стан до поділу)
-
-Тут показано, як запит на бронювання оброблявся в єдиному монолітному сервісі. Gateway лише маршрутизує запит.
-
-![Послідовність Моноліт](docs/diagrams/image_4.png)
-
----
-
-## 3. Діаграма послідовності: Мікросервіси (Стан після поділу)
-
-Ця діаграма ілюструє зміни: тепер Gateway пересилає запит до Booking-сервісу, який, своєю чергою, асинхронно (по REST) перевіряє доступність у Tour-сервісу перед збереженням.
-
-![Послідовність Мікросервіси](docs/diagrams/image_5.png)
+    %% Стилізація блоків (опціонально, для краси)
+    classDef service fill:#fff,stroke:#333,stroke-width:1px,rx:5,ry:5;
+    classDef db fill:#e1f5fe,stroke:#0277bd,stroke-width:1px,rx:5,ry:5;
+    classDef client fill:#f3e5f5,stroke:#7b1fa2,stroke-width:1px,rx:10,ry:10;
+    
+    class Gateway,AuthS,TourS,BookS service;
+    class AuthDB,TourDB,BookDB db;
+    class Client client;
