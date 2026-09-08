@@ -257,3 +257,30 @@ ORDER BY `t`.`tour_id`
 2026-09-08 20:18:49.983 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.2699ms
 2026-09-08 20:18:50.012 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - null null
 2026-09-08 20:18:50.035 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 22.8111ms
+2026-09-08 20:40:50.936 +03:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-09-08 20:40:51.140 +03:00 [INF] Now listening on: https://localhost:7041
+2026-09-08 20:40:51.141 +03:00 [INF] Now listening on: http://localhost:5272
+2026-09-08 20:40:51.212 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-09-08 20:40:51.213 +03:00 [INF] Hosting environment: Development
+2026-09-08 20:40:51.213 +03:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-09-08 20:40:51.459 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-09-08 20:40:51.698 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 238.3701ms
+2026-09-08 20:40:51.701 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-09-08 20:40:51.706 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-09-08 20:40:51.713 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 13778 application/javascript; charset=utf-8 11.2821ms
+2026-09-08 20:40:51.765 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 59.4662ms
+2026-09-08 20:40:51.791 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - null null
+2026-09-08 20:40:51.805 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 14.3821ms
+2026-09-08 20:40:56.826 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/tours - null null
+2026-09-08 20:40:56.960 +03:00 [INF] Executing endpoint 'TravelManager.Controllers.TourController.GetAll (TravelManager)'
+2026-09-08 20:40:57.040 +03:00 [INF] Route matched with {action = "GetAll", controller = "Tour"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAll(System.String) on controller TravelManager.Controllers.TourController (TravelManager).
+2026-09-08 20:40:59.907 +03:00 [INF] Executed DbCommand (26ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `t`.`tour_id`, `t`.`available_from`, `t`.`available_to`, `t`.`description`, `t`.`duration_days`, `t`.`name`, `t`.`price`, `t`.`type_id`, `t0`.`asset_id`, `t0`.`asset_type`, `t0`.`tour_id`, `t0`.`url`
+FROM `tours` AS `t`
+LEFT JOIN `tour_assets` AS `t0` ON `t`.`tour_id` = `t0`.`tour_id`
+ORDER BY `t`.`tour_id`
+2026-09-08 20:41:00.189 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[TravelManager.DTOs.TourDto, TravelManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-09-08 20:41:00.223 +03:00 [INF] Executed action TravelManager.Controllers.TourController.GetAll (TravelManager) in 3130.5445ms
+2026-09-08 20:41:00.227 +03:00 [INF] Executed endpoint 'TravelManager.Controllers.TourController.GetAll (TravelManager)'
+2026-09-08 20:41:00.232 +03:00 [INF] GET /api/tours | Status=200 | User=anonymous | 3274.5897ms
+2026-09-08 20:41:00.248 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/tours - 200 null application/json; charset=utf-8 3421.6764ms

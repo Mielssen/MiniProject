@@ -1,3 +1,4 @@
 bin/ 
 obj/
 *.mp4
+.vs/
