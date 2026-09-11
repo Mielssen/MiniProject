@@ -8,16 +8,34 @@ builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange
 
 builder.Services.AddOcelot(builder.Configuration);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
+
+app.UseCors("AllowFrontend");
 
 app.Use(async (context, next) =>
 {
     if (context.Request.Path == "/health" && context.Request.Method == "GET")
     {
         context.Response.StatusCode = 200;
-        await context.Response.WriteAsJsonAsync(new { status = "Healthy", gateway = "Running" });
+        await context.Response.WriteAsJsonAsync(new
+        {
+            status = "Healthy",
+            gateway = "Running"
+        });
         return;
     }
+
     await next();
 });
 
@@ -35,6 +53,7 @@ app.Use(async (context, next) =>
 
     var method = context.Request.Method;
     var path = context.Request.Path;
+    var destination = $"http://localhost:5272{path}";
 
     try
     {
@@ -43,9 +62,14 @@ app.Use(async (context, next) =>
     finally
     {
         sw.Stop();
-        var statusCode = context.Response.StatusCode;
 
-        Console.WriteLine($"[Gateway Log] Method: {method} | Path: {path} | Status: {statusCode} | Duration: {sw.ElapsedMilliseconds}ms | CorrelationId: {correlationId}");
+        Console.WriteLine(
+            $"[Gateway Log] Method: {method} | " +
+            $"Path: {path} | " +
+            $"Destination: {destination} | " +
+            $"Status: {context.Response.StatusCode} | " +
+            $"Duration: {sw.ElapsedMilliseconds}ms | " +
+            $"CorrelationId: {correlationId}");
     }
 });
 
