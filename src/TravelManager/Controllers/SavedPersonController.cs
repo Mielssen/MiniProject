@@ -21,32 +21,34 @@ namespace TravelManager.Controllers
         [HttpGet]
         public IActionResult GetMy()
         {
-            var credentialId = int.Parse(
+            var userId = int.Parse(
                 User.FindFirst(ClaimTypes.NameIdentifier)!.Value
             );
 
-            return Ok(_service.GetMy(credentialId));
+            return Ok(_service.GetMy(userId));
         }
 
         [HttpPost]
         public IActionResult Add([FromBody] SavedPersonDto dto)
         {
-            var credentialId = int.Parse(
+            var userId = int.Parse(
                 User.FindFirst(ClaimTypes.NameIdentifier)!.Value
             );
 
-            _service.Add(credentialId, dto);
+            _service.Add(userId, dto);
+
             return Ok("Пресет збережено");
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var credentialId = int.Parse(
+            var userId = int.Parse(
                 User.FindFirst(ClaimTypes.NameIdentifier)!.Value
             );
 
-            _service.Delete(credentialId, id);
+            _service.Delete(userId, id);
+
             return Ok("Пресет видалено");
         }
     }

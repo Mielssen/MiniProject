@@ -17,28 +17,36 @@ namespace TravelManager.Repositories
             _context.Bookings.Add(booking);
             _context.SaveChanges();
         }
+
         public bool TourExists(int tourId)
         {
             return _context.Tours.Any(t => t.TourId == tourId);
         }
 
-        public List<Booking> GetByCredentialId(int credentialId)
+        public List<Booking> GetByUserId(int userId)
         {
-            return _context.Bookings
-                .Include(b => b.Tour)
+            var bookings = _context.Bookings
                 .Include(b => b.BookingPeople)
-                .Include(b => b.Credential)
-                    .ThenInclude(c => c.UserDetail)
-                .Where(b => b.CredentialId == credentialId)
+                .Where(b => b.UserId == userId)
                 .ToList();
+
+            Console.WriteLine($"USER ID: {userId}");
+            Console.WriteLine($"BOOKINGS FOUND: {bookings.Count}");
+
+            foreach (var booking in bookings)
+            {
+                Console.WriteLine(
+                    $"BOOKING ID: {booking.BookingId}, USER ID: {booking.UserId}, PEOPLE: {booking.BookingPeople.Count}"
+                );
+            }
+
+            return bookings;
         }
+
         public List<Booking> GetAll(string? status)
         {
             var query = _context.Bookings
-                .Include(b => b.Tour)
                 .Include(b => b.BookingPeople)
-                .Include(b => b.Credential)
-                    .ThenInclude(c => c.UserDetail)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(status))
@@ -46,17 +54,20 @@ namespace TravelManager.Repositories
 
             return query.ToList();
         }
+
         public void Update(Booking booking)
         {
             _context.Bookings.Update(booking);
             _context.SaveChanges();
         }
+
         public Booking? GetById(int id)
         {
             return _context.Bookings
                 .Include(b => b.Tour)
-                .FirstOrDefault(b=> b.BookingId == id);
+                .FirstOrDefault(b => b.BookingId == id);
         }
+
         public Tour? GetTourById(int tourId)
         {
             return _context.Tours.FirstOrDefault(t => t.TourId == tourId);
@@ -67,6 +78,5 @@ namespace TravelManager.Repositories
             _context.Bookings.Remove(booking);
             _context.SaveChanges();
         }
-
     }
 }

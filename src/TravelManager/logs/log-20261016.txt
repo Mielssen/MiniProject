@@ -1,0 +1,294 @@
+2026-10-16 11:56:29.681 +03:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-16 11:56:33.626 +03:00 [INF] Now listening on: https://localhost:7041
+2026-10-16 11:56:33.939 +03:00 [INF] Now listening on: http://localhost:5272
+2026-10-16 11:56:35.181 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-16 11:56:35.395 +03:00 [INF] Hosting environment: Development
+2026-10-16 11:56:35.610 +03:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-16 11:56:48.471 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger - null null
+2026-10-16 11:56:48.913 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger - 301 0 null 443.8139ms
+2026-10-16 11:56:48.930 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-16 11:56:49.245 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 315.3579ms
+2026-10-16 11:56:49.251 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/swagger-ui-standalone-preset.js - null null
+2026-10-16 11:56:49.247 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/swagger-ui.css - null null
+2026-10-16 11:56:49.250 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-16 11:56:49.249 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/swagger-ui-bundle.js - null null
+2026-10-16 11:56:49.256 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-16 11:56:49.423 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-10-16 11:56:49.425 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 168.5268ms
+2026-10-16 11:56:49.440 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 188.6767ms
+2026-10-16 11:56:49.423 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-10-16 11:56:49.509 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/swagger-ui.css - 200 152034 text/css 261.8438ms
+2026-10-16 11:56:49.522 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-10-16 11:56:49.533 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 283.2877ms
+2026-10-16 11:56:49.538 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 290.4412ms
+2026-10-16 11:56:49.695 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - null null
+2026-10-16 11:56:49.720 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/favicon-32x32.png - null null
+2026-10-16 11:56:49.732 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2026-10-16 11:56:49.737 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/favicon-32x32.png - 200 628 image/png 16.8684ms
+2026-10-16 11:56:49.789 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 94.0647ms
+2026-10-16 11:57:21.483 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/api/bookings - null null
+2026-10-16 11:57:21.613 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (manager)
+2026-10-16 11:57:21.625 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-10-16 11:57:21.631 +03:00 [INF] GET /api/bookings | Status=401 | User=anonymous | 32.9548ms
+2026-10-16 11:57:21.636 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/api/bookings - 401 0 null 152.9971ms
+2026-10-16 12:21:59.252 +03:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-16 12:21:59.627 +03:00 [INF] Now listening on: https://localhost:7041
+2026-10-16 12:21:59.631 +03:00 [INF] Now listening on: http://localhost:5272
+2026-10-16 12:21:59.781 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-16 12:21:59.785 +03:00 [INF] Hosting environment: Development
+2026-10-16 12:21:59.789 +03:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-16 12:22:00.254 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-16 12:22:00.651 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 399.3087ms
+2026-10-16 12:22:00.659 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-16 12:22:00.659 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-16 12:22:00.722 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 62.5019ms
+2026-10-16 12:22:00.783 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 124.3781ms
+2026-10-16 12:22:00.886 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - null null
+2026-10-16 12:22:00.958 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 71.1713ms
+2026-10-16 12:22:07.498 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/bookings - null null
+2026-10-16 12:22:07.595 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (manager)
+2026-10-16 12:22:07.606 +03:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-10-16 12:22:07.611 +03:00 [INF] GET /api/bookings | Status=401 | User=anonymous | 25.0568ms
+2026-10-16 12:22:07.624 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/bookings - 401 0 null 126.2616ms
+2026-10-16 12:24:49.870 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/bookings - null null
+2026-10-16 12:24:50.021 +03:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (manager)
+2026-10-16 12:24:50.026 +03:00 [INF] AuthenticationScheme: Bearer was forbidden.
+2026-10-16 12:24:50.029 +03:00 [INF] GET /api/bookings | Status=403 | User=1 | 10.2844ms
+2026-10-16 12:24:50.032 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/bookings - 403 0 null 162.0871ms
+2026-10-16 12:27:04.519 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/bookings - null null
+2026-10-16 12:27:04.533 +03:00 [INF] Executing endpoint 'TravelManager.Controllers.BookingController.GetAll (TravelManager)'
+2026-10-16 12:27:04.624 +03:00 [INF] Route matched with {action = "GetAll", controller = "Booking"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll(System.String) on controller TravelManager.Controllers.BookingController (TravelManager).
+2026-10-16 12:27:07.028 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2026-10-16 12:27:10.647 +03:00 [INF] Executed DbCommand (185ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT `b`.`booking_id`, `b`.`booking_date`, `b`.`comment`, `b`.`number_of_people`, `b`.`start_date`, `b`.`status`, `b`.`total_price`, `b`.`tour_id`, `b`.`user_id`, `t`.`tour_id`, `t`.`available_from`, `t`.`available_to`, `t`.`description`, `t`.`duration_days`, `t`.`name`, `t`.`price`, `t`.`type_id`, `b0`.`person_id`, `b0`.`booking_id`, `b0`.`date_of_birth`, `b0`.`is_child`, `b0`.`name`, `b0`.`passport_data`
+FROM `bookings` AS `b`
+INNER JOIN `tours` AS `t` ON `b`.`tour_id` = `t`.`tour_id`
+LEFT JOIN `booking_persons` AS `b0` ON `b`.`booking_id` = `b0`.`booking_id`
+ORDER BY `b`.`booking_id`, `t`.`tour_id`
+2026-10-16 12:27:11.730 +03:00 [INF] Start processing HTTP request GET https://localhost:7001/api/v1/users/5
+2026-10-16 12:27:11.737 +03:00 [INF] Sending HTTP request GET https://localhost:7001/api/v1/users/5
+2026-10-16 12:27:12.176 +03:00 [INF] Received HTTP response headers after 427.2943ms - 404
+2026-10-16 12:27:12.183 +03:00 [INF] End processing HTTP request after 469.2659ms - 404
+2026-10-16 12:27:12.402 +03:00 [INF] Executed action TravelManager.Controllers.BookingController.GetAll (TravelManager) in 7762.2357ms
+2026-10-16 12:27:12.414 +03:00 [INF] Executed endpoint 'TravelManager.Controllers.BookingController.GetAll (TravelManager)'
+2026-10-16 12:27:12.482 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 404 (Not Found).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at System.Net.Http.Json.HttpClientJsonExtensions.<FromJsonAsyncCore>g__Core|12_0[TValue,TJsonOptions](HttpClient client, Task`1 responseTask, Boolean usingResponseHeadersRead, CancellationTokenSource linkedCTS, Func`4 deserializeMethod, TJsonOptions jsonOptions, CancellationToken cancellationToken)
+   at TravelManager.Services.AuthServiceClient.GetUserByIdAsync(Int32 userId, String token) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Services\AuthServiceClient.cs:line 23
+   at TravelManager.Services.BookingService.GetAll(String status, String token) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Services\BookingService.cs:line 186
+   at TravelManager.Controllers.BookingController.GetAll(String status) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Controllers\BookingController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at TravelManager.Middleware.RequestLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Middleware\RequestLoggingMiddleware.cs:line 20
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-10-16 12:27:12.641 +03:00 [ERR] Необроблена помилка сервера
+System.Net.Http.HttpRequestException: Response status code does not indicate success: 404 (Not Found).
+   at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+   at System.Net.Http.Json.HttpClientJsonExtensions.<FromJsonAsyncCore>g__Core|12_0[TValue,TJsonOptions](HttpClient client, Task`1 responseTask, Boolean usingResponseHeadersRead, CancellationTokenSource linkedCTS, Func`4 deserializeMethod, TJsonOptions jsonOptions, CancellationToken cancellationToken)
+   at TravelManager.Services.AuthServiceClient.GetUserByIdAsync(Int32 userId, String token) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Services\AuthServiceClient.cs:line 23
+   at TravelManager.Services.BookingService.GetAll(String status, String token) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Services\BookingService.cs:line 186
+   at TravelManager.Controllers.BookingController.GetAll(String status) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Controllers\BookingController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at TravelManager.Middleware.RequestLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Middleware\RequestLoggingMiddleware.cs:line 20
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-10-16 12:27:12.715 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/bookings - 500 null application/json; charset=utf-8 8196.2717ms
+2026-10-16 12:43:03.221 +03:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-16 12:43:03.502 +03:00 [INF] Now listening on: https://localhost:7041
+2026-10-16 12:43:03.506 +03:00 [INF] Now listening on: http://localhost:5272
+2026-10-16 12:43:03.603 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-16 12:43:03.604 +03:00 [INF] Hosting environment: Development
+2026-10-16 12:43:03.606 +03:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-16 12:43:05.028 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-16 12:43:05.595 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 565.7382ms
+2026-10-16 12:43:05.610 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-16 12:43:05.612 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-16 12:43:05.672 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 60.773ms
+2026-10-16 12:43:05.746 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 135.2988ms
+2026-10-16 12:43:05.795 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - null null
+2026-10-16 12:43:05.864 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 68.88ms
+2026-10-16 12:48:09.430 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7041/api/bookings - application/json 277
+2026-10-16 12:48:09.450 +03:00 [INF] CORS policy execution successful.
+2026-10-16 12:48:09.766 +03:00 [INF] Executing endpoint 'TravelManager.Controllers.BookingController.Create (TravelManager)'
+2026-10-16 12:48:09.845 +03:00 [INF] Route matched with {action = "Create", controller = "Booking"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(TravelManager.DTOs.CreateBookingDto) on controller TravelManager.Controllers.BookingController (TravelManager).
+2026-10-16 12:48:10.505 +03:00 [INF] Start processing HTTP request GET https://localhost:7001/api/v1/users/2
+2026-10-16 12:48:10.520 +03:00 [INF] Sending HTTP request GET https://localhost:7001/api/v1/users/2
+2026-10-16 12:48:11.035 +03:00 [INF] Received HTTP response headers after 507.3729ms - 200
+2026-10-16 12:48:11.041 +03:00 [INF] End processing HTTP request after 548.0626ms - 200
+2026-10-16 12:48:59.531 +03:00 [INF] Executed action TravelManager.Controllers.BookingController.Create (TravelManager) in 49674.9353ms
+2026-10-16 12:48:59.536 +03:00 [INF] Executed endpoint 'TravelManager.Controllers.BookingController.Create (TravelManager)'
+2026-10-16 12:48:59.594 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+TravelManager.Exceptions.AppException: Тур не знайдено
+   at TravelManager.Services.BookingService.Create(Int32 userId, String token, CreateBookingDto dto) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Services\BookingService.cs:line 44
+   at TravelManager.Controllers.BookingController.Create(CreateBookingDto dto) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Controllers\BookingController.cs:line 32
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at TravelManager.Middleware.RequestLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Middleware\RequestLoggingMiddleware.cs:line 20
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-10-16 12:48:59.642 +03:00 [WRN] AppException: Code=NOT_FOUND, Message=Тур не знайдено
+2026-10-16 12:48:59.658 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7041/api/bookings - 400 null application/json; charset=utf-8 50228.4269ms
+2026-10-16 12:49:01.738 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7041/api/bookings - application/json 278
+2026-10-16 12:49:01.745 +03:00 [INF] CORS policy execution successful.
+2026-10-16 12:49:01.752 +03:00 [INF] Executing endpoint 'TravelManager.Controllers.BookingController.Create (TravelManager)'
+2026-10-16 12:49:01.755 +03:00 [INF] Route matched with {action = "Create", controller = "Booking"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(TravelManager.DTOs.CreateBookingDto) on controller TravelManager.Controllers.BookingController (TravelManager).
+2026-10-16 12:49:01.783 +03:00 [INF] Start processing HTTP request GET https://localhost:7001/api/v1/users/2
+2026-10-16 12:49:01.786 +03:00 [INF] Sending HTTP request GET https://localhost:7001/api/v1/users/2
+2026-10-16 12:49:01.853 +03:00 [INF] Received HTTP response headers after 64.0284ms - 200
+2026-10-16 12:49:01.857 +03:00 [INF] End processing HTTP request after 73.9ms - 200
+2026-10-16 12:49:02.433 +03:00 [INF] Executed action TravelManager.Controllers.BookingController.Create (TravelManager) in 672.9448ms
+2026-10-16 12:49:02.437 +03:00 [INF] Executed endpoint 'TravelManager.Controllers.BookingController.Create (TravelManager)'
+2026-10-16 12:49:02.488 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+TravelManager.Exceptions.AppException: Тур виходить за межі доступного періоду (до 09.10.2027)
+   at TravelManager.Services.BookingService.Create(Int32 userId, String token, CreateBookingDto dto) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Services\BookingService.cs:line 56
+   at TravelManager.Controllers.BookingController.Create(CreateBookingDto dto) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Controllers\BookingController.cs:line 32
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at TravelManager.Middleware.RequestLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Middleware\RequestLoggingMiddleware.cs:line 20
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-10-16 12:49:02.504 +03:00 [WRN] AppException: Code=INVALID_DATE, Message=Тур виходить за межі доступного періоду (до 09.10.2027)
+2026-10-16 12:49:02.509 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7041/api/bookings - 400 null application/json; charset=utf-8 770.9627ms
+2026-10-16 12:49:33.119 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7041/api/bookings - application/json 278
+2026-10-16 12:49:33.125 +03:00 [INF] CORS policy execution successful.
+2026-10-16 12:49:33.132 +03:00 [INF] Executing endpoint 'TravelManager.Controllers.BookingController.Create (TravelManager)'
+2026-10-16 12:49:33.135 +03:00 [INF] Route matched with {action = "Create", controller = "Booking"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(TravelManager.DTOs.CreateBookingDto) on controller TravelManager.Controllers.BookingController (TravelManager).
+2026-10-16 12:49:33.147 +03:00 [INF] Start processing HTTP request GET https://localhost:7001/api/v1/users/2
+2026-10-16 12:49:33.151 +03:00 [INF] Sending HTTP request GET https://localhost:7001/api/v1/users/2
+2026-10-16 12:49:33.174 +03:00 [INF] Received HTTP response headers after 20.4298ms - 200
+2026-10-16 12:49:33.178 +03:00 [INF] End processing HTTP request after 31.0296ms - 200
+2026-10-16 12:49:33.370 +03:00 [INF] Executed action TravelManager.Controllers.BookingController.Create (TravelManager) in 231.8849ms
+2026-10-16 12:49:33.375 +03:00 [INF] Executed endpoint 'TravelManager.Controllers.BookingController.Create (TravelManager)'
+2026-10-16 12:49:33.420 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+TravelManager.Exceptions.AppException: Тур виходить за межі доступного періоду (до 09.10.2027)
+   at TravelManager.Services.BookingService.Create(Int32 userId, String token, CreateBookingDto dto) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Services\BookingService.cs:line 56
+   at TravelManager.Controllers.BookingController.Create(CreateBookingDto dto) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Controllers\BookingController.cs:line 32
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at TravelManager.Middleware.RequestLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Middleware\RequestLoggingMiddleware.cs:line 20
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-10-16 12:49:33.429 +03:00 [WRN] AppException: Code=INVALID_DATE, Message=Тур виходить за межі доступного періоду (до 09.10.2027)
+2026-10-16 12:49:33.431 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7041/api/bookings - 400 null application/json; charset=utf-8 312.2731ms
+2026-10-16 12:49:45.332 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7041/api/bookings - application/json 278
+2026-10-16 12:49:45.337 +03:00 [INF] CORS policy execution successful.
+2026-10-16 12:49:45.338 +03:00 [INF] Executing endpoint 'TravelManager.Controllers.BookingController.Create (TravelManager)'
+2026-10-16 12:49:45.340 +03:00 [INF] Route matched with {action = "Create", controller = "Booking"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(TravelManager.DTOs.CreateBookingDto) on controller TravelManager.Controllers.BookingController (TravelManager).
+2026-10-16 12:49:45.344 +03:00 [INF] Start processing HTTP request GET https://localhost:7001/api/v1/users/2
+2026-10-16 12:49:45.346 +03:00 [INF] Sending HTTP request GET https://localhost:7001/api/v1/users/2
+2026-10-16 12:49:45.361 +03:00 [INF] Received HTTP response headers after 13.4183ms - 200
+2026-10-16 12:49:45.365 +03:00 [INF] End processing HTTP request after 20.6455ms - 200
+2026-10-16 12:49:45.494 +03:00 [INF] Executed action TravelManager.Controllers.BookingController.Create (TravelManager) in 150.7789ms
+2026-10-16 12:49:45.498 +03:00 [INF] Executed endpoint 'TravelManager.Controllers.BookingController.Create (TravelManager)'
+2026-10-16 12:49:45.553 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+TravelManager.Exceptions.AppException: Тур виходить за межі доступного періоду (до 09.10.2027)
+   at TravelManager.Services.BookingService.Create(Int32 userId, String token, CreateBookingDto dto) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Services\BookingService.cs:line 56
+   at TravelManager.Controllers.BookingController.Create(CreateBookingDto dto) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Controllers\BookingController.cs:line 32
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at TravelManager.Middleware.RequestLoggingMiddleware.InvokeAsync(HttpContext context) in C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager\Middleware\RequestLoggingMiddleware.cs:line 20
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.ExceptionHandlerMiddlewareImpl.<Invoke>g__Awaited|10_0(ExceptionHandlerMiddlewareImpl middleware, HttpContext context, Task task)
+2026-10-16 12:49:45.565 +03:00 [WRN] AppException: Code=INVALID_DATE, Message=Тур виходить за межі доступного періоду (до 09.10.2027)
+2026-10-16 12:49:45.567 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7041/api/bookings - 400 null application/json; charset=utf-8 234.7442ms
+2026-10-16 12:50:09.726 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7041/api/bookings - application/json 278
+2026-10-16 12:50:09.730 +03:00 [INF] CORS policy execution successful.
+2026-10-16 12:50:09.732 +03:00 [INF] Executing endpoint 'TravelManager.Controllers.BookingController.Create (TravelManager)'
+2026-10-16 12:50:09.734 +03:00 [INF] Route matched with {action = "Create", controller = "Booking"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(TravelManager.DTOs.CreateBookingDto) on controller TravelManager.Controllers.BookingController (TravelManager).
+2026-10-16 12:50:09.738 +03:00 [INF] Start processing HTTP request GET https://localhost:7001/api/v1/users/2
+2026-10-16 12:50:09.741 +03:00 [INF] Sending HTTP request GET https://localhost:7001/api/v1/users/2
+2026-10-16 12:50:09.828 +03:00 [INF] Received HTTP response headers after 84.5992ms - 200
+2026-10-16 12:50:09.834 +03:00 [INF] End processing HTTP request after 95.7925ms - 200
+2026-10-16 12:50:11.222 +03:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2026-10-16 12:50:13.783 +03:00 [INF] Executed DbCommand (282ms) [Parameters=[@p0='2026-10-16T12:50:09.8707072+03:00' (Nullable = true) (DbType = DateTime), @p1='string' (Size = 500), @p2='1', @p3='10/15/2026' (DbType = Date), @p4='pending' (Nullable = false) (Size = 4000), @p5='5000.0', @p6='24', @p7='2' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `bookings` (`booking_date`, `comment`, `number_of_people`, `start_date`, `status`, `total_price`, `tour_id`, `user_id`)
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+SELECT `booking_id`
+FROM `bookings`
+WHERE ROW_COUNT() = 1 AND `booking_id` = LAST_INSERT_ID();
+2026-10-16 12:50:14.282 +03:00 [INF] Executed DbCommand (15ms) [Parameters=[@p0='39', @p1='10/16/2006' (Nullable = true) (DbType = Date), @p2='False', @p3='string' (Nullable = false) (Size = 100), @p4='123456' (Size = 100)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO `booking_persons` (`booking_id`, `date_of_birth`, `is_child`, `name`, `passport_data`)
+VALUES (@p0, @p1, @p2, @p3, @p4);
+SELECT `person_id`
+FROM `booking_persons`
+WHERE ROW_COUNT() = 1 AND `person_id` = LAST_INSERT_ID();
+2026-10-16 12:50:14.356 +03:00 [INF] Нове бронювання: UserID=2, TourID=24, People=1, Total=5000.0
+2026-10-16 12:50:14.395 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2026-10-16 12:50:14.403 +03:00 [INF] Executed action TravelManager.Controllers.BookingController.Create (TravelManager) in 4665.8666ms
+2026-10-16 12:50:14.408 +03:00 [INF] Executed endpoint 'TravelManager.Controllers.BookingController.Create (TravelManager)'
+2026-10-16 12:50:14.412 +03:00 [INF] POST /api/bookings | Status=200 | User=2 | 4679.0798ms
+2026-10-16 12:50:14.442 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7041/api/bookings - 200 null text/plain; charset=utf-8 4716.6085ms

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using TravelManager.DTOs;
+﻿using TravelManager.DTOs;
 using TravelManager.Exceptions;
 using TravelManager.Models;
 using TravelManager.Repositories;
@@ -14,39 +13,41 @@ namespace TravelManager.Services
         {
             _repo = repo;
         }
-        public List<SavedPersonDto> GetMy(int credentialId)
+
+        public List<SavedPersonDto> GetMy(int userId)
         {
-            return _repo.GetByCredentialId(credentialId).
-                Select(p => new SavedPersonDto
+            return _repo.GetByUserId(userId)
+                .Select(p => new SavedPersonDto
                 {
                     PersonId = p.PersonId,
                     Name = p.Name,
                     PassportData = p.PassportData,
                     DateOfBirth = p.DateOfBirth,
-                    IsChild = p.IsChild,
-                }).ToList();
+                    IsChild = p.IsChild
+                })
+                .ToList();
         }
 
-        public void Add(int credentialId, SavedPersonDto dto)
+        public void Add(int userId, SavedPersonDto dto)
         {
             _repo.Add(new SavedPerson
             {
-                CredentialId = credentialId,
+                UserId = userId,
                 Name = dto.Name,
                 PassportData = dto.PassportData,
                 DateOfBirth = dto.DateOfBirth,
-                IsChild = dto.IsChild,
+                IsChild = dto.IsChild
             });
         }
 
-        public void Delete(int credentialId, int personId)
+        public void Delete(int userId, int personId)
         {
             var person = _repo.GetById(personId);
 
             if (person == null)
                 throw new AppException("NOT_FOUND", "Пресет не знайдено");
 
-            if (person.CredentialId != credentialId)
+            if (person.UserId != userId)
                 throw new AppException("FORBIDDEN", "Це не ваш пресет");
 
             _repo.Delete(person);

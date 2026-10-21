@@ -65,10 +65,14 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddDbContext<TravelmanagerContext>(options =>
 {
-    options.UseMySql(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-        new MySqlServerVersion(new Version(8, 0, 0))
-    );
+    options
+        .UseMySql(
+            builder.Configuration.GetConnectionString("DefaultConnection"),
+            new MySqlServerVersion(new Version(8, 0, 0))
+        )
+        .EnableSensitiveDataLogging()
+        .EnableDetailedErrors()
+        .LogTo(Console.WriteLine, LogLevel.Information);
 });
 
 builder.Services.Configure<IISServerOptions>(options =>
@@ -91,6 +95,12 @@ builder.Services.AddScoped<TourRepository>();
 builder.Services.AddScoped<TourService>();
 builder.Services.AddScoped<AdminRepository>();
 builder.Services.AddScoped<AdminService>();
+
+builder.Services.AddHttpClient<AuthServiceClient>(client =>
+{
+    client.BaseAddress = new Uri("https://localhost:7001/");
+});
+builder.Services.AddSingleton<CatalogGrpcClient>();
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 

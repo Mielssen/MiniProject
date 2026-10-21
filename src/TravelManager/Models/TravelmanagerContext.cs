@@ -46,37 +46,43 @@ public partial class TravelmanagerContext : DbContext
 
             entity.ToTable("bookings");
 
-            entity.HasIndex(e => e.CredentialId, "credential_id");
-
             entity.HasIndex(e => e.TourId, "tour_id");
 
-            entity.Property(e => e.BookingId).HasColumnName("booking_id");
+            entity.Property(e => e.BookingId)
+                .HasColumnName("booking_id");
+
+            entity.Property(e => e.UserId)
+                .HasColumnName("user_id");
+
             entity.Property(e => e.BookingDate)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("datetime")
                 .HasColumnName("booking_date");
+
             entity.Property(e => e.Comment)
                 .HasMaxLength(500)
                 .HasColumnName("comment");
-            entity.Property(e => e.CredentialId).HasColumnName("credential_id");
+
             entity.Property(e => e.NumberOfPeople)
                 .HasDefaultValueSql("'1'")
                 .HasColumnName("number_of_people");
-            entity.Property(e => e.StartDate).HasColumnName("start_date");
+
+            entity.Property(e => e.StartDate)
+                .HasColumnName("start_date");
+
             entity.Property(e => e.Status)
                 .HasColumnType("enum('pending','confirmed','cancelled')")
                 .HasColumnName("status");
+
             entity.Property(e => e.TotalPrice)
                 .HasPrecision(10, 2)
                 .HasColumnName("total_price");
-            entity.Property(e => e.TourId).HasColumnName("tour_id");
 
-            entity.HasOne(d => d.Credential).WithMany(p => p.Bookings)
-                .HasForeignKey(d => d.CredentialId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("bookings_ibfk_1");
+            entity.Property(e => e.TourId)
+                .HasColumnName("tour_id");
 
-            entity.HasOne(d => d.Tour).WithMany(p => p.Bookings)
+            entity.HasOne(d => d.Tour)
+                .WithMany(p => p.Bookings)
                 .HasForeignKey(d => d.TourId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("bookings_ibfk_2");
@@ -164,23 +170,20 @@ public partial class TravelmanagerContext : DbContext
 
             entity.ToTable("saved_persons");
 
-            entity.HasIndex(e => e.CredentialId, "credential_id");
+            entity.HasIndex(e => e.UserId, "user_id");
 
             entity.Property(e => e.PersonId).HasColumnName("person_id");
-            entity.Property(e => e.CredentialId).HasColumnName("credential_id");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
             entity.Property(e => e.DateOfBirth).HasColumnName("date_of_birth");
             entity.Property(e => e.IsChild).HasColumnName("is_child");
+
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .HasColumnName("name");
+
             entity.Property(e => e.PassportData)
                 .HasMaxLength(100)
                 .HasColumnName("passport_data");
-
-            entity.HasOne(d => d.Credential).WithMany(p => p.SavedPeople)
-                .HasForeignKey(d => d.CredentialId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("saved_persons_ibfk_1");
         });
 
         modelBuilder.Entity<Tour>(entity =>

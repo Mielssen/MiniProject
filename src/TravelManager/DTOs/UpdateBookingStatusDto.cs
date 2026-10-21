@@ -9,4 +9,4 @@ namespace TravelManager.DTOs
             ErrorMessage = "Статус має бути pending, confirmed або cancelled")]
         public string Status { get; set; }
     }
-}
+}   

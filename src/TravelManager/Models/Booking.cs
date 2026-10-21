@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TravelManager.Models;
 
@@ -7,7 +8,8 @@ public partial class Booking
 {
     public int BookingId { get; set; }
 
-    public int CredentialId { get; set; }
+    [Column("user_id")]
+    public int? UserId { get; set; }
 
     public int TourId { get; set; }
 
@@ -25,10 +27,7 @@ public partial class Booking
 
     public virtual ICollection<BookingPerson> BookingPeople { get; set; } = new List<BookingPerson>();
 
-    public virtual Credential Credential { get; set; } = null!;
-
     public virtual ICollection<Penalty> Penalties { get; set; } = new List<Penalty>();
 
     public virtual Tour Tour { get; set; } = null!;
-
 }

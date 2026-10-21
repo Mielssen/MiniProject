@@ -9,6 +9,14 @@
       {
         "Path": "src\\TravelManager\\TravelManager.csproj",
         "Action": "Start"
+      },
+      {
+        "Path": "src\\AuthService\\AuthService.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\CatalogService\\CatalogService.csproj",
+        "Action": "Start"
       }
     ]
   }

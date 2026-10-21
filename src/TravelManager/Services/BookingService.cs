@@ -1,8 +1,10 @@
-﻿using TravelManager.Models;
-using TravelManager.Repositories;
-using TravelManager.Exceptions;
+﻿using Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos;
 using TravelManager.DTOs;
-using Microsoft.Identity.Client.Platforms.Features.DesktopOs.Kerberos;
+using TravelManager.Exceptions;
+using TravelManager.Grpc;
+using TravelManager.Models;
+using TravelManager.Repositories;
+using Grpc.Core;
 
 namespace TravelManager.Services
 {
@@ -11,25 +13,42 @@ namespace TravelManager.Services
         private readonly BookingRepository _repo;
         private readonly TravelmanagerContext _context;
         private readonly ILogger<BookingService> _logger;
-        public BookingService(BookingRepository repo, TravelmanagerContext context, ILogger<BookingService> logger)
+        private readonly AuthServiceClient _authServiceClient;
+        private readonly CatalogGrpcClient _catalogGrpcClient;
+        public BookingService(BookingRepository repo, TravelmanagerContext context, ILogger<BookingService> logger, AuthServiceClient authServiceClient, CatalogGrpcClient catalogGrpcClient)
         {
             _repo = repo;
             _context = context;
             _logger = logger;
+            _authServiceClient = authServiceClient;
+            _catalogGrpcClient = catalogGrpcClient;
         }
 
-        public void Create(int credentialId, CreateBookingDto dto)
+        public async Task Create(int userId, string token, CreateBookingDto dto)
         {
-            var tourExists = _repo.TourExists(dto.TourId);
-            if (!tourExists)
-                throw new AppException("NOT_FOUND", "Тур не знайдено");
+            var user = await _authServiceClient.GetUserByIdAsync(userId, token);
 
-            var tour = _repo.GetTourById(dto.TourId);
+            if (user == null)
+                throw new AppException("USER_NOT_FOUND", "Користувача не знайдено");
+
+            if (!user.IsActive)
+                throw new AppException("USER_INACTIVE", "Користувач неактивний");
+
+            TourResponse tour;
+
+            try
+            {
+                tour = await _catalogGrpcClient.GetTourAsync(dto.TourId);
+            }
+            catch (global::Grpc.Core.RpcException ex) when (ex.StatusCode == global::Grpc.Core.StatusCode.NotFound)
+            {
+                throw new AppException("NOT_FOUND", "Тур не знайдено");
+            }
 
             var startDate = DateOnly.FromDateTime(dto.StartDate);
             var endDate = startDate.AddDays(tour.DurationDays);
-            var availableFrom = DateOnly.FromDateTime(tour.AvailableFrom);
-            var availableTo = DateOnly.FromDateTime(tour.AvailableTo);
+            var availableFrom = DateOnly.FromDateTime(DateTime.Parse(tour.AvailableFrom));
+            var availableTo = DateOnly.FromDateTime(DateTime.Parse(tour.AvailableTo));
 
             if (startDate < availableFrom)
                 throw new AppException("INVALID_DATE", $"Дата початку не може бути раніше {availableFrom}");
@@ -62,12 +81,12 @@ namespace TravelManager.Services
             }
 
             const decimal childDiscount = 0.5m;
-            var totalPrice = (dto.NumberOfAdults * tour.Price) +
-                             (dto.NumberOfChildren * tour.Price * childDiscount);
+            var totalPrice = (dto.NumberOfAdults * (decimal)tour.Price) +
+                             (dto.NumberOfChildren * (decimal)tour.Price * childDiscount);
 
             var booking = new Booking
             {
-                CredentialId = credentialId,
+                UserId = userId,
                 TourId = dto.TourId,
                 StartDate = startDate,
                 BookingDate = DateTime.Now,
@@ -93,38 +112,56 @@ namespace TravelManager.Services
             _context.SaveChanges();
             _logger.LogInformation(
                 "Нове бронювання: UserID={UserId}, TourID={TourId}, People={People}, Total={Total}",
-                credentialId, dto.TourId, dto.NumberOfAdults + dto.NumberOfChildren, totalPrice);
+                userId, dto.TourId, dto.NumberOfAdults + dto.NumberOfChildren, totalPrice);
         }
 
-        public List<BookingDto> GetMy(int credentialId)
+        public async Task<List<BookingDto>> GetMy(int userId, string token)
         {
-            var bookings = _repo.GetByCredentialId(credentialId);
-            return bookings.Select(b => new BookingDto
+            var user = await _authServiceClient.GetUserByIdAsync(userId, token);
+
+            if (user == null)
+                throw new AppException("USER_NOT_FOUND", "Користувача не знайдено");
+
+            var bookings = _repo.GetByUserId(userId);
+
+            var result = new List<BookingDto>();
+
+            foreach (var b in bookings)
             {
-                BookingId = b.BookingId,
-                TourId = b.TourId,
-                TourName = b.Tour.Name,
-                TourPrice = b.Tour.Price,
-                TourDurationDays = b.Tour.DurationDays,
-                UserName = b.Credential?.UserDetail?.Name,
-                UserEmail = b.Credential?.Email,
-                UserPhone = b.Credential?.UserDetail?.Phone,
-                UserPassportData = b.Credential?.UserDetail?.PassportData,
-                UserDateOfBirth = b.Credential?.UserDetail?.DateOfBirth,
-                StartDate = b.StartDate,
-                BookingDate = b.BookingDate,
-                Status = b.Status,
-                NumberOfPeople = b.NumberOfPeople,
-                TotalPrice = b.TotalPrice,
-                Comment = b.Comment,
-                Persons = b.BookingPeople.Select(p => new BookingPersonDto
+                var tour = await _catalogGrpcClient.GetTourAsync(b.TourId);
+
+                result.Add(new BookingDto
                 {
-                    Name = p.Name,
-                    PassportData = p.PassportData,
-                    DateOfBirth = p.DateOfBirth,
-                    IsChild = p.IsChild
-                }).ToList()
-            }).ToList();
+                    BookingId = b.BookingId,
+                    TourId = b.TourId,
+                    TourName = tour.Name,
+                    TourPrice = (decimal)tour.Price,
+                    TourDurationDays = tour.DurationDays,
+
+                    UserName = user.DisplayName,
+                    UserEmail = user.Email,
+                    UserPhone = user.Phone,
+                    UserPassportData = user.PassportData,
+                    UserDateOfBirth = user.DateOfBirth,
+
+                    StartDate = b.StartDate,
+                    BookingDate = b.BookingDate,
+                    Status = b.Status,
+                    NumberOfPeople = b.NumberOfPeople,
+                    TotalPrice = b.TotalPrice,
+                    Comment = b.Comment,
+
+                    Persons = b.BookingPeople.Select(p => new BookingPersonDto
+                    {
+                        Name = p.Name,
+                        PassportData = p.PassportData,
+                        DateOfBirth = p.DateOfBirth,
+                        IsChild = p.IsChild
+                    }).ToList()
+                });
+            }
+
+            return result;
         }
         public void UpdateStatus(int bookingId, string status)
         {
@@ -139,44 +176,68 @@ namespace TravelManager.Services
                 "Статус бронювання ID={BookingId} змінено на {Status}",
                 bookingId, status);
         }
-        public List<BookingDto> GetAll(string? status)
+
+        public async Task<List<BookingDto>> GetAll(string? status, string token)
         {
             var bookings = _repo.GetAll(status);
-            return bookings.Select(b => new BookingDto
+            var result = new List<BookingDto>();
+
+            foreach (var b in bookings)
             {
-                BookingId = b.BookingId,
-                TourId = b.TourId,
-                TourName = b.Tour.Name,
-                TourPrice = b.Tour.Price,
-                TourDurationDays = b.Tour.DurationDays,
-                UserName = b.Credential?.UserDetail?.Name,
-                UserEmail = b.Credential?.Email,
-                UserPhone = b.Credential?.UserDetail?.Phone,
-                UserPassportData = b.Credential?.UserDetail?.PassportData,
-                UserDateOfBirth = b.Credential?.UserDetail?.DateOfBirth,
-                StartDate = b.StartDate,
-                BookingDate = b.BookingDate,
-                Status = b.Status,
-                NumberOfPeople = b.NumberOfPeople,
-                TotalPrice = b.TotalPrice,
-                Comment = b.Comment,
-                Persons = b.BookingPeople.Select(p => new BookingPersonDto
+                var user = b.UserId.HasValue
+                    ? await _authServiceClient.GetUserByIdAsync(b.UserId.Value, token)
+                    : null;
+
+                TourResponse? tour = null;
+
+                try
                 {
-                    Name = p.Name,
-                    PassportData = p.PassportData,
-                    DateOfBirth = p.DateOfBirth,
-                    IsChild = p.IsChild
-                }).ToList()
-            }).ToList();
+                    tour = await _catalogGrpcClient.GetTourAsync(b.TourId);
+                }
+                catch (RpcException ex)
+                    when (ex.StatusCode == StatusCode.NotFound)
+                {
+                }
+
+                result.Add(new BookingDto
+                {
+                    BookingId = b.BookingId,
+                    TourId = b.TourId,
+                    TourName = tour?.Name ?? "Тур недоступний",
+                    TourPrice = tour is null ? 0 : (decimal)tour.Price,
+                    TourDurationDays = tour?.DurationDays ?? 0,
+                    UserName = user?.DisplayName,
+                    UserEmail = user?.Email,
+                    UserPhone = user?.Phone,
+                    UserPassportData = user?.PassportData,
+                    UserDateOfBirth = user?.DateOfBirth,
+                    StartDate = b.StartDate,
+                    BookingDate = b.BookingDate,
+                    Status = b.Status,
+                    NumberOfPeople = b.NumberOfPeople,
+                    TotalPrice = b.TotalPrice,
+                    Comment = b.Comment,
+                    Persons = b.BookingPeople.Select(p => new BookingPersonDto
+                    {
+                        Name = p.Name,
+                        PassportData = p.PassportData,
+                        DateOfBirth = p.DateOfBirth,
+                        IsChild = p.IsChild
+                    }).ToList()
+                });
+            }
+
+            return result;
         }
-        public void Cancel(int credentialId, int bookingId)
+
+        public void Cancel(int userId, int bookingId)
         {
             var booking = _repo.GetById(bookingId);
 
             if (booking == null)
                 throw new AppException("NOT_FOUND", "Бронювання не знайдено");
 
-            if (booking.CredentialId != credentialId)
+            if (booking.UserId != userId)
                 throw new AppException("FORBIDDEN", "Це не ваше бронювання");
 
             if (booking.Status == "cancelled")
@@ -185,10 +246,12 @@ namespace TravelManager.Services
             _context.BookingPersons.RemoveRange(
                 _context.BookingPersons.Where(p => p.BookingId == bookingId)
             );
+
             _repo.Delete(booking);
+
             _logger.LogInformation(
                 "Бронювання ID={BookingId} скасовано користувачем ID={UserId}",
-                bookingId, credentialId);
+                userId, bookingId);
         }
 
     }

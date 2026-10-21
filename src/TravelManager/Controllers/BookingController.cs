@@ -19,13 +19,18 @@ namespace TravelManager.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateBookingDto dto)
+        public async Task<IActionResult> Create([FromBody] CreateBookingDto dto)
         {
-            var credentialId = int.Parse(
+            var userId = int.Parse(
                 User.FindFirst(ClaimTypes.NameIdentifier)!.Value
             );
 
-            _service.Create(credentialId, dto);
+            var token = Request.Headers.Authorization
+                .ToString()
+                .Replace("Bearer ", "");
+
+            await _service.Create(userId, token, dto);
+
             return Ok("Бронювання створено");
         }
 
@@ -39,29 +44,38 @@ namespace TravelManager.Controllers
 
         [Authorize(Roles = "manager")]
         [HttpGet]
-        public IActionResult GetAll([FromQuery] string? status)
+        public async Task<IActionResult> GetAll([FromQuery] string? status)
         {
-            return Ok(_service.GetAll(status));
+            var token = Request.Headers.Authorization
+                .ToString()
+                .Replace("Bearer ", "");
+
+            return Ok(await _service.GetAll(status, token));
         }
 
         [HttpGet("my")]
-        public IActionResult GetMy()
+        public async Task<IActionResult> GetMy()
         {
-            var credentialId = int.Parse(
+            var userId = int.Parse(
                 User.FindFirst(ClaimTypes.NameIdentifier)!.Value
             );
 
-            return Ok(_service.GetMy(credentialId));
+            var token = Request.Headers.Authorization
+                .ToString()
+                .Replace("Bearer ", "");
+
+            return Ok(await _service.GetMy(userId, token));
         }
 
         [HttpDelete("{id}")]
         public IActionResult Cancel(int id)
         {
-            var credentialId = int.Parse(
+            var userId = int.Parse(
                 User.FindFirst(ClaimTypes.NameIdentifier)!.Value
             );
 
-            _service.Cancel(credentialId, id);
+            _service.Cancel(userId, id);
+
             return Ok("Бронювання скасовано");
         }
     }

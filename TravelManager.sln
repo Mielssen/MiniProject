@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "src\ApiGatewa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelManager", "src\TravelManager\TravelManager.csproj", "{009924A5-2C0F-4754-93E6-BB95F86A8F5F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService", "src\AuthService\AuthService.csproj", "{5C291AE0-4AB8-79EF-E3AE-1E6149BF3055}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogService", "src\CatalogService\CatalogService.csproj", "{E62E672A-5F4A-AE34-18E7-1D0DF532B3D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +25,19 @@ Global
 		{009924A5-2C0F-4754-93E6-BB95F86A8F5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{009924A5-2C0F-4754-93E6-BB95F86A8F5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{009924A5-2C0F-4754-93E6-BB95F86A8F5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C291AE0-4AB8-79EF-E3AE-1E6149BF3055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C291AE0-4AB8-79EF-E3AE-1E6149BF3055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C291AE0-4AB8-79EF-E3AE-1E6149BF3055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C291AE0-4AB8-79EF-E3AE-1E6149BF3055}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E62E672A-5F4A-AE34-18E7-1D0DF532B3D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E62E672A-5F4A-AE34-18E7-1D0DF532B3D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E62E672A-5F4A-AE34-18E7-1D0DF532B3D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E62E672A-5F4A-AE34-18E7-1D0DF532B3D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82D2A52A-1FB8-4E6E-ABE0-94EA7ECFDBE7}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,25 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "CatalogService.Grpc";
+
+package catalog;
+
+service CatalogGrpc {
+  rpc GetTour (GetTourRequest) returns (TourResponse);
+}
+
+message GetTourRequest {
+  int32 id = 1;
+}
+
+message TourResponse {
+  int32 id = 1;
+  string name = 2;
+  string description = 3;
+  double price = 4;
+  int32 durationDays = 5;
+  string availableFrom = 6;
+  string availableTo = 7;
+  int32 typeId = 8;
+  string typeName = 9;
+}

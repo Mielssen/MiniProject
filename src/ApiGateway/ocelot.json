@@ -1,12 +1,51 @@
 {
     "Routes": [
         {
+            "DownstreamPathTemplate": "/api/v1/auth/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5001
+                }
+            ],
+            "UpstreamPathTemplate": "/api/v1/auth/{everything}",
+            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "Priority": 5
+        },
+        {
+            "DownstreamPathTemplate": "/api/v1/users/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5001
+                }
+            ],
+            "UpstreamPathTemplate": "/api/v1/users/{everything}",
+            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "Priority": 4
+        },
+        {
+            "DownstreamPathTemplate": "/api/v1/catalog/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5002
+                }
+            ],
+            "UpstreamPathTemplate": "/api/v1/catalog/{everything}",
+            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "Priority": 3
+        },
+        {
             "DownstreamPathTemplate": "/api/auth/{everything}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 5272
+                    "Port": 5001
                 }
             ],
             "UpstreamPathTemplate": "/api/auth/{everything}",
@@ -36,7 +75,7 @@
                 }
             ],
             "UpstreamPathTemplate": "/api/{everything}",
-            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],   
+            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
             "Priority": 1
         }
     ],
