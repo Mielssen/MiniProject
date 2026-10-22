@@ -83,6 +83,63 @@ public class UsersController : ControllerBase
         return Ok(MapToProfile(credential));
     }
 
+    [HttpPut("{id:int}/status")]
+    [Authorize(Roles = "admin")]
+    public async Task<IActionResult> UpdateStatus(
+    int id,
+    UpdateStatusDto dto)
+    {
+        var credential = await _userRepository.GetById(id);
+
+        if (credential == null)
+            return NotFound();
+
+        credential.Status = dto.IsActive ? "active" : "deleted";
+
+        await _userRepository.Update(credential);
+        await _userRepository.SaveChanges();
+
+        return Ok(MapToProfile(credential));
+    }
+
+    [HttpPut("{id:int}/data")]
+    [Authorize(Roles = "admin")]
+    public async Task<IActionResult> UpdateData(
+        int id,
+        UpdateProfileDto dto)
+    {
+        var credential = await _userRepository.GetById(id);
+
+        if (credential == null)
+            return NotFound();
+
+        if (credential.UserDetail == null)
+            return NotFound("Дані користувача не знайдено");
+
+        if (dto.DateOfBirth.HasValue &&
+            dto.DateOfBirth.Value > DateTime.Today.AddYears(-18))
+            return BadRequest("Користувач має бути старше 18 років");
+
+        if (!string.IsNullOrWhiteSpace(dto.PassportData) &&
+            !System.Text.RegularExpressions.Regex.IsMatch(dto.PassportData, @"^\d+$"))
+            return BadRequest("Паспортні дані мають містити тільки цифри");
+
+        credential.UserDetail.Name = dto.Name;
+
+        if (dto.Phone != null)
+            credential.UserDetail.Phone = "+38" + dto.Phone;
+
+        credential.UserDetail.PassportData = dto.PassportData;
+
+        if (dto.DateOfBirth.HasValue)
+            credential.UserDetail.DateOfBirth = dto.DateOfBirth;
+
+        await _userRepository.Update(credential);
+        await _userRepository.SaveChanges();
+
+        return Ok(MapToProfile(credential));
+    }
+
     private int GetCredentialId()
     {
         var value = User.FindFirstValue(ClaimTypes.NameIdentifier);

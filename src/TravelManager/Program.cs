@@ -30,6 +30,20 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 
 builder.Services.AddSwaggerGen(c =>
 {
+    c.SwaggerDoc("v1-legacy", new OpenApiInfo
+    {
+        Title = "TravelManager — Legacy API",
+        Version = "v1-legacy",
+        Description = "Монолітний API. Частина функціональності перенесена в AuthService, CatalogService та BookingService."
+    });
+
+    c.DocInclusionPredicate((docName, apiDesc) =>
+    {
+        var controller = apiDesc.ActionDescriptor.RouteValues["controller"];
+
+        return controller is not ("Auth" or "Booking" or "Tour");
+    });
+
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -100,6 +114,12 @@ builder.Services.AddHttpClient<AuthServiceClient>(client =>
 {
     client.BaseAddress = new Uri("https://localhost:7001/");
 });
+
+builder.Services.AddHttpClient<BookingServiceClient>(client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5100/");
+});
+
 builder.Services.AddSingleton<CatalogGrpcClient>();
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");
@@ -157,7 +177,12 @@ app.UseExceptionHandler(errorApp =>
 
 app.UseStaticFiles();
 app.UseSwagger();
-app.UseSwaggerUI();
+
+app.UseSwaggerUI(c =>
+{
+    c.SwaggerEndpoint("/swagger/v1-legacy/swagger.json", "TravelManager Legacy API v1-legacy");
+    c.DocumentTitle = "TravelManager — Legacy API";
+});
 
 //app.UseHttpsRedirection();
 

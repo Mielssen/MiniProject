@@ -17,6 +17,10 @@
       {
         "Path": "src\\CatalogService\\CatalogService.csproj",
         "Action": "Start"
+      },
+      {
+        "Path": "BookingService\\BookingService.csproj",
+        "Action": "Start"
       }
     ]
   }

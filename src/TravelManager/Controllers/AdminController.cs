@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using TravelManager.DTOs;
 using TravelManager.Services;
@@ -15,7 +15,9 @@ namespace TravelManager.Controllers
         private readonly AdminService _service;
         private readonly ILogger<AdminController> _logger;
 
-        public AdminController(AdminService service, ILogger<AdminController> logger)
+        public AdminController(
+            AdminService service,
+            ILogger<AdminController> logger)
         {
             _service = service;
             _logger = logger;
@@ -24,43 +26,62 @@ namespace TravelManager.Controllers
         private int GetAdminId() =>
             int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
+        private string GetToken() =>
+            Request.Headers.Authorization.ToString()
+                .Replace("Bearer ", "", StringComparison.OrdinalIgnoreCase)
+                .Trim();
+
         [HttpGet("users")]
-        public IActionResult GetAll([FromQuery] string? role, [FromQuery] string? status)
+        public async Task<IActionResult> GetAll(
+            [FromQuery] string? role,
+            [FromQuery] string? status)
         {
-            return Ok(_service.GetAllUsers(role, status));
+            return Ok(await _service.GetAllUsersAsync(role, status, GetToken()));
         }
 
         [HttpGet("users/{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            return Ok(_service.GetUserById(id));
+            return Ok(await _service.GetUserByIdAsync(id, GetToken()));
         }
 
         [HttpPut("users/{id}/role")]
-        public IActionResult UpdateRole(int id, [FromBody] UpdateUserRoleDto dto)
+        public async Task<IActionResult> UpdateRole(
+            int id,
+            [FromBody] UpdateUserRoleDto dto)
         {
-            _service.UpdateRole(GetAdminId(), id, dto.Role);
+            await _service.UpdateRoleAsync(
+                GetAdminId(), id, dto.Role, GetToken());
+
             return Ok("Роль оновлено");
         }
 
         [HttpPut("users/{id}/data")]
-        public IActionResult UpdateData(int id, [FromBody] UpdateProfileDto dto)
+        public async Task<IActionResult> UpdateData(
+            int id,
+            [FromBody] UpdateProfileDto dto)
         {
-            _service.UpdateUserData(GetAdminId(), id, dto);
+            await _service.UpdateUserDataAsync(
+                GetAdminId(), id, dto, GetToken());
+
             return Ok("Дані оновлено");
         }
 
         [HttpPut("users/{id}/status")]
-        public IActionResult SetStatus(int id, [FromBody] UpdateUserStatusDto dto)
+        public async Task<IActionResult> SetStatus(
+            int id,
+            [FromBody] UpdateUserStatusDto dto)
         {
-            _service.SetUserStatus(GetAdminId(), id, dto.Status);
+            await _service.SetUserStatusAsync(
+                GetAdminId(), id, dto.Status, GetToken());
+
             return Ok("Статус оновлено");
         }
 
         [HttpGet("statistics")]
-        public IActionResult GetStatistics()
+        public async Task<IActionResult> GetStatistics()
         {
-            return Ok(_service.GetStatistics());
+            return Ok(await _service.GetStatisticsAsync(GetToken()));
         }
     }
 }

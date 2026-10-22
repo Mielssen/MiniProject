@@ -53,6 +53,32 @@
             "Priority": 2
         },
         {
+            "DownstreamPathTemplate": "/api/bookings",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5100
+                }
+            ],
+            "UpstreamPathTemplate": "/api/bookings",
+            "UpstreamHttpMethod": [ "GET", "POST" ],
+            "Priority": 6
+        },
+        {
+            "DownstreamPathTemplate": "/api/bookings/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5100
+                }
+            ],
+            "UpstreamPathTemplate": "/api/bookings/{everything}",
+            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "Priority": 5
+        },
+        {
             "DownstreamPathTemplate": "/api/tours/{everything}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [

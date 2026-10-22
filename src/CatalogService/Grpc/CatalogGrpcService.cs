@@ -14,14 +14,19 @@ public class CatalogGrpcService : CatalogGrpc.CatalogGrpcBase
         _context = context;
     }
 
+
     public override async Task<TourResponse> GetTour(
         GetTourRequest request,
         ServerCallContext context)
     {
+        Console.WriteLine($"gRPC GetTour почався. TourId={request.Id}");
+
         var tour = await _context.Tours
             .Where(t => t.IsActive)
             .Include(t => t.Type)
             .FirstOrDefaultAsync(t => t.TourId == request.Id);
+
+        Console.WriteLine("gRPC запит до бази завершився.");
 
         if (tour == null)
         {
@@ -30,6 +35,8 @@ public class CatalogGrpcService : CatalogGrpc.CatalogGrpcBase
                     StatusCode.NotFound,
                     "Тур не знайдено"));
         }
+
+        Console.WriteLine($"gRPC тур знайдено: {tour.Name}");
 
         return new TourResponse
         {
@@ -44,4 +51,5 @@ public class CatalogGrpcService : CatalogGrpc.CatalogGrpcBase
             TypeName = tour.Type.Name
         };
     }
+
 }

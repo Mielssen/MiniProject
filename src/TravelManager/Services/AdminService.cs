@@ -1,4 +1,7 @@
-﻿using TravelManager.DTOs;
+﻿
+using System.Net;
+using System.Security.Claims;
+using TravelManager.DTOs;
 using TravelManager.Exceptions;
 using TravelManager.Repositories;
 
@@ -7,148 +10,196 @@ namespace TravelManager.Services
     public class AdminService
     {
         private readonly AdminRepository _repo;
+        private readonly AuthServiceClient _authClient;
+        private readonly BookingServiceClient _bookingClient;
         private readonly ILogger<AdminService> _logger;
 
-        public AdminService(AdminRepository repo, ILogger<AdminService> logger)
+        public AdminService(
+            AdminRepository repo,
+            AuthServiceClient authClient,
+            BookingServiceClient bookingClient,
+            ILogger<AdminService> logger)
         {
             _repo = repo;
+            _authClient = authClient;
+            _bookingClient = bookingClient;
             _logger = logger;
         }
 
-        public List<ProfileDto> GetAllUsers(string? role, string? status)
+        public async Task<List<ProfileDto>> GetAllUsersAsync(
+            string? role,
+            string? status,
+            string token)
         {
-            _logger.LogInformation("Запит списку користувачів. Role={Role}, Status={Status}", role, status);
+            var users = await _authClient.GetAllUsersAsync(token);
 
-            return _repo.GetAllUsers(role, status).Select(MapToDto).ToList();
+            return users
+                .Where(u => string.IsNullOrWhiteSpace(role) ||
+                    u.Roles.Any(r => r.Equals(role, StringComparison.OrdinalIgnoreCase)))
+                .Where(u => string.IsNullOrWhiteSpace(status) ||
+                    (status.Equals("active", StringComparison.OrdinalIgnoreCase)
+                        ? u.IsActive
+                        : status.Equals("deleted", StringComparison.OrdinalIgnoreCase)
+                            && !u.IsActive))
+                .Select(u => MapToDto(u))
+                .ToList();
         }
 
-        public ProfileDto GetUserById(int credentialId)
+        public async Task<ProfileDto> GetUserByIdAsync(int userId, string token)
         {
-            var user = _repo.GetUserById(credentialId);
+            var user = await _authClient.GetUserByIdAsync(userId, token);
+
             if (user == null)
-            {
-                _logger.LogWarning("Користувача з ID={Id} не знайдено", credentialId);
                 throw new AppException("NOT_FOUND", "Користувача не знайдено");
-            }
+
             return MapToDto(user);
         }
 
-        public void UpdateRole(int adminId, int targetId, string newRole)
+        public async Task UpdateRoleAsync(
+            int adminId,
+            int targetId,
+            string newRole,
+            string token)
         {
             if (adminId == targetId)
                 throw new AppException("FORBIDDEN", "Не можна змінити власну роль");
 
-            var user = _repo.GetUserById(targetId);
-            if (user == null)
-            {
-                _logger.LogWarning("Спроба змінити роль: користувача ID={Id} не знайдено", targetId);
-                throw new AppException("NOT_FOUND", "Користувача не знайдено");
-            }
+            var user = await _authClient.GetUserByIdAsync(targetId, token);
 
-            var oldRole = user.Role;
-            user.Role = newRole;
-            _repo.UpdateCredential(user);
+            if (user == null)
+                throw new AppException("NOT_FOUND", "Користувача не знайдено");
+
+            await _authClient.UpdateRoleAsync(targetId, newRole, token);
 
             _logger.LogInformation(
-                "Адмін ID={AdminId} змінив роль користувача ID={UserId}: {OldRole} → {NewRole}",
-                adminId, targetId, oldRole, newRole);
+                "Адмін ID={AdminId} змінив роль користувача ID={UserId}",
+                adminId, targetId);
         }
 
-        public void UpdateUserData(int adminId, int targetId, UpdateProfileDto dto)
+        public async Task UpdateUserDataAsync(
+            int adminId,
+            int targetId,
+            UpdateProfileDto dto,
+            string token)
         {
-            var user = _repo.GetUserById(targetId);
+            var user = await _authClient.GetUserByIdAsync(targetId, token);
+
             if (user == null)
                 throw new AppException("NOT_FOUND", "Користувача не знайдено");
-
-            if (user.UserDetail == null)
-                throw new AppException("NOT_FOUND", "Дані користувача не знайдено");
 
             if (!string.IsNullOrWhiteSpace(dto.PassportData) &&
                 !System.Text.RegularExpressions.Regex.IsMatch(dto.PassportData, @"^\d+$"))
                 throw new AppException("INVALID_PASSPORT", "Паспортні дані мають містити тільки цифри");
 
-            if (dto.DateOfBirth.HasValue)
-            {
-                var ageLimit = DateTime.Now.AddYears(-18);
-                if (dto.DateOfBirth.Value > ageLimit)
-                    throw new AppException("UNDERAGE", "Користувач має бути старше 18 років");
-            }
+            if (dto.DateOfBirth.HasValue &&
+                dto.DateOfBirth.Value.Date > DateTime.Today.AddYears(-18))
+                throw new AppException("UNDERAGE", "Користувач має бути старше 18 років");
 
-            user.UserDetail.Name = dto.Name;
-            user.UserDetail.Phone = dto.Phone != null ? "+38" + dto.Phone : user.UserDetail.Phone;
-            user.UserDetail.PassportData = dto.PassportData;
-            if (dto.DateOfBirth.HasValue)
-                user.UserDetail.DateOfBirth = dto.DateOfBirth;
-
-            _repo.UpdateUserDetail(user.UserDetail);
+            await _authClient.UpdateUserDataAsync(targetId, dto, token);
 
             _logger.LogInformation(
                 "Адмін ID={AdminId} оновив дані користувача ID={UserId}",
                 adminId, targetId);
         }
 
-        public void SetUserStatus(int adminId, int targetId, string status)
+        public async Task SetUserStatusAsync(
+            int adminId,
+            int targetId,
+            string status,
+            string token)
         {
             if (adminId == targetId)
                 throw new AppException("FORBIDDEN", "Не можна деактивувати себе");
 
-            var user = _repo.GetUserById(targetId);
-            if (user == null)
-            {
-                _logger.LogWarning("Спроба змінити статус: користувача ID={Id} не знайдено", targetId);
-                throw new AppException("NOT_FOUND", "Користувача не знайдено");
-            }
+            if (status != "active" && status != "deleted")
+                throw new AppException("INVALID_STATUS", "Неприпустимий статус користувача");
 
-            var oldStatus = user.Status;
-            user.Status = status;
-            _repo.UpdateCredential(user);
+            var user = await _authClient.GetUserByIdAsync(targetId, token);
+
+            if (user == null)
+                throw new AppException("NOT_FOUND", "Користувача не знайдено");
+
+            await _authClient.UpdateStatusAsync(
+                targetId,
+                status == "active",
+                token);
 
             _logger.LogInformation(
-                "Адмін ID={AdminId} змінив статус користувача ID={UserId}: {OldStatus} → {NewStatus}",
-                adminId, targetId, oldStatus, status);
+                "Адмін ID={AdminId} змінив статус користувача ID={UserId}",
+                adminId, targetId);
         }
 
-        public StatisticsDto GetStatistics()
+
+        public async Task<StatisticsDto> GetStatisticsAsync(string token)
         {
             _logger.LogInformation("Запит статистики");
 
-            var topTours = _repo.GetTopTours(3)
-                .Select(t => new TopTourDto
+            var bookings = await _bookingClient.GetAllBookingsAsync(token);
+            var users = await _authClient.GetAllUsersAsync(token);
+
+            var currentMonth = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+
+            var topTours = bookings
+                .Where(b => !b.Status.Equals("cancelled", StringComparison.OrdinalIgnoreCase))
+                .GroupBy(b => new { b.TourId, b.TourName })
+                .Select(g => new TopTourDto
                 {
-                    TourId = t.TourId,
-                    Name = t.Name,
-                    BookingsCount = t.Count,
-                    TotalRevenue = t.Revenue
-                }).ToList();
+                    TourId = g.Key.TourId,
+                    Name = g.Key.TourName,
+                    BookingsCount = g.Count(),
+                    TotalRevenue = g.Sum(b => b.TotalPrice)
+                })
+                .OrderByDescending(t => t.BookingsCount)
+                .Take(3)
+                .ToList();
 
             return new StatisticsDto
             {
-                TotalClients = _repo.CountByRole("client"),
-                TotalManagers = _repo.CountByRole("manager"),
-                TotalUsers = _repo.CountByRole("client") + _repo.CountByRole("manager"),
-                TotalBookings = _repo.CountAllBookings(),
-                PendingBookings = _repo.CountBookingsByStatus("pending"),
-                ConfirmedBookings = _repo.CountBookingsByStatus("confirmed"),
-                CancelledBookings = _repo.CountBookingsByStatus("cancelled"),
-                TotalRevenue = _repo.SumRevenue(),
-                ConfirmedRevenue = _repo.SumConfirmedRevenue(),
+                TotalClients = users.Count(u => u.Roles.Any(r =>
+                    r.Equals("client", StringComparison.OrdinalIgnoreCase)) && u.IsActive),
+
+                TotalManagers = users.Count(u => u.Roles.Any(r =>
+                    r.Equals("manager", StringComparison.OrdinalIgnoreCase)) && u.IsActive),
+
+                TotalUsers = users.Count(u => u.IsActive),
+
+                TotalBookings = bookings.Count,
+
+                PendingBookings = bookings.Count(b =>
+                    b.Status.Equals("pending", StringComparison.OrdinalIgnoreCase)),
+
+                ConfirmedBookings = bookings.Count(b =>
+                    b.Status.Equals("confirmed", StringComparison.OrdinalIgnoreCase)),
+
+                CancelledBookings = bookings.Count(b =>
+                    b.Status.Equals("cancelled", StringComparison.OrdinalIgnoreCase)),
+
+                TotalRevenue = bookings.Sum(b => b.TotalPrice),
+
+                ConfirmedRevenue = bookings
+                    .Where(b => b.Status.Equals("confirmed", StringComparison.OrdinalIgnoreCase))
+                    .Sum(b => b.TotalPrice),
+
                 TopTours = topTours,
-                NewUsersThisMonth = _repo.CountNewUsersThisMonth(),
-                NewBookingsThisMonth = _repo.CountNewBookingsThisMonth()
+
+                NewUsersThisMonth = users.Count(u => u.CreatedAt >= currentMonth),
+
+                NewBookingsThisMonth = bookings.Count(b => b.BookingDate >= currentMonth)
             };
         }
 
-        private static ProfileDto MapToDto(TravelManager.Models.Credential c) => new()
+
+        private static ProfileDto MapToDto(AuthUserDto user) => new()
         {
-            CredentialId = c.CredentialId,
-            Email = c.Email,
-            Role = c.Role,
-            Status = c.Status,
-            CreatedAt = c.CreatedAt,
-            Name = c.UserDetail?.Name,
-            Phone = c.UserDetail?.Phone,
-            PassportData = c.UserDetail?.PassportData,
-            DateOfBirth = c.UserDetail?.DateOfBirth
+            CredentialId = user.Id,
+            Email = user.Email,
+            Role = user.Roles.FirstOrDefault() ?? "client",
+            Status = user.IsActive ? "active" : "deleted",
+            CreatedAt = user.CreatedAt,
+            Name = user.DisplayName,
+            Phone = user.Phone,
+            PassportData = user.PassportData,
+            DateOfBirth = user.DateOfBirth
         };
     }
 }
