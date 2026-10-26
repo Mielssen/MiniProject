@@ -80,15 +80,17 @@ sequenceDiagram
     participant Gateway as ApiGateway :5000
     participant BookingS as BookingService
     participant AuthS as AuthService :5001
-    participant CatalogS as CatalogService :5002
+    participant CatalogS as CatalogService gRPC :7002
     participant BookingDB as booking_service_db
     participant AuthDB as miniproject_auth
     participant CatalogDB as БД CatalogService
 
     Client->>Gateway: POST /api/bookings (JWT, Idempotency-Key)
-    Gateway->>BookingS: Пересилає запит через REST
+    Gateway->>BookingS: Пересилання запиту через REST
 
-    Note over BookingS: Перевірка JWT та валідація запиту
+    Note over BookingS: Перевірка JWT і валідація запиту
+    BookingS->>BookingDB: Перевірка Idempotency-Key
+    BookingDB-->>BookingS: Результат перевірки ключа
 
     BookingS->>AuthS: HTTP-запит для перевірки користувача
     AuthS->>AuthDB: Отримання даних користувача
@@ -96,14 +98,14 @@ sequenceDiagram
     AuthS-->>BookingS: Результат перевірки користувача
 
     BookingS->>CatalogS: gRPC-запит (deadline 2 с)
-    CatalogS->>CatalogDB: Перевірка туру та отримання даних
+    CatalogS->>CatalogDB: Перевірка доступності туру та отримання даних
     CatalogDB-->>CatalogS: Дані туру
-    CatalogS-->>BookingS: Ціна, дані туру, результат перевірки
+    CatalogS-->>BookingS: Результат перевірки та дані туру
 
-    Note over BookingS: Збереження бронювання
+    Note over BookingS: Перевірка дат і кількості осіб, розрахунок вартості
 
-    BookingS->>BookingDB: INSERT бронювання
-    BookingDB-->>BookingS: Бронювання збережено
+    BookingS->>BookingDB: Збереження бронювання, осіб і запису ідемпотентності
+    BookingDB-->>BookingS: Результат збереження
 
     BookingS-->>Gateway: HTTP-відповідь із результатом
     Gateway-->>Client: Відповідь із результатом
