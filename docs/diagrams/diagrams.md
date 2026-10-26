@@ -71,3 +71,40 @@ sequenceDiagram
     BookingS-->>Gateway: 201 Створено
     Gateway-->>Client: 201 Створено
 ```
+
+## Оновлена діаграма послідовності
+
+```mermaid
+sequenceDiagram
+    participant Client as Клієнт
+    participant Gateway as ApiGateway :5000
+    participant BookingS as BookingService
+    participant AuthS as AuthService :5001
+    participant CatalogS as CatalogService :5002
+    participant BookingDB as booking_service_db
+    participant AuthDB as miniproject_auth
+    participant CatalogDB as БД CatalogService
+
+    Client->>Gateway: POST /api/bookings (JWT, Idempotency-Key)
+    Gateway->>BookingS: Пересилає запит через REST
+
+    Note over BookingS: Перевірка JWT та валідація запиту
+
+    BookingS->>AuthS: HTTP-запит для перевірки користувача
+    AuthS->>AuthDB: Отримання даних користувача
+    AuthDB-->>AuthS: Дані користувача
+    AuthS-->>BookingS: Результат перевірки користувача
+
+    BookingS->>CatalogS: gRPC-запит (deadline 2 с)
+    CatalogS->>CatalogDB: Перевірка туру та отримання даних
+    CatalogDB-->>CatalogS: Дані туру
+    CatalogS-->>BookingS: Ціна, дані туру, результат перевірки
+
+    Note over BookingS: Збереження бронювання
+
+    BookingS->>BookingDB: INSERT бронювання
+    BookingDB-->>BookingS: Бронювання збережено
+
+    BookingS-->>Gateway: HTTP-відповідь із результатом
+    Gateway-->>Client: Відповідь із результатом
+```

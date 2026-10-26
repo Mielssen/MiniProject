@@ -1,0 +1,2045 @@
+{
+  "info": {
+    "_postman_id": "addd95da-6e8e-4fb4-bb56-96a97f4d10b3",
+    "name": "TravelManager Baseline",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58818453",
+    "_collection_link": "https://go.postman.co/collection/58818453-addd95da-6e8e-4fb4-bb56-96a97f4d10b3?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Safe GET",
+      "item": [
+        {
+          "name": "GET All Bookings",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_0cch}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5272/api/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5272",
+              "path": [
+                "api",
+                "bookings"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "GET All Bookings",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5272/api/bookings",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5272",
+                  "path": [
+                    "api",
+                    "bookings"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 26 Oct 2026 10:45:03 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"bookingId\": 1,\n    \"tourId\": 1,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-06-10\",\n    \"bookingDate\": \"2025-04-05T10:20:00\",\n    \"status\": \"confirmed\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 57000,\n    \"comment\": \"Просимо номер з видом на море\",\n    \"persons\": [\n      {\n        \"name\": \"Коваленко Олена Іванівна\",\n        \"passportData\": \"АА123456\",\n        \"dateOfBirth\": \"1990-03-15\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Коваленко Ігор Васильович\",\n        \"passportData\": \"АА789012\",\n        \"dateOfBirth\": \"1988-06-20\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 2,\n    \"tourId\": 3,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-05-20\",\n    \"bookingDate\": \"2025-03-12T14:35:00\",\n    \"status\": \"confirmed\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 18900,\n    \"comment\": null,\n    \"persons\": [\n      {\n        \"name\": \"Бондар Микола Петрович\",\n        \"passportData\": \"АВ234567\",\n        \"dateOfBirth\": \"1985-07-22\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 3,\n    \"tourId\": 5,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-10-15\",\n    \"bookingDate\": \"2025-07-01T09:00:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 70000,\n    \"comment\": \"Медовий місяць, прохання прикрасити номер\",\n    \"persons\": [\n      {\n        \"name\": \"Савченко Ірина Олегівна\",\n        \"passportData\": \"АС345678\",\n        \"dateOfBirth\": \"1992-11-08\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Савченко Олексій Романович\",\n        \"passportData\": \"АС901234\",\n        \"dateOfBirth\": \"1990-04-13\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 4,\n    \"tourId\": 2,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-07-04\",\n    \"bookingDate\": \"2025-05-20T16:45:00\",\n    \"status\": \"cancelled\",\n    \"numberOfPeople\": 3,\n    \"totalPrice\": 12600,\n    \"comment\": \"Скасовано через хворобу\",\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 5,\n    \"tourId\": 4,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-03-01\",\n    \"bookingDate\": \"2025-01-15T11:10:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 44000,\n    \"comment\": null,\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 6,\n    \"tourId\": 6,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-12-22\",\n    \"bookingDate\": \"2025-10-03T13:00:00\",\n    \"status\": \"confirmed\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 63000,\n    \"comment\": \"Потрібні лижі розміру 42 та 38\",\n    \"persons\": [\n      {\n        \"name\": \"Лисенко Андрій Сергійович\",\n        \"passportData\": \"АЖ678901\",\n        \"dateOfBirth\": \"1988-01-25\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Лисенко Марина Дмитрівна\",\n        \"passportData\": \"АЖ345678\",\n        \"dateOfBirth\": \"1990-07-09\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 7,\n    \"tourId\": 10,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-06-15\",\n    \"bookingDate\": \"2025-04-18T08:30:00\",\n    \"status\": \"confirmed\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 84000,\n    \"comment\": \"Ласощі без глютену для одного учасника\",\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 8,\n    \"tourId\": 7,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-08-10\",\n    \"bookingDate\": \"2025-06-01T15:20:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 65000,\n    \"comment\": null,\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 9,\n    \"tourId\": 16,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-05-01\",\n    \"bookingDate\": \"2025-03-25T10:00:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 19600,\n    \"comment\": \"Хочемо екскурсію до Давіт Гареджа\",\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 10,\n    \"tourId\": 13,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-07-18\",\n    \"bookingDate\": \"2025-05-10T09:45:00\",\n    \"status\": \"confirmed\",\n    \"numberOfPeople\": 3,\n    \"totalPrice\": 114000,\n    \"comment\": \"Двоє дорослих та одна дитина 8 років\",\n    \"persons\": [\n      {\n        \"name\": \"Романенко Юлія Борисівна\",\n        \"passportData\": \"АМ123456\",\n        \"dateOfBirth\": \"1996-02-19\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Романенко Кирило Петрович\",\n        \"passportData\": \"АМ456789\",\n        \"dateOfBirth\": \"1993-11-05\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Романенко Єва Кирилівна\",\n        \"passportData\": \"АМ000001\",\n        \"dateOfBirth\": \"2017-03-12\",\n        \"isChild\": true\n      }\n    ]\n  },\n  {\n    \"bookingId\": 11,\n    \"tourId\": 8,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-09-05\",\n    \"bookingDate\": \"2025-07-14T12:30:00\",\n    \"status\": \"confirmed\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 178000,\n    \"comment\": \"Бунгало над водою, сторона заходу сонця\",\n    \"persons\": [\n      {\n        \"name\": \"Шевченко Павло Олексійович\",\n        \"passportData\": \"АН234567\",\n        \"dateOfBirth\": \"1975-10-07\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Шевченко Ольга Миколаївна\",\n        \"passportData\": \"АН567890\",\n        \"dateOfBirth\": \"1978-05-22\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 12,\n    \"tourId\": 18,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-11-10\",\n    \"bookingDate\": \"2025-09-02T14:00:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 47500,\n    \"comment\": null,\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 13,\n    \"tourId\": 9,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-04-10\",\n    \"bookingDate\": \"2025-02-28T11:15:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 29000,\n    \"comment\": \"Записати на масаж гарячим камінням\",\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 14,\n    \"tourId\": 15,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-11-20\",\n    \"bookingDate\": \"2025-09-10T16:30:00\",\n    \"status\": \"confirmed\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 110000,\n    \"comment\": \"Номер з видом на фіорд\",\n    \"persons\": [\n      {\n        \"name\": \"Ковальчук Роман Степанович\",\n        \"passportData\": \"АС678901\",\n        \"dateOfBirth\": \"1982-05-05\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Ковальчук Ірина Олегівна\",\n        \"passportData\": \"АС111222\",\n        \"dateOfBirth\": \"1984-09-17\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 15,\n    \"tourId\": 12,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-09-15\",\n    \"bookingDate\": \"2025-07-20T10:10:00\",\n    \"status\": \"confirmed\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 55000,\n    \"comment\": null,\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 16,\n    \"tourId\": 14,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-11-01\",\n    \"bookingDate\": \"2025-08-30T13:45:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 82000,\n    \"comment\": \"Веганське харчування для обох туристів\",\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 17,\n    \"tourId\": 11,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-04-20\",\n    \"bookingDate\": \"2025-03-01T09:30:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 50000,\n    \"comment\": null,\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 18,\n    \"tourId\": 17,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-11-05\",\n    \"bookingDate\": \"2025-09-15T14:20:00\",\n    \"status\": \"confirmed\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 32000,\n    \"comment\": null,\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 19,\n    \"tourId\": 6,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2026-01-07\",\n    \"bookingDate\": \"2025-11-01T10:00:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 4,\n    \"totalPrice\": 126000,\n    \"comment\": \"Сімейний відпочинок, 2 дорослих та 2 дітей\",\n    \"persons\": [\n      {\n        \"name\": \"Петренко Тетяна Василівна\",\n        \"passportData\": \"АЕ567890\",\n        \"dateOfBirth\": \"1995-09-14\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Петренко Дмитро Ігорович\",\n        \"passportData\": \"АЕ111333\",\n        \"dateOfBirth\": \"1993-12-01\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Петренко Соломія Дмитрівна\",\n        \"passportData\": \"АЕ000002\",\n        \"dateOfBirth\": \"2016-07-25\",\n        \"isChild\": true\n      },\n      {\n        \"name\": \"Петренко Тарас Дмитрович\",\n        \"passportData\": \"АЕ000003\",\n        \"dateOfBirth\": \"2018-11-10\",\n        \"isChild\": true\n      }\n    ]\n  },\n  {\n    \"bookingId\": 20,\n    \"tourId\": 2,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-08-25\",\n    \"bookingDate\": \"2025-06-15T11:00:00\",\n    \"status\": \"confirmed\",\n    \"numberOfPeople\": 3,\n    \"totalPrice\": 12600,\n    \"comment\": null,\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 21,\n    \"tourId\": 7,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-07-11\",\n    \"bookingDate\": \"2026-06-16T19:38:21\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 130000,\n    \"comment\": \"\",\n    \"persons\": [\n      {\n        \"name\": \"Дмитро\",\n        \"passportData\": \"253789\",\n        \"dateOfBirth\": \"2008-06-02\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Петро\",\n        \"passportData\": \"887689\",\n        \"dateOfBirth\": \"2007-06-10\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 25,\n    \"tourId\": 1,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-05-01\",\n    \"bookingDate\": \"2026-06-16T19:59:18\",\n    \"status\": \"confirmed\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 57000,\n    \"comment\": \"\",\n    \"persons\": [\n      {\n        \"name\": \"Дмитро\",\n        \"passportData\": \"253789\",\n        \"dateOfBirth\": \"2008-06-02\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Петро\",\n        \"passportData\": \"887689\",\n        \"dateOfBirth\": \"2007-06-10\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 26,\n    \"tourId\": 20,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2026-09-23\",\n    \"bookingDate\": \"2026-09-23T12:44:24\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 70000,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2026-09-23\",\n        \"isChild\": true\n      }\n    ]\n  },\n  {\n    \"bookingId\": 27,\n    \"tourId\": 20,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2026-10-01\",\n    \"bookingDate\": \"2026-10-01T16:08:21\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 70000,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2007-10-01\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 31,\n    \"tourId\": 20,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2026-10-01\",\n    \"bookingDate\": \"2026-10-01T16:54:51\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 70000,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2006-10-01\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 32,\n    \"tourId\": 20,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2026-10-01\",\n    \"bookingDate\": \"2026-10-01T17:58:03\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 70000,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"1234567\",\n        \"dateOfBirth\": \"2006-10-01\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 34,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2026-10-11\",\n    \"bookingDate\": \"2026-10-02T12:15:57\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 4500,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2006-10-02\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 35,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": \"User\",\n    \"userEmail\": \"test@example.com\",\n    \"userPhone\": \"+380501234567\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-01-01T00:00:00\",\n    \"startDate\": \"2026-10-10\",\n    \"bookingDate\": \"2026-10-08T20:47:13\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 4500,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2000-10-08\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 36,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": \"User\",\n    \"userEmail\": \"test@example.com\",\n    \"userPhone\": \"+380501234567\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-01-01T00:00:00\",\n    \"startDate\": \"2026-10-10\",\n    \"bookingDate\": \"2026-10-08T20:51:20\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 4500,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2000-10-08\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 37,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": \"Dmytro\",\n    \"userEmail\": \"user2@example.com\",\n    \"userPhone\": \"6053790644\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-10-08T20:48:02.351\",\n    \"startDate\": \"2026-10-10\",\n    \"bookingDate\": \"2026-10-08T23:49:55\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 4500,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2000-10-08\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 38,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": \"Dmytro\",\n    \"userEmail\": \"user2@example.com\",\n    \"userPhone\": \"6053790644\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-10-08T20:48:02.351\",\n    \"startDate\": \"2026-10-10\",\n    \"bookingDate\": \"2026-10-08T23:53:29\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 9000,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"aaaa\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2000-10-08\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"dddd\",\n        \"passportData\": \"222222\",\n        \"dateOfBirth\": \"2000-10-08\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 39,\n    \"tourId\": 24,\n    \"tourName\": \"PUT Test Tour Updated\",\n    \"tourPrice\": 5000,\n    \"tourDurationDays\": 365,\n    \"userName\": \"Dmytro\",\n    \"userEmail\": \"user2@example.com\",\n    \"userPhone\": \"6053790644\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-10-08T20:48:02.351\",\n    \"startDate\": \"2026-10-15\",\n    \"bookingDate\": \"2026-10-16T12:50:10\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 5000,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2006-10-16\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 40,\n    \"tourId\": 24,\n    \"tourName\": \"PUT Test Tour Updated\",\n    \"tourPrice\": 5000,\n    \"tourDurationDays\": 365,\n    \"userName\": \"User\",\n    \"userEmail\": \"test@example.com\",\n    \"userPhone\": \"+380501234567\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-01-01T00:00:00\",\n    \"startDate\": \"2026-10-25\",\n    \"bookingDate\": \"2026-10-21T21:46:13\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 5000,\n    \"comment\": \"Перевірка через API Gateway\",\n    \"persons\": [\n      {\n        \"name\": \"Іван Петренко\",\n        \"passportData\": \"1234567890\",\n        \"dateOfBirth\": \"2000-05-15\",\n        \"isChild\": false\n      }\n    ]\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "GET My Bookings",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_0cch}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5272/api/bookings/my",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5272",
+              "path": [
+                "api",
+                "bookings",
+                "my"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "GET My Bookings",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5272/api/bookings/my",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5272",
+                  "path": [
+                    "api",
+                    "bookings",
+                    "my"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 26 Oct 2026 10:47:41 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"bookingId\": 37,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": \"Dmytro\",\n    \"userEmail\": \"user2@example.com\",\n    \"userPhone\": \"6053790644\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-10-08T20:48:02.351\",\n    \"startDate\": \"2026-10-10\",\n    \"bookingDate\": \"2026-10-08T23:49:55\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 4500,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2000-10-08\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 38,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": \"Dmytro\",\n    \"userEmail\": \"user2@example.com\",\n    \"userPhone\": \"6053790644\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-10-08T20:48:02.351\",\n    \"startDate\": \"2026-10-10\",\n    \"bookingDate\": \"2026-10-08T23:53:29\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 9000,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"aaaa\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2000-10-08\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"dddd\",\n        \"passportData\": \"222222\",\n        \"dateOfBirth\": \"2000-10-08\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 39,\n    \"tourId\": 24,\n    \"tourName\": \"PUT Test Tour Updated\",\n    \"tourPrice\": 5000,\n    \"tourDurationDays\": 365,\n    \"userName\": \"Dmytro\",\n    \"userEmail\": \"user2@example.com\",\n    \"userPhone\": \"6053790644\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-10-08T20:48:02.351\",\n    \"startDate\": \"2026-10-15\",\n    \"bookingDate\": \"2026-10-16T12:50:10\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 5000,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2006-10-16\",\n        \"isChild\": false\n      }\n    ]\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "GET All Bookings by Status",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_0cch}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5272/api/bookings?status=pending",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5272",
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "pending"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "GET All Bookings by Status",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5272/api/bookings?status=pending",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5272",
+                  "path": [
+                    "api",
+                    "bookings"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "pending"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 26 Oct 2026 10:49:19 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"bookingId\": 3,\n    \"tourId\": 5,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-10-15\",\n    \"bookingDate\": \"2025-07-01T09:00:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 70000,\n    \"comment\": \"Медовий місяць, прохання прикрасити номер\",\n    \"persons\": [\n      {\n        \"name\": \"Савченко Ірина Олегівна\",\n        \"passportData\": \"АС345678\",\n        \"dateOfBirth\": \"1992-11-08\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Савченко Олексій Романович\",\n        \"passportData\": \"АС901234\",\n        \"dateOfBirth\": \"1990-04-13\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 5,\n    \"tourId\": 4,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-03-01\",\n    \"bookingDate\": \"2025-01-15T11:10:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 44000,\n    \"comment\": null,\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 8,\n    \"tourId\": 7,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-08-10\",\n    \"bookingDate\": \"2025-06-01T15:20:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 65000,\n    \"comment\": null,\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 9,\n    \"tourId\": 16,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-05-01\",\n    \"bookingDate\": \"2025-03-25T10:00:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 19600,\n    \"comment\": \"Хочемо екскурсію до Давіт Гареджа\",\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 12,\n    \"tourId\": 18,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-11-10\",\n    \"bookingDate\": \"2025-09-02T14:00:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 47500,\n    \"comment\": null,\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 13,\n    \"tourId\": 9,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-04-10\",\n    \"bookingDate\": \"2025-02-28T11:15:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 29000,\n    \"comment\": \"Записати на масаж гарячим камінням\",\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 16,\n    \"tourId\": 14,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-11-01\",\n    \"bookingDate\": \"2025-08-30T13:45:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 82000,\n    \"comment\": \"Веганське харчування для обох туристів\",\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 17,\n    \"tourId\": 11,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-04-20\",\n    \"bookingDate\": \"2025-03-01T09:30:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 50000,\n    \"comment\": null,\n    \"persons\": []\n  },\n  {\n    \"bookingId\": 19,\n    \"tourId\": 6,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2026-01-07\",\n    \"bookingDate\": \"2025-11-01T10:00:00\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 4,\n    \"totalPrice\": 126000,\n    \"comment\": \"Сімейний відпочинок, 2 дорослих та 2 дітей\",\n    \"persons\": [\n      {\n        \"name\": \"Петренко Тетяна Василівна\",\n        \"passportData\": \"АЕ567890\",\n        \"dateOfBirth\": \"1995-09-14\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Петренко Дмитро Ігорович\",\n        \"passportData\": \"АЕ111333\",\n        \"dateOfBirth\": \"1993-12-01\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Петренко Соломія Дмитрівна\",\n        \"passportData\": \"АЕ000002\",\n        \"dateOfBirth\": \"2016-07-25\",\n        \"isChild\": true\n      },\n      {\n        \"name\": \"Петренко Тарас Дмитрович\",\n        \"passportData\": \"АЕ000003\",\n        \"dateOfBirth\": \"2018-11-10\",\n        \"isChild\": true\n      }\n    ]\n  },\n  {\n    \"bookingId\": 21,\n    \"tourId\": 7,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2025-07-11\",\n    \"bookingDate\": \"2026-06-16T19:38:21\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 130000,\n    \"comment\": \"\",\n    \"persons\": [\n      {\n        \"name\": \"Дмитро\",\n        \"passportData\": \"253789\",\n        \"dateOfBirth\": \"2008-06-02\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Петро\",\n        \"passportData\": \"887689\",\n        \"dateOfBirth\": \"2007-06-10\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 26,\n    \"tourId\": 20,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2026-09-23\",\n    \"bookingDate\": \"2026-09-23T12:44:24\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 70000,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2026-09-23\",\n        \"isChild\": true\n      }\n    ]\n  },\n  {\n    \"bookingId\": 27,\n    \"tourId\": 20,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2026-10-01\",\n    \"bookingDate\": \"2026-10-01T16:08:21\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 70000,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2007-10-01\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 31,\n    \"tourId\": 20,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2026-10-01\",\n    \"bookingDate\": \"2026-10-01T16:54:51\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 70000,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2006-10-01\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 32,\n    \"tourId\": 20,\n    \"tourName\": \"Тур недоступний\",\n    \"tourPrice\": 0,\n    \"tourDurationDays\": 0,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2026-10-01\",\n    \"bookingDate\": \"2026-10-01T17:58:03\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 70000,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"1234567\",\n        \"dateOfBirth\": \"2006-10-01\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 34,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": null,\n    \"userEmail\": null,\n    \"userPhone\": null,\n    \"userPassportData\": null,\n    \"userDateOfBirth\": null,\n    \"startDate\": \"2026-10-11\",\n    \"bookingDate\": \"2026-10-02T12:15:57\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 4500,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2006-10-02\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 35,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": \"User\",\n    \"userEmail\": \"test@example.com\",\n    \"userPhone\": \"+380501234567\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-01-01T00:00:00\",\n    \"startDate\": \"2026-10-10\",\n    \"bookingDate\": \"2026-10-08T20:47:13\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 4500,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2000-10-08\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 36,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": \"User\",\n    \"userEmail\": \"test@example.com\",\n    \"userPhone\": \"+380501234567\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-01-01T00:00:00\",\n    \"startDate\": \"2026-10-10\",\n    \"bookingDate\": \"2026-10-08T20:51:20\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 4500,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2000-10-08\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 37,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": \"Dmytro\",\n    \"userEmail\": \"user2@example.com\",\n    \"userPhone\": \"6053790644\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-10-08T20:48:02.351\",\n    \"startDate\": \"2026-10-10\",\n    \"bookingDate\": \"2026-10-08T23:49:55\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 4500,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2000-10-08\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 38,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": \"Dmytro\",\n    \"userEmail\": \"user2@example.com\",\n    \"userPhone\": \"6053790644\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-10-08T20:48:02.351\",\n    \"startDate\": \"2026-10-10\",\n    \"bookingDate\": \"2026-10-08T23:53:29\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 2,\n    \"totalPrice\": 9000,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"aaaa\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2000-10-08\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"dddd\",\n        \"passportData\": \"222222\",\n        \"dateOfBirth\": \"2000-10-08\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 39,\n    \"tourId\": 24,\n    \"tourName\": \"PUT Test Tour Updated\",\n    \"tourPrice\": 5000,\n    \"tourDurationDays\": 365,\n    \"userName\": \"Dmytro\",\n    \"userEmail\": \"user2@example.com\",\n    \"userPhone\": \"6053790644\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-10-08T20:48:02.351\",\n    \"startDate\": \"2026-10-15\",\n    \"bookingDate\": \"2026-10-16T12:50:10\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 5000,\n    \"comment\": \"string\",\n    \"persons\": [\n      {\n        \"name\": \"string\",\n        \"passportData\": \"123456\",\n        \"dateOfBirth\": \"2006-10-16\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 40,\n    \"tourId\": 24,\n    \"tourName\": \"PUT Test Tour Updated\",\n    \"tourPrice\": 5000,\n    \"tourDurationDays\": 365,\n    \"userName\": \"User\",\n    \"userEmail\": \"test@example.com\",\n    \"userPhone\": \"+380501234567\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-01-01T00:00:00\",\n    \"startDate\": \"2026-10-25\",\n    \"bookingDate\": \"2026-10-21T21:46:13\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 5000,\n    \"comment\": \"Перевірка через API Gateway\",\n    \"persons\": [\n      {\n        \"name\": \"Іван Петренко\",\n        \"passportData\": \"1234567890\",\n        \"dateOfBirth\": \"2000-05-15\",\n        \"isChild\": false\n      }\n    ]\n  }\n]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BookingService Verification",
+      "item": [
+        {
+          "name": "GET Bookings via Gateway",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_0isq}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "GET Bookings via Gateway",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/bookings",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 26 Oct 2026 11:38:29 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "X-Correlation-Id",
+                  "value": "d91a5e3d-daf4-4da0-bce8-caa6401acfe9"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"bookingId\": 1,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": \"User\",\n    \"userEmail\": \"test@example.com\",\n    \"userPhone\": \"+380501234567\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-01-01T00:00:00\",\n    \"startDate\": \"2026-11-01\",\n    \"bookingDate\": \"2026-10-22T01:07:37.817894\",\n    \"status\": \"confirmed\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 4500,\n    \"comment\": \"Тест BookingService\",\n    \"persons\": [\n      {\n        \"name\": \"Test User\",\n        \"passportData\": \"1234567890\",\n        \"dateOfBirth\": \"2000-01-15\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 4,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": \"User\",\n    \"userEmail\": \"test@example.com\",\n    \"userPhone\": \"+380501234567\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-01-01T00:00:00\",\n    \"startDate\": \"2026-11-01\",\n    \"bookingDate\": \"2026-10-22T18:17:55.340123\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 3,\n    \"totalPrice\": 11250,\n    \"comment\": \"Перевірка бронювання з кількома учасниками\",\n    \"persons\": [\n      {\n        \"name\": \"Test Child\",\n        \"passportData\": \"3456789012\",\n        \"dateOfBirth\": \"2015-07-20\",\n        \"isChild\": true\n      },\n      {\n        \"name\": \"Test Adult Two\",\n        \"passportData\": \"2345678901\",\n        \"dateOfBirth\": \"1995-05-10\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Test Adult One\",\n        \"passportData\": \"1234567890\",\n        \"dateOfBirth\": \"2000-01-15\",\n        \"isChild\": false\n      }\n    ]\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "GET Pending Bookings",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_0isq}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/bookings?status=pending",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "pending"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "GET Pending Bookings",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/bookings?status=pending",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "pending"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 26 Oct 2026 11:40:08 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "X-Correlation-Id",
+                  "value": "cd79d357-f02b-4ced-bb3a-65d6acb47789"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"bookingId\": 4,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": \"User\",\n    \"userEmail\": \"test@example.com\",\n    \"userPhone\": \"+380501234567\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-01-01T00:00:00\",\n    \"startDate\": \"2026-11-01\",\n    \"bookingDate\": \"2026-10-22T18:17:55.340123\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 3,\n    \"totalPrice\": 11250,\n    \"comment\": \"Перевірка бронювання з кількома учасниками\",\n    \"persons\": [\n      {\n        \"name\": \"Test Child\",\n        \"passportData\": \"3456789012\",\n        \"dateOfBirth\": \"2015-07-20\",\n        \"isChild\": true\n      },\n      {\n        \"name\": \"Test Adult Two\",\n        \"passportData\": \"2345678901\",\n        \"dateOfBirth\": \"1995-05-10\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Test Adult One\",\n        \"passportData\": \"1234567890\",\n        \"dateOfBirth\": \"2000-01-15\",\n        \"isChild\": false\n      }\n    ]\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "GET Bookings Without Token",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "GET Bookings Without Token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/bookings",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 26 Oct 2026 11:40:53 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "WWW-Authenticate",
+                  "value": "Bearer"
+                },
+                {
+                  "key": "X-Correlation-Id",
+                  "value": "787e7259-7296-4c5e-95e5-fa73b7dde2f9"
+                }
+              ],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "GET Bookings As User",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_0miu}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "GET Bookings As User",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/bookings",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 26 Oct 2026 11:41:54 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "X-Correlation-Id",
+                  "value": "99051a5d-6bae-45b3-948a-0e52cd095d59"
+                }
+              ],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "GET My Bookings",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_0miu}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/bookings/my",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings",
+                "my"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "GET My Bookings",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/bookings/my",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings",
+                    "my"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 26 Oct 2026 11:44:27 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "X-Correlation-Id",
+                  "value": "0de79598-18fd-4714-ab2c-632e1c2428e3"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n  {\n    \"bookingId\": 1,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": \"User\",\n    \"userEmail\": \"test@example.com\",\n    \"userPhone\": \"+380501234567\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-01-01T00:00:00\",\n    \"startDate\": \"2026-11-01\",\n    \"bookingDate\": \"2026-10-22T01:07:37.817894\",\n    \"status\": \"confirmed\",\n    \"numberOfPeople\": 1,\n    \"totalPrice\": 4500,\n    \"comment\": \"Тест BookingService\",\n    \"persons\": [\n      {\n        \"name\": \"Test User\",\n        \"passportData\": \"1234567890\",\n        \"dateOfBirth\": \"2000-01-15\",\n        \"isChild\": false\n      }\n    ]\n  },\n  {\n    \"bookingId\": 4,\n    \"tourId\": 27,\n    \"tourName\": \"Soft Delete Test Tour\",\n    \"tourPrice\": 4500,\n    \"tourDurationDays\": 5,\n    \"userName\": \"User\",\n    \"userEmail\": \"test@example.com\",\n    \"userPhone\": \"+380501234567\",\n    \"userPassportData\": \"123456\",\n    \"userDateOfBirth\": \"2000-01-01T00:00:00\",\n    \"startDate\": \"2026-11-01\",\n    \"bookingDate\": \"2026-10-22T18:17:55.340123\",\n    \"status\": \"pending\",\n    \"numberOfPeople\": 3,\n    \"totalPrice\": 11250,\n    \"comment\": \"Перевірка бронювання з кількома учасниками\",\n    \"persons\": [\n      {\n        \"name\": \"Test Child\",\n        \"passportData\": \"3456789012\",\n        \"dateOfBirth\": \"2015-07-20\",\n        \"isChild\": true\n      },\n      {\n        \"name\": \"Test Adult Two\",\n        \"passportData\": \"2345678901\",\n        \"dateOfBirth\": \"1995-05-10\",\n        \"isChild\": false\n      },\n      {\n        \"name\": \"Test Adult One\",\n        \"passportData\": \"1234567890\",\n        \"dateOfBirth\": \"2000-01-15\",\n        \"isChild\": false\n      }\n    ]\n  }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Update Booking Status",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_19w0}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"confirmed\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/bookings/4/status",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings",
+                "4",
+                "status"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Booking Status",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"status\": \"confirmed\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/bookings/4/status",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings",
+                    "4",
+                    "status"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 26 Oct 2026 11:45:47 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "X-Correlation-Id",
+                  "value": "224b3cc4-e76c-4172-a689-7525154fb671"
+                }
+              ],
+              "cookie": [],
+              "body": "Статус оновлено"
+            }
+          ]
+        },
+        {
+          "name": "Update Status As User",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_0u5l}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"pending\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/bookings/4/status",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings",
+                "4",
+                "status"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Status As User",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"status\": \"pending\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/bookings/4/status",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings",
+                    "4",
+                    "status"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 26 Oct 2026 11:46:59 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "X-Correlation-Id",
+                  "value": "a94f8319-241d-4d45-b317-75c171cd8ece"
+                }
+              ],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "Update Nonexistent Booking",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_0wy0}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"confirmed\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/bookings/99999/status",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings",
+                "99999",
+                "status"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Update Nonexistent Booking",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"status\": \"confirmed\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/bookings/99999/status",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings",
+                    "99999",
+                    "status"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 26 Oct 2026 11:48:28 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "X-Correlation-Id",
+                  "value": "759ec1c0-0ea2-4f33-9510-8cb3f73d18e6"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Бронювання не знайдено\",\n  \"code\": \"NOT_FOUND\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create Booking Invalid Data",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_0val}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Idempotency-Key",
+                "value": "baseline-invalid-001"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Booking Invalid Data",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Idempotency-Key",
+                    "value": "baseline-invalid-001"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/bookings",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 26 Oct 2026 11:50:09 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "X-Correlation-Id",
+                  "value": "7a8f4277-93ec-43c9-bf89-a9f407a98ad1"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n  \"title\": \"One or more validation errors occurred.\",\n  \"status\": 400,\n  \"errors\": {\n    \"NumberOfAdults\": [\n      \"Кількість дорослих від 1 до 20\"\n    ]\n  },\n  \"traceId\": \"00-6db89bb274341171256855611af6c8ce-c776a06d58e68481-00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create Booking Invalid Tour",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{json_web_token_0val}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Idempotency-Key",
+                "value": "baseline-invalid-tour-001"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"tourId\": 999999,\r\n  \"startDate\": \"2027-06-15T00:00:00\",\r\n  \"numberOfAdults\": 1,\r\n  \"numberOfChildren\": 0,\r\n  \"comment\": \"Baseline test: invalid tour\",\r\n  \"persons\": [\r\n    {\r\n      \"name\": \"Тестовий Користувач\",\r\n      \"passportData\": \"TEST123456\",\r\n      \"dateOfBirth\": \"1995-05-10\",\r\n      \"isChild\": false\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Create Booking Invalid Tour",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Idempotency-Key",
+                    "value": "baseline-invalid-tour-001"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"tourId\": 999999,\r\n  \"startDate\": \"2027-06-15T00:00:00\",\r\n  \"numberOfAdults\": 1,\r\n  \"numberOfChildren\": 0,\r\n  \"comment\": \"Baseline test: invalid tour\",\r\n  \"persons\": [\r\n    {\r\n      \"name\": \"Тестовий Користувач\",\r\n      \"passportData\": \"TEST123456\",\r\n      \"dateOfBirth\": \"1995-05-10\",\r\n      \"isChild\": false\r\n    }\r\n  ]\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:5000/api/bookings",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json; charset=utf-8"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 26 Oct 2026 11:51:57 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "X-Correlation-Id",
+                  "value": "e04870a7-cba5-4fb9-8950-4d07516de80a"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"message\": \"Тур не знайдено\",\n  \"code\": \"NOT_FOUND\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Cancel чужe Booking",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/bookings/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings",
+                "4"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel Booking Without Token",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/bookings/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "api",
+                "bookings",
+                "4"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Cancel Booking Without Token",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:5000/api/bookings/4",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings",
+                    "4"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [
+                {
+                  "key": "Content-Length",
+                  "value": "0"
+                },
+                {
+                  "key": "Date",
+                  "value": "Mon, 26 Oct 2026 11:56:10 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Kestrel"
+                },
+                {
+                  "key": "WWW-Authenticate",
+                  "value": "Bearer"
+                },
+                {
+                  "key": "X-Correlation-Id",
+                  "value": "336e7f7a-2168-47ab-947a-50949c743cb5"
+                }
+              ],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "GET All Bookings Without Token",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5272/api/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5272",
+          "path": [
+            "api",
+            "bookings"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "GET All Bookings Without Token",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5272/api/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5272",
+              "path": [
+                "api",
+                "bookings"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "0"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 26 Oct 2026 10:50:19 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "WWW-Authenticate",
+              "value": "Bearer"
+            }
+          ],
+          "cookie": [],
+          "body": ""
+        }
+      ]
+    },
+    {
+      "name": "GET All Bookings As User",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_06mz}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5272/api/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5272",
+          "path": [
+            "api",
+            "bookings"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "GET All Bookings As User",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5272/api/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5272",
+              "path": [
+                "api",
+                "bookings"
+              ]
+            }
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "0"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 26 Oct 2026 10:51:35 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            }
+          ],
+          "cookie": [],
+          "body": ""
+        }
+      ]
+    },
+    {
+      "name": "PUT Update Status As User",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_06mz}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"confirmed\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5272/api/bookings/1/status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5272",
+          "path": [
+            "api",
+            "bookings",
+            "1",
+            "status"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "PUT Update Status As User",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"confirmed\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5272/api/bookings/1/status",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5272",
+              "path": [
+                "api",
+                "bookings",
+                "1",
+                "status"
+              ]
+            }
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "0"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 26 Oct 2026 10:52:54 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            }
+          ],
+          "cookie": [],
+          "body": ""
+        }
+      ]
+    },
+    {
+      "name": "PUT Update Status As Manager",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_0yow}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"confirmed\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5272/api/bookings/1/status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5272",
+          "path": [
+            "api",
+            "bookings",
+            "1",
+            "status"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "PUT Update Status As Manager",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"confirmed\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5272/api/bookings/1/status",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5272",
+              "path": [
+                "api",
+                "bookings",
+                "1",
+                "status"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 26 Oct 2026 10:54:30 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "cookie": [],
+          "body": "Статус оновлено"
+        }
+      ]
+    },
+    {
+      "name": "PUT Update Missing Booking",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_0yow}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"status\": \"confirmed\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5272/api/bookings/99999/status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5272",
+          "path": [
+            "api",
+            "bookings",
+            "99999",
+            "status"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "PUT Update Missing Booking",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"confirmed\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5272/api/bookings/99999/status",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5272",
+              "path": [
+                "api",
+                "bookings",
+                "99999",
+                "status"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 26 Oct 2026 10:55:35 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache,no-store"
+            },
+            {
+              "key": "Expires",
+              "value": "-1"
+            },
+            {
+              "key": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"message\": \"Бронювання не знайдено\",\n  \"code\": \"NOT_FOUND\",\n  \"errors\": null\n}"
+        }
+      ]
+    },
+    {
+      "name": "DELETE Cancel Booking Without Token",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5272/api/bookings/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5272",
+          "path": [
+            "api",
+            "bookings",
+            "1"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "DELETE Cancel Booking Without Token",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5272/api/bookings/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5272",
+              "path": [
+                "api",
+                "bookings",
+                "1"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": "text",
+          "header": [
+            {
+              "key": "Content-Length",
+              "value": "0"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 26 Oct 2026 10:56:46 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "WWW-Authenticate",
+              "value": "Bearer"
+            }
+          ],
+          "cookie": [],
+          "body": ""
+        }
+      ]
+    },
+    {
+      "name": "POST Create Booking Invalid Data",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_0yow}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5272/api/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5272",
+          "path": [
+            "api",
+            "bookings"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "POST Create Booking Invalid Data",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5272/api/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5272",
+              "path": [
+                "api",
+                "bookings"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/problem+json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 26 Oct 2026 10:57:56 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"type\": \"https://tools.ietf.org/html/rfc9110#section-15.5.1\",\n  \"title\": \"One or more validation errors occurred.\",\n  \"status\": 400,\n  \"errors\": {\n    \"NumberOfAdults\": [\n      \"Кількість дорослих від 1 до 20\"\n    ]\n  },\n  \"traceId\": \"00-6c7ed1504ea4a433689fdd91661d3f3d-712a87bd4deb6b1d-00\"\n}"
+        }
+      ]
+    },
+    {
+      "name": "POST Create Booking Invalid Tour",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_0yow}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"tourId\": 999999,\r\n  \"startDate\": \"2027-06-15T00:00:00\",\r\n  \"numberOfAdults\": 1,\r\n  \"numberOfChildren\": 0,\r\n  \"comment\": \"Baseline test: invalid tour\",\r\n  \"persons\": [\r\n    {\r\n      \"name\": \"Тестовий Користувач\",\r\n      \"passportData\": \"TEST123456\",\r\n      \"dateOfBirth\": \"1995-05-10\",\r\n      \"isChild\": false\r\n    }\r\n  ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5272/api/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5272",
+          "path": [
+            "api",
+            "bookings"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "POST Create Booking Invalid Tour",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"tourId\": 999999,\r\n  \"startDate\": \"2027-06-15T00:00:00\",\r\n  \"numberOfAdults\": 1,\r\n  \"numberOfChildren\": 0,\r\n  \"comment\": \"Baseline test: invalid tour\",\r\n  \"persons\": [\r\n    {\r\n      \"name\": \"Тестовий Користувач\",\r\n      \"passportData\": \"TEST123456\",\r\n      \"dateOfBirth\": \"1995-05-10\",\r\n      \"isChild\": false\r\n    }\r\n  ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:5272/api/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5272",
+              "path": [
+                "api",
+                "bookings"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 26 Oct 2026 11:00:06 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache,no-store"
+            },
+            {
+              "key": "Expires",
+              "value": "-1"
+            },
+            {
+              "key": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"message\": \"Тур не знайдено\",\n  \"code\": \"NOT_FOUND\",\n  \"errors\": null\n}"
+        }
+      ]
+    },
+    {
+      "name": "DELETE Cancel Already Cancelled Booking",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{json_web_token_0yow}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5272/api/bookings/4",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5272",
+          "path": [
+            "api",
+            "bookings",
+            "4"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "DELETE Cancel Already Cancelled Booking",
+          "originalRequest": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5272/api/bookings/4",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5272",
+              "path": [
+                "api",
+                "bookings",
+                "4"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 26 Oct 2026 11:01:26 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "Kestrel"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache,no-store"
+            },
+            {
+              "key": "Expires",
+              "value": "-1"
+            },
+            {
+              "key": "Pragma",
+              "value": "no-cache"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n  \"message\": \"Це не ваше бронювання\",\n  \"code\": \"FORBIDDEN\",\n  \"errors\": null\n}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "json_web_token_06mz",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0v2e",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0yow",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0cch",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0isq",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0miu",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_19w0",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0u5l",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0wy0",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0val",
+      "secret": true
+    }
+  ]
+}
