@@ -1,5 +1,4 @@
-﻿
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Text.Encodings.Web;
 using BookingService.Data;
 using Microsoft.AspNetCore.Authentication;

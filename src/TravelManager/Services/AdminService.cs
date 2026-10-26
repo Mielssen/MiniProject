@@ -1,5 +1,4 @@
-﻿
-using System.Net;
+﻿using System.Net;
 using System.Security.Claims;
 using TravelManager.DTOs;
 using TravelManager.Exceptions;
