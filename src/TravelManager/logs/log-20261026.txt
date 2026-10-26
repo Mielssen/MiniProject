@@ -26,3 +26,17 @@
 2026-10-26 13:37:12.046 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 62.4283ms
 2026-10-26 13:37:12.073 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
 2026-10-26 13:37:12.089 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 15.6637ms
+2026-10-26 15:27:40.215 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-26 15:27:40.467 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-26 15:27:40.471 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-26 15:27:40.806 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-26 15:27:40.809 +02:00 [INF] Hosting environment: Development
+2026-10-26 15:27:40.813 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-26 15:27:41.448 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-26 15:27:41.731 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-26 15:27:41.731 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-26 15:27:41.734 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 288.2551ms
+2026-10-26 15:27:41.744 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 12.1679ms
+2026-10-26 15:27:41.826 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 95.0813ms
+2026-10-26 15:27:41.858 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-26 15:27:41.882 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 23.9572ms
