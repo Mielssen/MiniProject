@@ -84,8 +84,7 @@ builder.Services.AddDbContext<TravelmanagerContext>(options =>
             builder.Configuration["TravelManager:ConnectionString"] ?? builder.Configuration.GetConnectionString("DefaultConnection"),
             new MySqlServerVersion(new Version(8, 0, 0))
         )
-        .EnableDetailedErrors()
-        .LogTo(Console.WriteLine, LogLevel.Information);
+        .EnableDetailedErrors();
 });
 
 builder.Services.Configure<IISServerOptions>(options =>
@@ -155,7 +154,7 @@ app.UseExceptionHandler(errorApp =>
         if (exception is AppException appEx)
         {
             context.Response.StatusCode = 400;
-            logger.LogWarning("AppException: Code={Code}, Message={Message}", appEx.Code, appEx.Message);
+            logger.LogWarning("AppException: Code={Code}", appEx.Code);
             await context.Response.WriteAsJsonAsync(new ApiErrorResponse
             {
                 Message = appEx.Message,

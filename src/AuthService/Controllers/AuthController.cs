@@ -16,6 +16,28 @@ public class AuthController : ControllerBase
         _authService = authService;
     }
 
+    [HttpPost("legacy/login")]
+    public async Task<IActionResult> LegacyLogin(LoginDto dto)
+    {
+        var result = await _authService.Login(dto);
+
+        return Ok(new
+        {
+            token = result.AccessToken
+        });
+    }
+
+    [HttpPost("legacy/register")]
+    public async Task<IActionResult> LegacyRegister(RegisterRequestDto dto)
+    {
+        var result = await _authService.Register(dto);
+
+        return Ok(new
+        {
+            token = result.AccessToken
+        });
+    }
+
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterRequestDto dto)
     {

@@ -38,7 +38,9 @@ namespace TravelManager.Services
             };
 
             _repo.Add(tour);
-            _logger.LogInformation("Створено тур: Name={Name}, Price={Price}", tour.Name, tour.Price);
+            _logger.LogInformation(
+                "Створено тур. TourId={TourId}",
+                tour.TourId);
             return tour.TourId;
         }
 

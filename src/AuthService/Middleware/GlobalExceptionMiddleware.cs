@@ -25,9 +25,8 @@ public class GlobalExceptionMiddleware
         catch (AppException ex)
         {
             _logger.LogWarning(
-                "Помилка {Code}: {Message}",
-                ex.Code,
-                ex.Message);
+                "Application error. Code={Code}",
+                ex.Code);
 
             var statusCode = ex.Code switch
             {

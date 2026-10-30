@@ -70,9 +70,7 @@ namespace TravelManager.Services
 
             await _authClient.UpdateRoleAsync(targetId, newRole, token);
 
-            _logger.LogInformation(
-                "Адмін ID={AdminId} змінив роль користувача ID={UserId}",
-                adminId, targetId);
+            _logger.LogInformation("Адміністратор змінив роль користувача");
         }
 
         public async Task UpdateUserDataAsync(
@@ -96,9 +94,7 @@ namespace TravelManager.Services
 
             await _authClient.UpdateUserDataAsync(targetId, dto, token);
 
-            _logger.LogInformation(
-                "Адмін ID={AdminId} оновив дані користувача ID={UserId}",
-                adminId, targetId);
+            _logger.LogInformation("Адміністратор оновив дані користувача");
         }
 
         public async Task SetUserStatusAsync(
@@ -123,9 +119,7 @@ namespace TravelManager.Services
                 status == "active",
                 token);
 
-            _logger.LogInformation(
-                "Адмін ID={AdminId} змінив статус користувача ID={UserId}",
-                adminId, targetId);
+            _logger.LogInformation("Адміністратор змінив статус користувача");
         }
 
 

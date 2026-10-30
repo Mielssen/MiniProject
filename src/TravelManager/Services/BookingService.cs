@@ -111,8 +111,10 @@ namespace TravelManager.Services
             }
             _context.SaveChanges();
             _logger.LogInformation(
-                "Нове бронювання: UserID={UserId}, TourID={TourId}, People={People}, Total={Total}",
-                userId, dto.TourId, dto.NumberOfAdults + dto.NumberOfChildren, totalPrice);
+                "Нове бронювання: TourID={TourId}, People={People}, Total={Total}",
+                dto.TourId,
+                dto.NumberOfAdults + dto.NumberOfChildren,
+                totalPrice);
         }
 
         public async Task<List<BookingDto>> GetMy(int userId, string token)
@@ -173,8 +175,7 @@ namespace TravelManager.Services
             booking.Status = status;
             _repo.Update(booking);
             _logger.LogInformation(
-                "Статус бронювання ID={BookingId} змінено на {Status}",
-                bookingId, status);
+                "Статус бронювання змінено на {Status}", status);
         }
 
         public async Task<List<BookingDto>> GetAll(string? status, string token)
@@ -249,9 +250,7 @@ namespace TravelManager.Services
 
             _repo.Delete(booking);
 
-            _logger.LogInformation(
-                "Бронювання ID={BookingId} скасовано користувачем ID={UserId}",
-                userId, bookingId);
+            _logger.LogInformation("Бронювання скасовано");
         }
 
     }

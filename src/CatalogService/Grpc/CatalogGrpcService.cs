@@ -8,10 +8,12 @@ namespace CatalogService.Grpc;
 public class CatalogGrpcService : CatalogGrpc.CatalogGrpcBase
 {
     private readonly CatalogDbContext _context;
+    private readonly ILogger<CatalogGrpcService> _logger;
 
-    public CatalogGrpcService(CatalogDbContext context)
+    public CatalogGrpcService(CatalogDbContext context, ILogger<CatalogGrpcService> logger)
     {
         _context = context;
+        _logger = logger;
     }
 
 
@@ -19,7 +21,9 @@ public class CatalogGrpcService : CatalogGrpc.CatalogGrpcBase
         GetTourRequest request,
         ServerCallContext context)
     {
-        Console.WriteLine($"gRPC GetTour почався. TourId={request.Id}");
+        _logger.LogDebug(
+            "gRPC GetTour запит. TourId={TourId}",
+            request.Id);
 
         var tour = await _context.Tours
             .Where(t => t.IsActive)
@@ -30,13 +34,17 @@ public class CatalogGrpcService : CatalogGrpc.CatalogGrpcBase
 
         if (tour == null)
         {
+            _logger.LogWarning(
+                "gRPC тур не знайдено. TourId={TourId}",
+                request.Id);
+
             throw new RpcException(
-                new Status(
-                    StatusCode.NotFound,
-                    "Тур не знайдено"));
+                new Status(StatusCode.NotFound, "Тур не знайдено"));
         }
 
-        Console.WriteLine($"gRPC тур знайдено: {tour.Name}");
+        _logger.LogDebug(
+            "gRPC тур знайдено. TourId={TourId}",
+            request.Id);
 
         return new TourResponse
         {

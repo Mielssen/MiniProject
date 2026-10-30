@@ -132,7 +132,7 @@ namespace TravelManager.Services
             };
 
             _repo.AddUserDetail(detail);
-            _logger.LogInformation("Новий користувач зареєстрований: Email={Email}", email);
+            _logger.LogInformation("Новий користувач зареєстрований");
             return new TokenResponceDto
             {
                 Token = GenerateJwtToken(user)
@@ -152,20 +152,20 @@ namespace TravelManager.Services
 
             if (user == null)
             {
-                _logger.LogWarning("Спроба входу з неіснуючим email: {Email}", dto.Email);
+                _logger.LogWarning("Спроба входу: користувача не знайдено");
                 throw new AppException("NOT_FOUND", "Користувача не знайдено");
             }
             if (user.Status == "deleted")
             {
-                _logger.LogWarning("Спроба входу в деактивований акаунт: Email={Email}", dto.Email);
+                _logger.LogWarning("Спроба входу в деактивований акаунт");
                 throw new AppException("ACCOUNT_DISABLED", "Акаунт деактивовано");
             }
             if (!BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
             {
-                _logger.LogWarning("Невірний пароль для Email={Email}", dto.Email);
+                _logger.LogWarning("Невдала спроба входу: неправильні облікові дані");
                 throw new AppException("WRONG_PASSWORD", "Неправильний пароль");
             }
-            _logger.LogInformation("Успішний вхід: Email={Email}, Role={Role}", user.Email, user.Role);
+            _logger.LogInformation("Успішний вхід. Role={Role}", user.Role);
             return new TokenResponceDto
             {
                 Token = GenerateJwtToken(user)

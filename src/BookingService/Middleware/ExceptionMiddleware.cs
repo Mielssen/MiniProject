@@ -24,9 +24,8 @@ public class ExceptionMiddleware
         catch (AppException ex)
         {
             _logger.LogWarning(
-                "AppException: Code={Code}, Message={Message}",
-                ex.Code,
-                ex.Message);
+                "AppException: Code={Code}",
+                ex.Code);
 
             context.Response.StatusCode = 400;
 

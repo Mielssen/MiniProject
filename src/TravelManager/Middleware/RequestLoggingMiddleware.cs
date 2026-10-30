@@ -1,6 +1,4 @@
-﻿using System.Security.Claims;
-
-namespace TravelManager.Middleware
+﻿namespace TravelManager.Middleware
 {
     public class RequestLoggingMiddleware
     {
@@ -20,14 +18,12 @@ namespace TravelManager.Middleware
             await _next(context);
 
             var elapsed = (DateTime.UtcNow - start).TotalMilliseconds;
-            var user = context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "anonymous";
 
             _logger.LogInformation(
-                "{Method} {Path} | Status={StatusCode} | User={User} | {Elapsed}ms",
+                "{Method} {Path} | Status={StatusCode} | {Elapsed}ms",
                 context.Request.Method,
                 context.Request.Path,
                 context.Response.StatusCode,
-                user,
                 elapsed);
         }
     }
