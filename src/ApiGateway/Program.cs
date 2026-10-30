@@ -113,8 +113,12 @@ builder.Services.AddRateLimiter(options =>
                         });
             });
 });
+var ocelotConfigFile = builder.Environment.IsProduction()
+    ? "ocelot.Docker.json"
+    : "ocelot.json";
+
 builder.Configuration.AddJsonFile(
-    "ocelot.json",
+    ocelotConfigFile,
     optional: false,
     reloadOnChange: true);
 
@@ -243,15 +247,28 @@ app.UseStatusCodePages(async statusCodeContext =>
 
 app.MapGet("/health", async (
     IHttpClientFactory httpClientFactory,
+    IConfiguration configuration,
     CancellationToken cancellationToken) =>
 {
     var client = httpClientFactory.CreateClient("Health");
+
+    var catalogUrl = configuration["Services:CatalogRest"]
+        ?? "http://127.0.0.1:5002";
+
+    var bookingUrl = configuration["Services:BookingService"]
+        ?? "http://localhost:5100";
+
+    var authUrl = configuration["Services:AuthService"]
+        ?? "https://localhost:7001";
 
     async Task<bool> CheckService(string url)
     {
         try
         {
-            using var response = await client.GetAsync(url, cancellationToken);
+            using var response = await client.GetAsync(
+                $"{url.TrimEnd('/')}/health",
+                cancellationToken);
+
             return response.IsSuccessStatusCode;
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
@@ -268,9 +285,9 @@ app.MapGet("/health", async (
         }
     }
 
-    var catalogTask = CheckService("http://127.0.0.1:5002/health");
-    var bookingTask = CheckService("http://127.0.0.1:5100/health");
-    var authTask = CheckService("https://localhost:7001/health");
+    var catalogTask = CheckService(catalogUrl);
+    var bookingTask = CheckService(bookingUrl);
+    var authTask = CheckService(authUrl);
 
     await Task.WhenAll(catalogTask, bookingTask, authTask);
 

@@ -81,24 +81,36 @@ builder.Services.AddAuthorization();
 
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenLocalhost(5002, listenOptions =>
+    if (builder.Environment.IsProduction())
     {
-        listenOptions.Protocols = HttpProtocols.Http1;
-    });
+        options.ListenAnyIP(5002, listenOptions =>
+        {
+            listenOptions.Protocols = HttpProtocols.Http1;
+        });
 
-    options.ListenLocalhost(7002, listenOptions =>
+        options.ListenAnyIP(7002, listenOptions =>
+        {
+            listenOptions.Protocols = HttpProtocols.Http2;
+        });
+    }
+    else
     {
-        listenOptions.Protocols = HttpProtocols.Http2;
-    });
+        options.ListenLocalhost(5002, listenOptions =>
+        {
+            listenOptions.Protocols = HttpProtocols.Http1;
+        });
+
+        options.ListenLocalhost(7002, listenOptions =>
+        {
+            listenOptions.Protocols = HttpProtocols.Http2;
+        });
+    }
 });
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseMiddleware<RequestLoggingMiddleware>();

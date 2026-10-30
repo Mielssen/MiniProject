@@ -110,12 +110,18 @@ builder.Services.AddScoped<AdminService>();
 
 builder.Services.AddHttpClient<AuthServiceClient>(client =>
 {
-    client.BaseAddress = new Uri("https://localhost:7001/");
+    var authServiceUrl = builder.Configuration["Services:AuthService"]
+        ?? throw new InvalidOperationException("Не налаштовано Services:AuthService");
+
+    client.BaseAddress = new Uri(authServiceUrl);
 });
 
 builder.Services.AddHttpClient<BookingServiceClient>(client =>
 {
-    client.BaseAddress = new Uri("http://localhost:5100/");
+    var bookingServiceUrl = builder.Configuration["Services:BookingService"]
+        ?? throw new InvalidOperationException("Не налаштовано Services:BookingService");
+
+    client.BaseAddress = new Uri(bookingServiceUrl);
 });
 
 builder.Services.AddSingleton<CatalogGrpcClient>();

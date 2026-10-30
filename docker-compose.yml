@@ -1,0 +1,116 @@
+
+services:
+  mysql:
+    image: mysql:9.4
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?MYSQL_ROOT_PASSWORD is required}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p\"$${MYSQL_ROOT_PASSWORD}\" --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  auth-service:
+    build:
+      context: .
+      dockerfile: src/AuthService/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:5001
+      Jwt__Key: ${Jwt__Key:?Jwt__Key is required}
+      Jwt__Issuer: TravelManager
+      Jwt__Audience: TravelManagerUsers
+      AuthService__ConnectionString: "Server=mysql;Port=3306;Database=miniproject_auth;User=root;Password=${MYSQL_ROOT_PASSWORD};"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  catalog-service:
+    build:
+      context: .
+      dockerfile: src/CatalogService/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "5002:5002"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      Jwt__Key: ${Jwt__Key:?Jwt__Key is required}
+      Jwt__Issuer: TravelManager
+      Jwt__Audience: TravelManagerUsers
+      CatalogService__ConnectionString: "Server=mysql;Port=3306;Database=miniproject_catalog;User=root;Password=${MYSQL_ROOT_PASSWORD};"
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  booking-service:
+    build:
+      context: .
+      dockerfile: src/BookingService/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "5100:5100"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:5100
+      Jwt__Key: ${Jwt__Key:?Jwt__Key is required}
+      Jwt__Issuer: TravelManager
+      Jwt__Audience: TravelManagerUsers
+      BookingService__ConnectionString: "Server=mysql;Port=3306;Database=booking_service_db;User=root;Password=${MYSQL_ROOT_PASSWORD};"
+      Services__AuthService: http://auth-service:5001/
+      Services__CatalogService: http://catalog-service:7002
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  travel-manager:
+    build:
+      context: .
+      dockerfile: src/TravelManager/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "5272:5272"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:5272
+      Jwt__Key: ${Jwt__Key:?Jwt__Key is required}
+      Jwt__Issuer: TravelManager
+      Jwt__Audience: TravelManagerUsers
+      TravelManager__ConnectionString: "Server=mysql;Port=3306;Database=travelmanager2;User=root;Password=${MYSQL_ROOT_PASSWORD};"
+      Services__AuthService: http://auth-service:5001/
+      Services__BookingService: http://booking-service:5100/
+      Services__CatalogService: http://catalog-service:7002
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+  api-gateway:
+    build:
+      context: .
+      dockerfile: src/ApiGateway/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:5000
+      Jwt__Key: ${Jwt__Key:?Jwt__Key is required}
+      Jwt__Issuer: TravelManager
+      Jwt__Audience: TravelManagerUsers
+      Services__AuthService: http://auth-service:5001
+      Services__CatalogRest: http://catalog-service:5002
+      Services__BookingService: http://booking-service:5100
+    depends_on:
+      - auth-service
+      - catalog-service
+      - booking-service
+      - travel-manager
+
+volumes:
+  mysql_data:

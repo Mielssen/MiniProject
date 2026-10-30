@@ -18,17 +18,15 @@ namespace ApiGateway.Controllers;
 /// </remarks>
 public class DashboardController : ControllerBase
 {
-    private const string CatalogUrl =
-        "http://localhost:5002/api/v1/catalog/items";
-
-    private const string BookingsUrl =
-        "http://localhost:5100/api/bookings/my";
-
     private readonly IHttpClientFactory _httpClientFactory;
+    private readonly IConfiguration _configuration;
 
-    public DashboardController(IHttpClientFactory httpClientFactory)
+    public DashboardController(
+        IHttpClientFactory httpClientFactory,
+        IConfiguration configuration)
     {
         _httpClientFactory = httpClientFactory;
+        _configuration = configuration;
     }
     /// <summary>
     /// Отримання даних Dashboard.
@@ -73,11 +71,23 @@ public class DashboardController : ControllerBase
         var authorization = Request.Headers.Authorization.ToString();
         var correlationId = Request.Headers["X-Correlation-Id"].ToString();
 
+        var catalogUrl = _configuration["Services:CatalogRest"]
+            ?? "http://localhost:5002";
+
+        var bookingUrl = _configuration["Services:BookingService"]
+            ?? "http://localhost:5100";
+
         var catalogTask = GetServiceDataAsync(
-            CatalogUrl, null, correlationId, cancellationToken);
+            $"{catalogUrl.TrimEnd('/')}/api/v1/catalog/items",
+            null,
+            correlationId,
+            cancellationToken);
 
         var bookingsTask = GetServiceDataAsync(
-            BookingsUrl, authorization, correlationId, cancellationToken);
+            $"{bookingUrl.TrimEnd('/')}/api/bookings/my",
+            authorization,
+            correlationId,
+            cancellationToken);
 
         var results = await Task.WhenAll(catalogTask, bookingsTask);
 

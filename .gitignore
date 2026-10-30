@@ -15,3 +15,5 @@ obj/
 # Logs
 **/logs/
 *.log
+
+docker/mysql/init/*.sql
