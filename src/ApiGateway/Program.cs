@@ -119,6 +119,55 @@ builder.Configuration.AddJsonFile(
     reloadOnChange: true);
 
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "API Gateway",
+        Version = "v1",
+        Description = "API Gateway для взаємодії з сервісами системи."
+    });
+
+    var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    options.IncludeXmlComments(xmlPath);
+
+    options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        Description = "Введіть JWT токен."
+    });
+
+    options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        {
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                {
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+
+    options.DocInclusionPredicate((docName, apiDescription) =>
+    {
+        var path = apiDescription.RelativePath?.Trim('/');
+
+        return path == "health" || path == "api/dashboard";
+    });
+
+    options.OperationFilter<ApiGateway.Swagger.DashboardExamplesOperationFilter>();
+});
 
 builder.Services.AddMemoryCache();
 builder.Services.AddSingleton<CatalogCacheKeyRegistry>();
@@ -154,6 +203,8 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseExceptionHandler();
 
 app.UseStatusCodePages(async statusCodeContext =>

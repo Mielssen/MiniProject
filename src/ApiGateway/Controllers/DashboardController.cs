@@ -1,13 +1,21 @@
-﻿
-using System.Text.Json;
+﻿using System.Text.Json;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ApiGateway.Models;
 
 namespace ApiGateway.Controllers;
 
 [ApiController]
 [Route("api/dashboard")]
 [Authorize]
+/// <summary>
+/// Отримує зведену інформацію для панелі користувача.
+/// </summary>
+/// <remarks>
+/// Паралельно отримує список доступних турів із CatalogService
+/// та особисті бронювання користувача з BookingService.
+/// Якщо один із сервісів недоступний, повертає часткову відповідь.
+/// </remarks>
 public class DashboardController : ControllerBase
 {
     private const string CatalogUrl =
@@ -22,8 +30,43 @@ public class DashboardController : ControllerBase
     {
         _httpClientFactory = httpClientFactory;
     }
-
+    /// <summary>
+    /// Отримання даних Dashboard.
+    /// </summary>
+    /// <remarks>
+    /// Приклад повної відповіді:
+    ///
+    ///     {
+    ///       "catalog": [],
+    ///       "bookings": [],
+    ///       "partial": false,
+    ///       "errors": {
+    ///         "catalog": null,
+    ///         "bookings": null
+    ///       }
+    ///     }
+    ///
+    /// Приклад часткової відповіді:
+    ///
+    ///     {
+    ///       "catalog": [],
+    ///       "bookings": null,
+    ///       "partial": true,
+    ///       "errors": {
+    ///         "catalog": null,
+    ///         "bookings": "Сервіс недоступний"
+    ///       }
+    ///     }
+    /// </remarks>
     [HttpGet]
+    [Produces("application/json")]
+    [ProducesResponseType(typeof(DashboardResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status429TooManyRequests)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status502BadGateway)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status503ServiceUnavailable)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status504GatewayTimeout)]
     public async Task<IActionResult> GetDashboard(
         CancellationToken cancellationToken)
     {
@@ -41,15 +84,15 @@ public class DashboardController : ControllerBase
         var catalog = results[0];
         var bookings = results[1];
 
-        return Ok(new
+        return Ok(new DashboardResponse
         {
-            catalog = catalog.Data,
-            bookings = bookings.Data,
-            partial = catalog.Error != null || bookings.Error != null,
-            errors = new
+            Catalog = catalog.Data,
+            Bookings = bookings.Data,
+            Partial = catalog.Error != null || bookings.Error != null,
+            Errors = new DashboardErrors
             {
-                catalog = catalog.Error,
-                bookings = bookings.Error
+                Catalog = catalog.Error,
+                Bookings = bookings.Error
             }
         });
     }
