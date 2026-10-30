@@ -102,14 +102,55 @@ if (app.Environment.IsDevelopment())
 
 app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseMiddleware<RequestLoggingMiddleware>();
-//app.UseHttpsRedirection();
-
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapGrpcService<CatalogGrpcService>();
 
 app.MapControllers();
-app.MapHealthChecks("/health");
+
+app.MapGet("/health", async (
+    CatalogDbContext db,
+    CancellationToken cancellationToken) =>
+{
+    try
+    {
+        var canConnect = await db.Database.CanConnectAsync(
+            cancellationToken);
+
+        if (!canConnect)
+        {
+            return Results.Json(
+                new
+                {
+                    status = "Unhealthy",
+                    service = "CatalogService"
+                },
+                statusCode: 503);
+        }
+
+        return Results.Ok(new
+        {
+            status = "Healthy",
+            service = "CatalogService"
+        });
+    }
+    catch (OperationCanceledException) when (
+        cancellationToken.IsCancellationRequested)
+    {
+        throw;
+    }
+    catch
+    {
+        return Results.Json(
+            new
+            {
+                status = "Unhealthy",
+                service = "CatalogService"
+            },
+            statusCode: 503);
+    }
+});
+
 
 app.Run();

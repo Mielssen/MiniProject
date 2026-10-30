@@ -99,31 +99,72 @@ if (app.Environment.IsDevelopment())
 app.UseAuthentication();
 app.UseAuthorization();
 
+
 app.Use(async (context, next) =>
 {
-    var start = DateTime.UtcNow;
+    var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
     await next();
 
-    var elapsed = (DateTime.UtcNow - start).TotalMilliseconds;
-    var user = context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value
-        ?? "anonymous";
+    stopwatch.Stop();
+
+    var correlationId = context.Request.Headers["X-Correlation-Id"]
+        .FirstOrDefault() ?? "not-provided";
 
     app.Logger.LogInformation(
-        "{Method} {Path} | Status={StatusCode} | User={User} | {Elapsed}ms",
+        "Request completed. Method={Method}, StatusCode={StatusCode}, DurationMs={DurationMs}, CorrelationId={CorrelationId}",
         context.Request.Method,
-        context.Request.Path,
         context.Response.StatusCode,
-        user,
-        elapsed);
+        stopwatch.ElapsedMilliseconds,
+        correlationId);
 });
 
+
 app.MapControllers();
-app.MapGet("/health", () => Results.Ok(new
+
+app.MapGet("/health", async (
+    BookingDbContext db,
+    CancellationToken cancellationToken) =>
 {
-    status = "Healthy",
-    service = "BookingService"
-}));
+    try
+    {
+        var canConnect = await db.Database.CanConnectAsync(
+            cancellationToken);
+
+        if (!canConnect)
+        {
+            return Results.Json(
+                new
+                {
+                    status = "Unhealthy",
+                    service = "BookingService"
+                },
+                statusCode: 503);
+        }
+
+        return Results.Ok(new
+        {
+            status = "Healthy",
+            service = "BookingService"
+        });
+    }
+    catch (OperationCanceledException) when (
+        cancellationToken.IsCancellationRequested)
+    {
+        throw;
+    }
+    catch
+    {
+        return Results.Json(
+            new
+            {
+                status = "Unhealthy",
+                service = "BookingService"
+            },
+            statusCode: 503);
+    }
+});
+
 app.Run();
 
 public partial class Program;

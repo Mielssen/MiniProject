@@ -219,7 +219,7 @@ app.MapGet("/health", async (
 
     var catalogTask = CheckService("http://127.0.0.1:5002/health");
     var bookingTask = CheckService("http://127.0.0.1:5100/health");
-    var authTask = CheckService("https://localhost:7001/health");
+    var authTask = CheckService("http://127.0.0.1:5001/health");
 
     await Task.WhenAll(catalogTask, bookingTask, authTask);
 
@@ -244,23 +244,25 @@ app.MapGet("/health", async (
 
 app.UseCors("AllowFrontend");
 
+
 app.Use(async (context, next) =>
 {
+    var logger = context.RequestServices
+        .GetRequiredService<ILogger<Program>>();
+
     var stopwatch = Stopwatch.StartNew();
 
-    if (!context.Request.Headers.TryGetValue(
-        "X-Correlation-Id",
-        out var correlationId))
+    var correlationId = context.Request.Headers["X-Correlation-Id"]
+        .FirstOrDefault();
+
+    if (string.IsNullOrWhiteSpace(correlationId) ||
+        correlationId.Length > 128)
     {
         correlationId = Guid.NewGuid().ToString();
-        context.Request.Headers["X-Correlation-Id"] = correlationId;
     }
 
+    context.Request.Headers["X-Correlation-Id"] = correlationId;
     context.Response.Headers["X-Correlation-Id"] = correlationId;
-
-    var method = context.Request.Method;
-    var path = context.Request.Path;
-    var destination = $"http://localhost:5272{path}";
 
     try
     {
@@ -270,15 +272,15 @@ app.Use(async (context, next) =>
     {
         stopwatch.Stop();
 
-        Console.WriteLine(
-            $"[Gateway Log] Method: {method} | " +
-            $"Path: {path} | " +
-            $"Destination: {destination} | " +
-            $"Status: {context.Response.StatusCode} | " +
-            $"Duration: {stopwatch.ElapsedMilliseconds}ms | " +
-            $"CorrelationId: {correlationId}");
+        logger.LogInformation(
+            "Gateway request completed. Method={Method}, StatusCode={StatusCode}, DurationMs={DurationMs}, CorrelationId={CorrelationId}",
+            context.Request.Method,
+            context.Response.StatusCode,
+            stopwatch.ElapsedMilliseconds,
+            correlationId);
     }
 });
+
 app.UseRouting();
 
 app.UseAuthentication();
@@ -289,8 +291,68 @@ app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
 });
+
 app.UseMiddleware<CatalogCacheMiddleware>();
+
+app.Use(async (context, next) =>
+{
+    var originalBody = context.Response.Body;
+
+    await using var buffer = new MemoryStream();
+
+    context.Response.Body = buffer;
+
+    try
+    {
+        await next();
+
+        var statusCode = context.Response.StatusCode;
+
+        if (statusCode is 502 or 503 or 504)
+        {
+            buffer.SetLength(0);
+
+            context.Response.ContentType = "application/problem+json";
+            context.Response.ContentLength = null;
+
+            var title = statusCode switch
+            {
+                502 => "Помилка шлюзу",
+                503 => "Сервіс недоступний",
+                504 => "Час очікування вичерпано",
+                _ => "Помилка сервера"
+            };
+
+            var detail = statusCode switch
+            {
+                502 => "Gateway отримав некоректну відповідь від сервісу.",
+                503 => "Один із сервісів тимчасово недоступний.",
+                504 => "Сервіс не відповів протягом встановленого часу.",
+                _ => "Не вдалося виконати запит."
+            };
+
+            await Results.Problem(
+                statusCode: statusCode,
+                title: title,
+                detail: detail,
+                instance: context.Request.Path
+            ).ExecuteAsync(context);
+        }
+
+        buffer.Position = 0;
+
+        await buffer.CopyToAsync(
+            originalBody,
+            context.RequestAborted);
+    }
+    finally
+    {
+        context.Response.Body = originalBody;
+    }
+});
+
 await app.UseOcelot();
+
 
 app.Run();
 

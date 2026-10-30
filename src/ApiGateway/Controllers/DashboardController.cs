@@ -28,12 +28,13 @@ public class DashboardController : ControllerBase
         CancellationToken cancellationToken)
     {
         var authorization = Request.Headers.Authorization.ToString();
+        var correlationId = Request.Headers["X-Correlation-Id"].ToString();
 
         var catalogTask = GetServiceDataAsync(
-            CatalogUrl, null, cancellationToken);
+            CatalogUrl, null, correlationId, cancellationToken);
 
         var bookingsTask = GetServiceDataAsync(
-            BookingsUrl, authorization, cancellationToken);
+            BookingsUrl, authorization, correlationId, cancellationToken);
 
         var results = await Task.WhenAll(catalogTask, bookingsTask);
 
@@ -56,6 +57,7 @@ public class DashboardController : ControllerBase
     private async Task<ServiceResult> GetServiceDataAsync(
         string url,
         string? authorization,
+        string correlationId,
         CancellationToken cancellationToken)
     {
         try
@@ -65,7 +67,7 @@ public class DashboardController : ControllerBase
             if (!string.IsNullOrWhiteSpace(authorization))
             {
                 request.Headers.TryAddWithoutValidation(
-                    "Authorization", authorization);
+                    "X-Correlation-Id", correlationId);
             }
 
             var client = _httpClientFactory.CreateClient("Dashboard");

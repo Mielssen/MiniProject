@@ -1,6 +1,4 @@
-﻿using System.Security.Claims;
-
-namespace AuthService.Middleware;
+﻿namespace AuthService.Middleware;
 
 public class RequestLoggingMiddleware
 {
@@ -17,25 +15,20 @@ public class RequestLoggingMiddleware
 
     public async Task InvokeAsync(HttpContext context)
     {
-        var start = DateTime.UtcNow;
+        var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
         await _next(context);
 
-        var elapsed =
-            (DateTime.UtcNow - start).TotalMilliseconds;
+        stopwatch.Stop();
 
-        var user =
-            context.User?
-                .FindFirst(ClaimTypes.NameIdentifier)?
-                .Value
-            ?? "anonymous";
+        var correlationId = context.Request.Headers["X-Correlation-Id"]
+            .FirstOrDefault() ?? "not-provided";
 
         _logger.LogInformation(
-            "{Method} {Path} | Status={StatusCode} | User={User} | {Elapsed}ms",
+            "Request completed. Method={Method}, StatusCode={StatusCode}, DurationMs={DurationMs}, CorrelationId={CorrelationId}",
             context.Request.Method,
-            context.Request.Path,
             context.Response.StatusCode,
-            user,
-            elapsed);
+            stopwatch.ElapsedMilliseconds,
+            correlationId);
     }
 }

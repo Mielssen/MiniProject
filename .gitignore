@@ -1,4 +1,18 @@
-bin/ 
+
+bin/
 obj/
-*.mp4
 .vs/
+*.mp4
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Local configuration
+**/appsettings.Local.json
+**/appsettings.*.local.json
+
+# Logs
+**/logs/
+*.log
