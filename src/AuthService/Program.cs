@@ -52,7 +52,7 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddDbContext<AuthDbContext>(options =>
 {
     options.UseMySql(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
+        builder.Configuration["AuthService:ConnectionString"] ?? builder.Configuration.GetConnectionString("DefaultConnection"),
         new MySqlServerVersion(new Version(8, 0, 0))
     );
 });

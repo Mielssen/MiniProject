@@ -47,7 +47,7 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddDbContext<CatalogDbContext>(options =>
 {
     options.UseMySql(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
+        builder.Configuration["CatalogService:ConnectionString"] ?? builder.Configuration.GetConnectionString("DefaultConnection"),
         new MySqlServerVersion(new Version(8, 0, 0))
     );
 });

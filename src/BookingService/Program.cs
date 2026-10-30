@@ -47,7 +47,7 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddDbContext<BookingDbContext>(options =>
     options.UseMySql(
-        builder.Configuration.GetConnectionString("BookingConnection"),
+        builder.Configuration["BookingService:ConnectionString"] ?? builder.Configuration.GetConnectionString("BookingConnection"),
         new MySqlServerVersion(new Version(8, 0, 0))));
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");

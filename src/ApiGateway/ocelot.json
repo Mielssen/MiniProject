@@ -109,7 +109,7 @@
             "Priority": 14
         },
         {
-            "DownstreamPathTemplate": "/api/auth/login",
+            "DownstreamPathTemplate": "/api/v1/auth/login",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -125,7 +125,7 @@
             "Priority": 26
         },
         {
-            "DownstreamPathTemplate": "/api/auth/register",
+            "DownstreamPathTemplate": "/api/v1/auth/register",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
@@ -142,11 +142,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/auth/profile",
-            "DownstreamScheme": "https",
+            "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 7001
+                    "Port": 5272
                 }
             ],
             "UpstreamPathTemplate": "/api/auth/profile",

@@ -219,10 +219,9 @@ public class BookingOperationsService
         await transaction.CommitAsync();
 
         _logger.LogInformation(
-            "Нове бронювання: UserID={UserId}, TourID={TourId}, People={People}, Total={Total}",
-            userId,
+            "Нове бронювання: TourID={TourId}, People={People}, Total={Total}",
             dto.TourId,
-            booking.NumberOfPeople,
+            dto.NumberOfAdults + dto.NumberOfChildren,
             totalPrice);
     }
 
@@ -365,9 +364,8 @@ public class BookingOperationsService
         await _repo.DeleteAsync(booking);
 
         _logger.LogInformation(
-            "Бронювання ID={BookingId} скасовано користувачем ID={UserId}",
-            bookingId,
-            userId);
+            "Бронювання ID={BookingId} скасовано",
+            bookingId);
     }
 
     private static BookingDto MapBooking(

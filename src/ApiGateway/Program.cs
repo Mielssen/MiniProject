@@ -219,7 +219,7 @@ app.MapGet("/health", async (
 
     var catalogTask = CheckService("http://127.0.0.1:5002/health");
     var bookingTask = CheckService("http://127.0.0.1:5100/health");
-    var authTask = CheckService("http://127.0.0.1:5001/health");
+    var authTask = CheckService("https://localhost:7001/health");
 
     await Task.WhenAll(catalogTask, bookingTask, authTask);
 

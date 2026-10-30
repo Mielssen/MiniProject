@@ -55,16 +55,22 @@ public class DashboardController : ControllerBase
     }
 
     private async Task<ServiceResult> GetServiceDataAsync(
-        string url,
-        string? authorization,
-        string correlationId,
-        CancellationToken cancellationToken)
+    string url,
+    string? authorization,
+    string correlationId,
+    CancellationToken cancellationToken)
     {
         try
         {
             using var request = new HttpRequestMessage(HttpMethod.Get, url);
 
             if (!string.IsNullOrWhiteSpace(authorization))
+            {
+                request.Headers.TryAddWithoutValidation(
+                    "Authorization", authorization);
+            }
+
+            if (!string.IsNullOrWhiteSpace(correlationId))
             {
                 request.Headers.TryAddWithoutValidation(
                     "X-Correlation-Id", correlationId);
@@ -95,7 +101,8 @@ public class DashboardController : ControllerBase
         {
             return new ServiceResult(null, "Сервіс недоступний");
         }
-        catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
+        catch (OperationCanceledException)
+            when (!cancellationToken.IsCancellationRequested)
         {
             return new ServiceResult(null, "Сервіс не відповів вчасно");
         }

@@ -81,10 +81,9 @@ builder.Services.AddDbContext<TravelmanagerContext>(options =>
 {
     options
         .UseMySql(
-            builder.Configuration.GetConnectionString("DefaultConnection"),
+            builder.Configuration["TravelManager:ConnectionString"] ?? builder.Configuration.GetConnectionString("DefaultConnection"),
             new MySqlServerVersion(new Version(8, 0, 0))
         )
-        .EnableSensitiveDataLogging()
         .EnableDetailedErrors()
         .LogTo(Console.WriteLine, LogLevel.Information);
 });
