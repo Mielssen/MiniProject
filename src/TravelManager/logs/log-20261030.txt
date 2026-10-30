@@ -1,0 +1,296 @@
+2026-10-30 16:25:16.176 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 16:25:16.420 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 16:25:16.424 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 16:25:16.484 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 16:25:16.486 +02:00 [INF] Hosting environment: Development
+2026-10-30 16:25:16.488 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 16:25:18.523 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger - null null
+2026-10-30 16:25:19.036 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger - 301 0 null 516.6729ms
+2026-10-30 16:25:19.042 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 16:25:19.278 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/swagger-ui.css - null null
+2026-10-30 16:25:19.291 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 16:25:19.290 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 16:25:19.279 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/swagger-ui-bundle.js - null null
+2026-10-30 16:25:19.289 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 246.7976ms
+2026-10-30 16:25:19.281 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/swagger-ui-standalone-preset.js - null null
+2026-10-30 16:25:19.363 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 72.4064ms
+2026-10-30 16:25:19.390 +02:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-10-30 16:25:19.389 +02:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-10-30 16:25:19.440 +02:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-10-30 16:25:19.443 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 162.2436ms
+2026-10-30 16:25:19.447 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/swagger-ui.css - 200 152034 text/css 168.2728ms
+2026-10-30 16:25:19.450 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 170.9548ms
+2026-10-30 16:25:19.549 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 259.3707ms
+2026-10-30 16:25:19.589 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 16:25:19.618 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 29.0113ms
+2026-10-30 16:28:51.038 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 16:32:47.491 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 16:32:47.670 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 16:32:47.673 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 16:32:47.740 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 16:32:47.741 +02:00 [INF] Hosting environment: Development
+2026-10-30 16:32:47.743 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 16:32:49.269 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 16:32:49.438 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 170.0997ms
+2026-10-30 16:32:49.444 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 16:32:49.443 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 16:32:49.467 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 23.0751ms
+2026-10-30 16:32:49.498 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 54.358ms
+2026-10-30 16:32:49.615 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 16:32:49.639 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 23.9024ms
+2026-10-30 16:46:38.382 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 16:46:38.578 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 16:46:38.580 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 16:46:39.151 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 16:46:39.152 +02:00 [INF] Hosting environment: Development
+2026-10-30 16:46:39.153 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 16:46:40.363 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 16:46:40.944 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 586.2145ms
+2026-10-30 16:46:40.960 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 16:46:40.960 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 16:46:41.133 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 173.2905ms
+2026-10-30 16:46:41.209 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 248.8408ms
+2026-10-30 16:46:41.237 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 16:46:41.268 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 31.8866ms
+2026-10-30 16:47:34.605 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5272/api/dashboard - null null
+2026-10-30 16:47:34.802 +02:00 [INF] GET /api/dashboard | Status=404 | User=1 | 1.7972ms
+2026-10-30 16:47:34.810 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5272/api/dashboard - 404 0 null 205.2727ms
+2026-10-30 16:47:34.817 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5272/api/dashboard, Response status code: 404
+2026-10-30 16:49:35.790 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 16:49:36.451 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 16:49:36.454 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 16:49:36.534 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 16:49:36.536 +02:00 [INF] Hosting environment: Development
+2026-10-30 16:49:36.537 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 16:49:37.506 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 16:49:38.020 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 515.3338ms
+2026-10-30 16:49:38.025 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 16:49:38.025 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 16:49:38.104 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 78.9984ms
+2026-10-30 16:49:38.151 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 126.2096ms
+2026-10-30 16:49:38.181 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 16:49:38.207 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 25.8289ms
+2026-10-30 16:52:01.630 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 16:52:01.807 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 16:52:01.810 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 16:52:01.884 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 16:52:01.885 +02:00 [INF] Hosting environment: Development
+2026-10-30 16:52:01.886 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 16:52:02.636 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 16:52:02.964 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 329.7224ms
+2026-10-30 16:52:02.973 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 16:52:02.973 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 16:52:03.007 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 34.2945ms
+2026-10-30 16:52:03.118 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 144.5545ms
+2026-10-30 16:52:03.167 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 16:52:03.197 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 29.5173ms
+2026-10-30 16:54:32.189 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 16:54:32.387 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 16:54:32.389 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 16:54:32.453 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 16:54:32.454 +02:00 [INF] Hosting environment: Development
+2026-10-30 16:54:32.455 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 16:54:33.992 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 16:54:34.239 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 246.6542ms
+2026-10-30 16:54:34.242 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 16:54:34.242 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 16:54:34.271 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 29.7749ms
+2026-10-30 16:54:34.326 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 84.0077ms
+2026-10-30 16:54:34.357 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 16:54:34.382 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 25.1096ms
+2026-10-30 16:57:10.180 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 16:57:10.409 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 16:57:10.411 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 16:57:10.488 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 16:57:10.489 +02:00 [INF] Hosting environment: Development
+2026-10-30 16:57:10.490 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 16:57:11.445 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 16:57:11.716 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 273.5619ms
+2026-10-30 16:57:11.721 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 16:57:11.721 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 16:57:11.737 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 15.5498ms
+2026-10-30 16:57:11.773 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 52.2283ms
+2026-10-30 16:57:11.805 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 16:57:11.834 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 28.7972ms
+2026-10-30 16:57:45.627 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 16:57:45.826 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 16:57:45.832 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 16:57:45.904 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 16:57:45.905 +02:00 [INF] Hosting environment: Development
+2026-10-30 16:57:45.907 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 16:57:46.559 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 16:57:46.850 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 291.6706ms
+2026-10-30 16:57:46.898 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 16:57:46.898 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 16:57:46.921 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 22.9097ms
+2026-10-30 16:57:46.992 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 94.2302ms
+2026-10-30 16:57:47.026 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 16:57:47.043 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 16.9114ms
+2026-10-30 17:05:37.307 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 17:05:37.575 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 17:05:37.577 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 17:05:37.651 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 17:05:37.652 +02:00 [INF] Hosting environment: Development
+2026-10-30 17:05:37.653 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 17:05:38.652 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 17:05:38.955 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 303.5167ms
+2026-10-30 17:05:38.988 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 17:05:38.991 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 17:05:39.059 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 70.9431ms
+2026-10-30 17:05:39.165 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 174.7126ms
+2026-10-30 17:05:39.199 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 17:05:39.234 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 35.2719ms
+2026-10-30 17:14:37.633 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 17:14:37.851 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 17:14:37.856 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 17:14:37.932 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 17:14:37.934 +02:00 [INF] Hosting environment: Development
+2026-10-30 17:14:37.935 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 17:14:38.943 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 17:14:39.277 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 17:14:39.277 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 17:14:39.279 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 336.4455ms
+2026-10-30 17:14:39.289 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 12.1254ms
+2026-10-30 17:14:39.350 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 73.4836ms
+2026-10-30 17:14:39.385 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 17:14:39.412 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 26.8015ms
+2026-10-30 17:17:25.935 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 17:17:26.150 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 17:17:26.152 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 17:17:26.214 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 17:17:26.215 +02:00 [INF] Hosting environment: Development
+2026-10-30 17:17:26.216 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 17:17:26.969 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 17:17:27.299 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 17:17:27.299 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 17:17:27.301 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 328.7163ms
+2026-10-30 17:17:27.350 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 51.0802ms
+2026-10-30 17:17:27.380 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 80.6983ms
+2026-10-30 17:17:27.411 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 17:17:27.437 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 26.7469ms
+2026-10-30 17:20:10.782 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 17:20:11.486 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 17:20:11.488 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 17:20:11.570 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 17:20:11.571 +02:00 [INF] Hosting environment: Development
+2026-10-30 17:20:11.572 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 17:20:12.289 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 17:20:12.513 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 224.9297ms
+2026-10-30 17:20:12.514 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 17:20:12.514 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 17:20:12.543 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 28.3121ms
+2026-10-30 17:20:12.579 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 64.074ms
+2026-10-30 17:20:12.609 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 17:20:12.639 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 30.4225ms
+2026-10-30 17:21:40.000 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 17:21:40.227 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 17:21:40.230 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 17:21:40.302 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 17:21:40.303 +02:00 [INF] Hosting environment: Development
+2026-10-30 17:21:40.304 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 17:21:40.910 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 17:21:41.088 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 178.4228ms
+2026-10-30 17:21:41.107 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 17:21:41.107 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 17:21:41.113 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 6.5105ms
+2026-10-30 17:21:41.139 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 31.6139ms
+2026-10-30 17:21:41.212 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 17:21:41.227 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 15.386ms
+2026-10-30 17:23:03.438 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 17:23:03.668 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 17:23:03.670 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 17:23:03.759 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 17:23:03.760 +02:00 [INF] Hosting environment: Development
+2026-10-30 17:23:03.761 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 17:23:04.575 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 17:23:04.930 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 17:23:04.930 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 17:23:04.936 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 362.0254ms
+2026-10-30 17:23:04.942 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 12.6293ms
+2026-10-30 17:23:04.984 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 54.5436ms
+2026-10-30 17:23:05.013 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 17:23:05.030 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 17.3925ms
+2026-10-30 17:23:59.078 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 17:23:59.721 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 17:23:59.724 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 17:23:59.879 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 17:23:59.880 +02:00 [INF] Hosting environment: Development
+2026-10-30 17:23:59.881 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 17:24:00.505 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 17:24:00.709 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 17:24:00.709 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 17:24:00.712 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 208.2915ms
+2026-10-30 17:24:00.718 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 9.3028ms
+2026-10-30 17:24:00.763 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 54.5947ms
+2026-10-30 17:24:00.796 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 17:24:00.822 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 25.6754ms
+2026-10-30 17:25:33.186 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 17:25:33.413 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 17:25:33.416 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 17:25:33.611 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 17:25:33.613 +02:00 [INF] Hosting environment: Development
+2026-10-30 17:25:33.614 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 17:25:34.246 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 17:25:34.455 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 209.6959ms
+2026-10-30 17:25:34.460 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 17:25:34.460 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 17:25:34.479 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 18.3457ms
+2026-10-30 17:25:34.523 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 62.4735ms
+2026-10-30 17:25:34.551 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 17:25:34.573 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 22.4263ms
+2026-10-30 17:34:01.388 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 17:34:01.689 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 17:34:01.691 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 17:34:01.786 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 17:34:01.799 +02:00 [INF] Hosting environment: Development
+2026-10-30 17:34:01.800 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 17:34:02.707 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 17:34:02.960 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 256.0814ms
+2026-10-30 17:34:02.966 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 17:34:02.976 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 17:34:03.017 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 50.4123ms
+2026-10-30 17:34:03.067 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 90.6561ms
+2026-10-30 17:34:03.103 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 17:34:03.128 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 25.1753ms
+2026-10-30 17:35:20.677 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 17:35:20.930 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 17:35:20.933 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 17:35:21.031 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 17:35:21.032 +02:00 [INF] Hosting environment: Development
+2026-10-30 17:35:21.033 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 17:35:21.648 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 17:35:21.894 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 246.9953ms
+2026-10-30 17:35:21.906 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 17:35:21.906 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 17:35:21.924 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 17.8843ms
+2026-10-30 17:35:21.967 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 60.8552ms
+2026-10-30 17:35:22.050 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 17:35:22.071 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 20.8393ms
+2026-10-30 17:36:36.022 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 17:36:36.288 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 17:36:36.291 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 17:36:36.358 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 17:36:36.359 +02:00 [INF] Hosting environment: Development
+2026-10-30 17:36:36.360 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 17:36:37.283 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 17:36:37.503 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 220.2555ms
+2026-10-30 17:36:37.525 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 17:36:37.526 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 17:36:37.564 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 38.1937ms
+2026-10-30 17:36:37.660 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 133.5575ms
+2026-10-30 17:36:37.829 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 17:36:37.852 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 23.9085ms
+2026-10-30 17:43:21.953 +02:00 [INF] User profile is available. Using 'C:\Users\toder\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-10-30 17:43:22.177 +02:00 [INF] Now listening on: https://localhost:7041
+2026-10-30 17:43:22.179 +02:00 [INF] Now listening on: http://localhost:5272
+2026-10-30 17:43:22.376 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-10-30 17:43:22.378 +02:00 [INF] Hosting environment: Development
+2026-10-30 17:43:22.379 +02:00 [INF] Content root path: C:\Users\toder\OneDrive\Документы\GitHub\MiniProject\src\TravelManager
+2026-10-30 17:43:22.756 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/index.html - null null
+2026-10-30 17:43:23.089 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - null null
+2026-10-30 17:43:23.089 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/_vs/browserLink - null null
+2026-10-30 17:43:23.118 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/index.html - 200 null text/html;charset=utf-8 364.1508ms
+2026-10-30 17:43:23.173 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 83.816ms
+2026-10-30 17:43:23.289 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/_vs/browserLink - 200 null text/javascript; charset=UTF-8 199.6236ms
+2026-10-30 17:43:23.318 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - null null
+2026-10-30 17:43:23.420 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7041/swagger/v1-legacy/swagger.json - 200 null application/json;charset=utf-8 101.7202ms

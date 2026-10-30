@@ -19,7 +19,7 @@
         "Action": "Start"
       },
       {
-        "Path": "BookingService\\BookingService.csproj",
+        "Path": "src\\BookingService\\BookingService.csproj",
         "Action": "Start"
       }
     ]
