@@ -12,11 +12,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-
 namespace TravelManager.Tests.BookingService;
 
-public class BookingServiceFactory : WebApplicationFactory<Program>
+public class BookingServiceFactory : WebApplicationFactory<global::BookingService.Testing.BookingEntryPoint>
 {
+
     private readonly SqliteConnection _connection =
         new("Data Source=:memory:");
 
