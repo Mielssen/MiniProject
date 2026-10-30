@@ -1,12 +1,31 @@
 {
     "Routes": [
         {
-            "DownstreamPathTemplate": "/api/v1/auth/{everything}",
-            "DownstreamScheme": "http",
+            "DownstreamPathTemplate": "/api/v1/auth/logout",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 5001
+                    "Port": 7001
+                }
+            ],
+            "UpstreamPathTemplate": "/api/v1/auth/logout",
+            "UpstreamHttpMethod": [ "POST" ],
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer"
+            },
+            "QoSOptions": {
+                "TimeoutValue": 5000
+            },
+            "Priority": 10
+        },
+        {
+            "DownstreamPathTemplate": "/api/v1/auth/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 7001
                 }
             ],
             "UpstreamPathTemplate": "/api/v1/auth/{everything}",
@@ -18,14 +37,17 @@
         },
         {
             "DownstreamPathTemplate": "/api/v1/users/{everything}",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 5001
+                    "Port": 7001
                 }
             ],
             "UpstreamPathTemplate": "/api/v1/users/{everything}",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer"
+            },
             "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
             "QoSOptions": {
                 "TimeoutValue": 5000
@@ -50,11 +72,11 @@
         },
         {
             "DownstreamPathTemplate": "/api/auth/{everything}",
-            "DownstreamScheme": "http",
+            "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [
                 {
                     "Host": "localhost",
-                    "Port": 5001
+                    "Port": 7001
                 }
             ],
             "UpstreamPathTemplate": "/api/auth/{everything}",
@@ -74,6 +96,9 @@
                 }
             ],
             "UpstreamPathTemplate": "/api/bookings",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer"
+            },
             "UpstreamHttpMethod": [ "GET", "POST" ],
             "QoSOptions": {
                 "TimeoutValue": 5000
@@ -90,6 +115,9 @@
                 }
             ],
             "UpstreamPathTemplate": "/api/bookings/{everything}",
+            "AuthenticationOptions": {
+                "AuthenticationProviderKey": "Bearer"
+            },
             "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
             "QoSOptions": {
                 "TimeoutValue": 5000

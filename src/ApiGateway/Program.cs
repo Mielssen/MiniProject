@@ -34,6 +34,32 @@ builder.Services
             IssuerSigningKey = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(jwtKey))
         };
+
+        options.Events = new JwtBearerEvents
+        {
+            OnChallenge = async context =>
+            {
+                context.HandleResponse();
+
+                context.Response.StatusCode =
+                    StatusCodes.Status401Unauthorized;
+
+                await Results.Problem(
+                    statusCode: StatusCodes.Status401Unauthorized,
+                    title: "Не авторизовано",
+                    detail: "Для доступу до ресурсу необхідна авторизація."
+                ).ExecuteAsync(context.HttpContext);
+            },
+
+            OnForbidden = async context =>
+            {
+                await Results.Problem(
+                    statusCode: StatusCodes.Status403Forbidden,
+                    title: "Доступ заборонено",
+                    detail: "У вас недостатньо прав для виконання цієї операції."
+                ).ExecuteAsync(context.HttpContext);
+            }
+        };
     });
 
 builder.Services.AddAuthorization();
@@ -104,7 +130,15 @@ builder.Services.AddHttpClient("Health", client =>
 {
     client.Timeout = TimeSpan.FromSeconds(2);
 });
-builder.Services.AddProblemDetails();
+
+builder.Services.AddProblemDetails(options =>
+{
+    options.CustomizeProblemDetails = context =>
+    {
+        context.ProblemDetails.Instance =
+            context.HttpContext.Request.Path;
+    };
+});
 
 builder.Services.AddOcelot(builder.Configuration).AddPolly();
 
@@ -120,6 +154,42 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+app.UseExceptionHandler();
+
+app.UseStatusCodePages(async statusCodeContext =>
+{
+    var context = statusCodeContext.HttpContext;
+    var statusCode = context.Response.StatusCode;
+
+    var title = statusCode switch
+    {
+        401 => "Не авторизовано",
+        403 => "Доступ заборонено",
+        404 => "Ресурс не знайдено",
+        405 => "Метод не дозволений",
+        429 => "Забагато запитів",
+        502 => "Помилка шлюзу",
+        503 => "Сервіс недоступний",
+        504 => "Час очікування вичерпано",
+        _ => "Помилка запиту"
+    };
+
+    await Results.Problem(
+        statusCode: statusCode,
+        title: title,
+        detail: statusCode switch
+        {
+            401 => "Для доступу до ресурсу необхідна авторизація.",
+            403 => "У вас недостатньо прав для виконання цієї операції.",
+            404 => "Запитуваний ресурс не знайдено.",
+            429 => "Перевищено допустиму кількість запитів. Спробуйте пізніше.",
+            502 or 503 or 504 => "Один із сервісів Gateway тимчасово недоступний.",
+            _ => "Не вдалося виконати запит."
+        }
+    ).ExecuteAsync(context);
+});
+
+
 app.MapGet("/health", async (
     IHttpClientFactory httpClientFactory,
     CancellationToken cancellationToken) =>
@@ -130,20 +200,28 @@ app.MapGet("/health", async (
     {
         try
         {
-            var response = await client.GetAsync(url, cancellationToken);
+            using var response = await client.GetAsync(url, cancellationToken);
             return response.IsSuccessStatusCode;
         }
-        catch
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (HttpRequestException)
+        {
+            return false;
+        }
+        catch (OperationCanceledException)
         {
             return false;
         }
     }
 
-    var catalogTask = CheckService("http://localhost:5002/health");
-    var bookingTask = CheckService("http://localhost:5100/health");
-    var authTask = CheckService("http://localhost:5001/health");
+    var catalogTask = CheckService("http://127.0.0.1:5002/health");
+    var bookingTask = CheckService("http://127.0.0.1:5100/health");
+    var authTask = CheckService("https://localhost:7001/health");
 
-    await Task.WhenAll(catalogTask, bookingTask);
+    await Task.WhenAll(catalogTask, bookingTask, authTask);
 
     var catalogHealthy = await catalogTask;
     var bookingHealthy = await bookingTask;
@@ -163,6 +241,7 @@ app.MapGet("/health", async (
         }
     }, statusCode: healthy ? 200 : 503);
 });
+
 app.UseCors("AllowFrontend");
 
 app.Use(async (context, next) =>

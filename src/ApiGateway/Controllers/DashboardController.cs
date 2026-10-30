@@ -93,9 +93,9 @@ public class DashboardController : ControllerBase
         {
             return new ServiceResult(null, "Сервіс недоступний");
         }
-        catch (TaskCanceledException)
+        catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
         {
-            return new ServiceResult(null, "Тайм-аут або скасування запиту");
+            return new ServiceResult(null, "Сервіс не відповів вчасно");
         }
         catch (JsonException)
         {
