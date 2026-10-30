@@ -119,7 +119,11 @@ app.Use(async (context, next) =>
 });
 
 app.MapControllers();
-
+app.MapGet("/health", () => Results.Ok(new
+{
+    status = "Healthy",
+    service = "BookingService"
+}));
 app.Run();
 
 public partial class Program;

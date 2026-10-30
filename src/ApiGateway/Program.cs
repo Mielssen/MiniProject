@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using ApiGateway.Middleware;
+using Ocelot.Provider.Polly;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -95,11 +96,17 @@ builder.Services.AddControllers();
 
 builder.Services.AddMemoryCache();
 builder.Services.AddSingleton<CatalogCacheKeyRegistry>();
-builder.Services.AddHttpClient();
-
+builder.Services.AddHttpClient("Dashboard", client =>
+{
+    client.Timeout = TimeSpan.FromSeconds(3);
+});
+builder.Services.AddHttpClient("Health", client =>
+{
+    client.Timeout = TimeSpan.FromSeconds(2);
+});
 builder.Services.AddProblemDetails();
 
-builder.Services.AddOcelot(builder.Configuration);
+builder.Services.AddOcelot(builder.Configuration).AddPolly();
 
 builder.Services.AddCors(options =>
 {
@@ -113,27 +120,50 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
-
-app.UseCors("AllowFrontend");
-
-app.Use(async (context, next) =>
+app.MapGet("/health", async (
+    IHttpClientFactory httpClientFactory,
+    CancellationToken cancellationToken) =>
 {
-    if (context.Request.Path == "/health" &&
-        context.Request.Method == "GET")
+    var client = httpClientFactory.CreateClient("Health");
+
+    async Task<bool> CheckService(string url)
     {
-        context.Response.StatusCode = 200;
-
-        await context.Response.WriteAsJsonAsync(new
+        try
         {
-            status = "Healthy",
-            gateway = "Running"
-        });
-
-        return;
+            var response = await client.GetAsync(url, cancellationToken);
+            return response.IsSuccessStatusCode;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
-    await next();
+    var catalogTask = CheckService("http://localhost:5002/health");
+    var bookingTask = CheckService("http://localhost:5100/health");
+    var authTask = CheckService("http://localhost:5001/health");
+
+    await Task.WhenAll(catalogTask, bookingTask);
+
+    var catalogHealthy = await catalogTask;
+    var bookingHealthy = await bookingTask;
+    var authHealthy = await authTask;
+
+    var healthy = catalogHealthy && bookingHealthy && authHealthy;
+
+    return Results.Json(new
+    {
+        status = healthy ? "Healthy" : "Unhealthy",
+        gateway = "Running",
+        dependencies = new
+        {
+            catalog = catalogHealthy ? "Healthy" : "Unhealthy",
+            booking = bookingHealthy ? "Healthy" : "Unhealthy",
+            auth = authHealthy ? "Healthy" : "Unhealthy"
+        }
+    }, statusCode: healthy ? 200 : 503);
 });
+app.UseCors("AllowFrontend");
 
 app.Use(async (context, next) =>
 {

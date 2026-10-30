@@ -11,6 +11,9 @@
             ],
             "UpstreamPathTemplate": "/api/v1/auth/{everything}",
             "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "QoSOptions": {
+                "TimeoutValue": 5000
+            },
             "Priority": 5
         },
         {
@@ -24,6 +27,9 @@
             ],
             "UpstreamPathTemplate": "/api/v1/users/{everything}",
             "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "QoSOptions": {
+                "TimeoutValue": 5000
+            },
             "Priority": 4
         },
         {
@@ -37,6 +43,9 @@
             ],
             "UpstreamPathTemplate": "/api/v1/catalog/{everything}",
             "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "QoSOptions": {
+                "TimeoutValue": 5000
+            },
             "Priority": 3
         },
         {
@@ -50,6 +59,9 @@
             ],
             "UpstreamPathTemplate": "/api/auth/{everything}",
             "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "QoSOptions": {
+                "TimeoutValue": 5000
+            },
             "Priority": 2
         },
         {
@@ -63,6 +75,9 @@
             ],
             "UpstreamPathTemplate": "/api/bookings",
             "UpstreamHttpMethod": [ "GET", "POST" ],
+            "QoSOptions": {
+                "TimeoutValue": 5000
+            },
             "Priority": 6
         },
         {
@@ -76,6 +91,9 @@
             ],
             "UpstreamPathTemplate": "/api/bookings/{everything}",
             "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "QoSOptions": {
+                "TimeoutValue": 5000
+            },
             "Priority": 5
         },
         {
@@ -89,6 +107,9 @@
             ],
             "UpstreamPathTemplate": "/api/tours/{everything}",
             "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "QoSOptions": {
+                "TimeoutValue": 5000
+            },
             "Priority": 2
         },
         {
@@ -102,6 +123,9 @@
             ],
             "UpstreamPathTemplate": "/api/{everything}",
             "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "QoSOptions": {
+                "TimeoutValue": 5000
+            },
             "Priority": 1
         }
     ],

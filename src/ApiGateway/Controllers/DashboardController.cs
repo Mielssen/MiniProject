@@ -68,7 +68,7 @@ public class DashboardController : ControllerBase
                     "Authorization", authorization);
             }
 
-            var client = _httpClientFactory.CreateClient();
+            var client = _httpClientFactory.CreateClient("Dashboard");
 
             using var response = await client.SendAsync(
                 request, cancellationToken);
