@@ -32,7 +32,7 @@ async function loadProfile() {
 
         document.getElementById("profileEmail").innerText = data.email || "";
         document.getElementById("profileName").value = data.displayName || "";
-        document.getElementById("profilePhone").value = data.phone?.replace(/^\\+38/, "") || "";
+        document.getElementById("profilePhone").value = data.phone?.replace(/^\+38/, "") || "";
         document.getElementById("profilePassport").value = data.passportData || "";
 
         if (data.dateOfBirth) {
@@ -57,7 +57,7 @@ async function saveProfile() {
 
     const name = document.getElementById("profileName").value.trim();
     const phoneValue = document.getElementById("profilePhone").value.trim();
-    const phone = phoneValue ? phoneValue.replace(/\\D/g, "") : null;
+    const phone = phoneValue ? phoneValue.replace(/\D/g, "") : null;
     const passportData = document.getElementById("profilePassport").value.trim();
 
     saveButton.disabled = true;
@@ -72,7 +72,7 @@ async function saveProfile() {
 
         document.getElementById("profileName").value = data.displayName || name;
         document.getElementById("profilePhone").value =
-            data.phone?.replace(/^\\+38/, "") || phone || "";
+            data.phone?.replace(/^\+38/, "") || phone || "";
         document.getElementById("profilePassport").value =
             data.passportData || passportData;
 
