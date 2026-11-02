@@ -52,7 +52,7 @@ builder.Services.AddDbContext<BookingDbContext>(options =>
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var jwtKey = jwtSettings["Key"]
-    ?? throw new InvalidOperationException("У конфігурації відсутній Jwt:Key");
+    ?? throw new InvalidOperationException("РЈ РєРѕРЅС„С–РіСѓСЂР°С†С–С— РІС–РґСЃСѓС‚РЅС–Р№ Jwt:Key");
 
 builder.Services
     .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -76,7 +76,7 @@ builder.Services.AddAuthorization();
 builder.Services.AddHttpClient<AuthServiceClient>(client =>
 {
     var authServiceUrl = builder.Configuration["Services:AuthService"]
-        ?? throw new InvalidOperationException("Не налаштовано Services:AuthService");
+        ?? throw new InvalidOperationException("РќРµ РЅР°Р»Р°С€С‚РѕРІР°РЅРѕ Services:AuthService");
 
     client.BaseAddress = new Uri(authServiceUrl);
     client.Timeout = TimeSpan.FromSeconds(2);

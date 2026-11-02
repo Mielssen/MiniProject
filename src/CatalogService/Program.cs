@@ -25,7 +25,7 @@ builder.Services.AddSwaggerGen(options =>
         Scheme = "Bearer",
         BearerFormat = "JWT",
         In = Microsoft.OpenApi.Models.ParameterLocation.Header,
-        Description = "Введіть JWT токен у форматі: Bearer {token}"
+        Description = "Р’РІРµРґС–С‚СЊ JWT С‚РѕРєРµРЅ Сѓ С„РѕСЂРјР°С‚С–: Bearer {token}"
     });
 
     options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
