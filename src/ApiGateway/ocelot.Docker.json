@@ -33,7 +33,8 @@
             "QoSOptions": {
                 "TimeoutValue": 5000
             },
-            "Priority": 5
+            "Priority": 5,
+            "SwaggerKey": "auth"
         },
         {
             "DownstreamPathTemplate": "/api/v1/users",
@@ -52,7 +53,8 @@
             "QoSOptions": {
                 "TimeoutValue": 5000
             },
-            "Priority": 20
+            "Priority": 20,
+            "SwaggerKey": "auth"
         },
         {
             "DownstreamPathTemplate": "/api/v1/users/{everything}",
@@ -71,7 +73,8 @@
             "QoSOptions": {
                 "TimeoutValue": 5000
             },
-            "Priority": 20
+            "Priority": 20,
+            "SwaggerKey": "auth"
         },
         {
             "DownstreamPathTemplate": "/api/v1/catalog/{everything}",
@@ -87,7 +90,8 @@
             "QoSOptions": {
                 "TimeoutValue": 5000
             },
-            "Priority": 15
+            "Priority": 15,
+            "SwaggerKey": "catalog"
         },
         {
             "DownstreamPathTemplate": "/api/v1/catalog/{everything}",
@@ -106,10 +110,11 @@
             "QoSOptions": {
                 "TimeoutValue": 5000
             },
-            "Priority": 14
+            "Priority": 14,
+            "SwaggerKey": "catalog"
         },
         {
-            "DownstreamPathTemplate": "/api/v1/auth/legacy/login",
+            "DownstreamPathTemplate": "/api/v1/auth/login",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
@@ -122,7 +127,8 @@
             "QoSOptions": {
                 "TimeoutValue": 5000
             },
-            "Priority": 26
+            "Priority": 26,
+            "SwaggerKey": "auth"
         },
         {
             "DownstreamPathTemplate": "/api/v1/auth/legacy/register",
@@ -138,7 +144,8 @@
             "QoSOptions": {
                 "TimeoutValue": 5000
             },
-            "Priority": 26
+            "Priority": 26,
+            "SwaggerKey": "auth"
         },
         {
             "DownstreamPathTemplate": "/api/auth/profile",
@@ -157,7 +164,8 @@
             "QoSOptions": {
                 "TimeoutValue": 5000
             },
-            "Priority": 25
+            "Priority": 25,
+            "SwaggerKey": "travel-manager"
         },
         {
             "DownstreamPathTemplate": "/api/bookings",
@@ -176,7 +184,8 @@
             "QoSOptions": {
                 "TimeoutValue": 5000
             },
-            "Priority": 18
+            "Priority": 18,
+            "SwaggerKey": "booking"
         },
         {
             "DownstreamPathTemplate": "/api/bookings/{everything}",
@@ -195,7 +204,8 @@
             "QoSOptions": {
                 "TimeoutValue": 5000
             },
-            "Priority": 18
+            "Priority": 18,
+            "SwaggerKey": "booking"
         },
         {
             "DownstreamPathTemplate": "/api/tours/types",
@@ -211,7 +221,8 @@
             "QoSOptions": {
                 "TimeoutValue": 5000
             },
-            "Priority": 22
+            "Priority": 22,
+            "SwaggerKey": "travel-manager"
         },
         {
             "DownstreamPathTemplate": "/api/tours",
@@ -227,7 +238,8 @@
             "QoSOptions": {
                 "TimeoutValue": 5000
             },
-            "Priority": 21
+            "Priority": 21,
+            "SwaggerKey": "travel-manager"
         },
         {
             "DownstreamPathTemplate": "/api/tours/{id}",
@@ -246,7 +258,8 @@
             "QoSOptions": {
                 "TimeoutValue": 5000
             },
-            "Priority": 20
+            "Priority": 20,
+            "SwaggerKey": "travel-manager"
         },
         {
             "DownstreamPathTemplate": "/api/tours/{everything}",
@@ -265,7 +278,8 @@
             "QoSOptions": {
                 "TimeoutValue": 5000
             },
-            "Priority": 19
+            "Priority": 19,
+            "SwaggerKey": "travel-manager"
         },
         {
             "DownstreamPathTemplate": "/api/admin/{everything}",
@@ -284,8 +298,44 @@
             "QoSOptions": {
                 "TimeoutValue": 5000
             },
-            "Priority": 20
+            "Priority": 20,
+            "SwaggerKey": "travel-manager"
         },
+
+        {
+            "DownstreamPathTemplate": "/api/savedpersons",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "travel-manager",
+                    "Port": 5272
+                }
+            ],
+            "UpstreamPathTemplate": "/api/savedpersons",
+            "UpstreamHttpMethod": [
+                "GET",
+                "POST"
+            ],
+            "Priority": 30,
+            "SwaggerKey": "travel-manager"
+        },
+        {
+            "DownstreamPathTemplate": "/api/savedpersons/{id}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "travel-manager",
+                    "Port": 5272
+                }
+            ],
+            "UpstreamPathTemplate": "/api/savedpersons/{id}",
+            "UpstreamHttpMethod": [
+                "DELETE"
+            ],
+            "Priority": 30,
+            "SwaggerKey": "travel-manager"
+        },
+
         {
             "DownstreamPathTemplate": "/api/{everything}",
             "DownstreamScheme": "http",
@@ -308,5 +358,47 @@
     ],
     "GlobalConfiguration": {
         "BaseUrl": "http://localhost:5000"
-    }
+    },
+    "SwaggerEndPoints": [
+        {
+            "Key": "auth",
+            "Config": [
+                {
+                    "Name": "Auth Service",
+                    "Version": "v1",
+                    "Url": "http://auth-service:5001/swagger/v1/swagger.json"
+                }
+            ]
+        },
+        {
+            "Key": "catalog",
+            "Config": [
+                {
+                    "Name": "Catalog Service",
+                    "Version": "v1",
+                    "Url": "http://catalog-service:5002/swagger/v1/swagger.json"
+                }
+            ]
+        },
+        {
+            "Key": "booking",
+            "Config": [
+                {
+                    "Name": "Booking Service",
+                    "Version": "v1",
+                    "Url": "http://booking-service:5100/swagger/v1/swagger.json"
+                }
+            ]
+        },
+        {
+            "Key": "travel-manager",
+            "Config": [
+                {
+                    "Name": "Travel Manager",
+                    "Version": "v1-legacy",
+                    "Url": "http://travel-manager:5272/swagger/v1-legacy/swagger.json"
+                }
+            ]
+        }
+    ]
 }

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using ApiGateway.Middleware;
 using Ocelot.Provider.Polly;
+using MMLib.SwaggerForOcelot.DependencyInjection;
+using MMLib.SwaggerForOcelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -172,7 +174,13 @@ builder.Services.AddSwaggerGen(options =>
 
     options.OperationFilter<ApiGateway.Swagger.DashboardExamplesOperationFilter>();
 });
-
+builder.Services.AddSwaggerForOcelot(
+    builder.Configuration,
+    options =>
+    {
+        options.GenerateDocsForGatewayItSelf = true;
+        options.AddAuthenticationProviderKeyMapping("Bearer", "Bearer");
+    });
 builder.Services.AddMemoryCache();
 builder.Services.AddSingleton<CatalogCacheKeyRegistry>();
 builder.Services.AddHttpClient("Dashboard", client =>
@@ -208,7 +216,15 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 app.UseSwagger();
-app.UseSwaggerUI();
+
+app.UseSwaggerForOcelotUI(options =>
+{
+    options.PathToSwaggerGenerator = "/swagger/docs";
+},
+uiOptions =>
+{
+    uiOptions.DocumentTitle = "API Gateway";
+});
 app.UseExceptionHandler();
 
 app.UseStatusCodePages(async statusCodeContext =>
