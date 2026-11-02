@@ -1,16 +1,10 @@
-﻿const LOGIN_MESSAGES = {
-    INVALID_CREDENTIALS: "Неправильний email або пароль.",
-    USER_DELETED: "Цей обліковий запис видалено.",
-    EMAIL_EXISTS: "Користувач із таким email вже існує."
-};
-
-function get(id) {
+﻿function get(id) {
     return document.getElementById(id);
 }
 
 function clearErrors() {
     document.querySelectorAll(".error").forEach(element => {
-        element.innerText = "";
+        element.textContent = "";
     });
 }
 
@@ -18,39 +12,41 @@ function showError(id, error) {
     const element = get(id);
     if (!element) return;
 
-    const data = error?.data || error;
+    const data = error?.data;
 
     if (data?.errors) {
-        element.innerText = Object.values(data.errors).flat().join("\n");
-        return;
-    }
-
-    if (data?.title && LOGIN_MESSAGES[data.title]) {
-        element.innerText = LOGIN_MESSAGES[data.title];
-        return;
-    }
-
-    if (data?.detail) {
-        element.innerText = data.detail;
-        return;
-    }
-
-    if (data?.message) {
-        element.innerText = data.message;
+        element.textContent = Object.values(data.errors).flat().join("\n");
         return;
     }
 
     if (error?.status === 401) {
-        element.innerText = "Неправильний email або пароль.";
+        element.textContent = "Неправильний email або пароль.";
+        return;
+    }
+
+    if (error?.status === 429) {
+        element.textContent = error.message;
         return;
     }
 
     if (error?.status >= 500) {
-        element.innerText = "Помилка сервера. Спробуйте пізніше.";
+        element.textContent = "Сервер тимчасово недоступний. Спробуйте пізніше.";
         return;
     }
 
-    element.innerText = error?.message || "Не вдалося виконати запит.";
+    element.textContent = error?.message || "Не вдалося виконати запит.";
+}
+
+function redirectByRole() {
+    const role = TravelApi.getRole();
+
+    if (role === "manager") {
+        window.location.replace("manager.html");
+    } else if (role === "admin") {
+        window.location.replace("admin.html");
+    } else {
+        window.location.replace("dashboard.html");
+    }
 }
 
 async function login() {
@@ -58,6 +54,7 @@ async function login() {
 
     const email = get("loginEmail").value.trim();
     const password = get("loginPassword").value;
+    const button = document.querySelector("#loginBox button");
 
     if (!email || !password) {
         showError("loginError", {
@@ -66,21 +63,11 @@ async function login() {
         return;
     }
 
-    const button = document.querySelector("#loginBox button");
     button.disabled = true;
 
     try {
         await TravelApi.login(email, password);
-
-        const role = TravelApi.getRole();
-
-        if (role === "manager") {
-            window.location.href = "manager.html";
-        } else if (role === "admin") {
-            window.location.href = "admin.html";
-        } else {
-            window.location.href = "dashboard.html";
-        }
+        redirectByRole();
     } catch (error) {
         showError("loginError", error);
     } finally {
@@ -91,48 +78,35 @@ async function login() {
 async function register() {
     clearErrors();
 
-    const name = get("regName").value.trim();
-    const email = get("regEmail").value.trim();
-    const password = get("regPassword").value;
-    const phone = get("regPhone").value.trim();
-    const passportData = get("regPassport").value.trim();
-    const dateOfBirth = get("regBirth").value;
+    const userData = {
+        name: get("regName").value.trim(),
+        email: get("regEmail").value.trim(),
+        password: get("regPassword").value,
+        phone: get("regPhone").value.trim(),
+        passportData: get("regPassport").value.trim(),
+        dateOfBirth: get("regBirth").value
+    };
 
-    if (!name || !email || !password || !phone || !passportData || !dateOfBirth) {
+    const button = document.querySelector("#registerBox button");
+
+    if (Object.values(userData).some(value => !value)) {
         showError("registerError", {
             message: "Заповніть усі поля."
         });
         return;
     }
 
-    const button = document.querySelector("#registerBox button");
     button.disabled = true;
 
     try {
-        await TravelApi.register({
-            email,
-            password,
-            name,
-            phone,
-            passportData,
-            dateOfBirth
-        });
+        const result = await TravelApi.register(userData);
 
-        if (TravelApi.isAuthenticated()) {
-            const role = TravelApi.getRole();
-
-            if (role === "manager") {
-                window.location.href = "manager.html";
-            } else if (role === "admin") {
-                window.location.href = "admin.html";
-            } else {
-                window.location.href = "dashboard.html";
-            }
+        if (result?.accessToken) {
+            redirectByRole();
         } else {
             showLogin();
-            showError("loginError", {
-                message: "Реєстрація успішна. Тепер увійдіть у свій акаунт."
-            });
+            get("loginError").textContent =
+                "Реєстрація успішна. Тепер увійдіть у свій акаунт.";
         }
     } catch (error) {
         showError("registerError", error);
@@ -155,14 +129,6 @@ function showLogin() {
 
 document.addEventListener("DOMContentLoaded", () => {
     if (TravelApi.isAuthenticated()) {
-        const role = TravelApi.getRole();
-
-        if (role === "manager") {
-            window.location.href = "manager.html";
-        } else if (role === "admin") {
-            window.location.href = "admin.html";
-        } else {
-            window.location.href = "dashboard.html";
-        }
+        redirectByRole();
     }
 });

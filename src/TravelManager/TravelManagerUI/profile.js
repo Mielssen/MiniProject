@@ -1,21 +1,12 @@
+
 const API_PROFILE = "/api/v1/users/me";
 const API_PROFILE_UPDATE = "/api/v1/users/me/data";
 const API_BOOKINGS = "/api/bookings";
 
-function switchTab(name) {
-    document.querySelectorAll(".tab-content").forEach(tab => tab.classList.add("hidden"));
-    document.querySelectorAll(".tab").forEach(tab => tab.classList.remove("active"));
-
-    document.getElementById("tab-" + name).classList.remove("hidden");
-
-    const activeTab = document.querySelector(`.tab[onclick="switchTab('${name}')"]`);
-    if (activeTab) activeTab.classList.add("active");
-
-    if (name === "bookings") loadBookings();
-}
-
 function showProfileError(message) {
-    document.getElementById("profileError").innerText = message || "Сталася помилка.";
+    document.getElementById("profileError").textContent =
+        message || "Сталася помилка.";
+    document.getElementById("profileSuccess").textContent = "";
 }
 
 function getApiErrorMessage(error) {
@@ -26,22 +17,58 @@ function getApiErrorMessage(error) {
     return error?.message || "Не вдалося виконати запит.";
 }
 
+function switchTab(name) {
+    document.querySelectorAll(".tab-content").forEach(tab => {
+        tab.classList.add("hidden");
+    });
+
+    document.querySelectorAll(".tab").forEach(tab => {
+        tab.classList.remove("active");
+    });
+
+    document.getElementById("tab-" + name).classList.remove("hidden");
+
+    const activeTab = document.querySelector(
+        `.tab[onclick="switchTab('${name}')"]`
+    );
+
+    if (activeTab) activeTab.classList.add("active");
+
+    if (name === "bookings") loadBookings();
+}
+
+function formatDate(value) {
+    if (!value) return "—";
+
+    const date = new Date(value);
+
+    if (Number.isNaN(date.getTime())) return "—";
+
+    return date.toLocaleDateString("uk-UA");
+}
+
+function dateInputValue(value) {
+    return value ? String(value).split("T")[0] : "";
+}
+
 async function loadProfile() {
     try {
         const data = await TravelApi.get(API_PROFILE);
 
-        document.getElementById("profileEmail").innerText = data.email || "";
-        document.getElementById("profileName").value = data.displayName || "";
-        document.getElementById("profilePhone").value = data.phone?.replace(/^\+38/, "") || "";
-        document.getElementById("profilePassport").value = data.passportData || "";
+        document.getElementById("profileEmail").textContent =
+            data.email || "";
 
-        if (data.dateOfBirth) {
-            const date = new Date(data.dateOfBirth);
-            document.getElementById("profileBirth").value =
-                new Date(date.getTime() - date.getTimezoneOffset() * 60000)
-                    .toISOString()
-                    .split("T")[0];
-        }
+        document.getElementById("profileName").value =
+            data.displayName || "";
+
+        document.getElementById("profilePhone").value =
+            data.phone?.replace(/^\+38/, "") || "";
+
+        document.getElementById("profilePassport").value =
+            data.passportData || "";
+
+        document.getElementById("profileBirth").value =
+            dateInputValue(data.dateOfBirth);
     } catch (error) {
         showProfileError(getApiErrorMessage(error));
     }
@@ -52,13 +79,14 @@ async function saveProfile() {
     const successElement = document.getElementById("profileSuccess");
     const saveButton = document.querySelector(".btn-save");
 
-    errorElement.innerText = "";
-    successElement.innerText = "";
+    errorElement.textContent = "";
+    successElement.textContent = "";
 
     const name = document.getElementById("profileName").value.trim();
     const phoneValue = document.getElementById("profilePhone").value.trim();
     const phone = phoneValue ? phoneValue.replace(/\D/g, "") : null;
-    const passportData = document.getElementById("profilePassport").value.trim();
+    const passportData =
+        document.getElementById("profilePassport").value.trim();
 
     saveButton.disabled = true;
 
@@ -67,16 +95,20 @@ async function saveProfile() {
             name,
             phone,
             passportData,
-            dateOfBirth: document.getElementById("profileBirth").value || null
+            dateOfBirth:
+                document.getElementById("profileBirth").value || null
         });
 
-        document.getElementById("profileName").value = data.displayName || name;
+        document.getElementById("profileName").value =
+            data.displayName || name;
+
         document.getElementById("profilePhone").value =
             data.phone?.replace(/^\+38/, "") || phone || "";
+
         document.getElementById("profilePassport").value =
             data.passportData || passportData;
 
-        successElement.innerText = "Профіль успішно оновлено";
+        successElement.textContent = "Профіль успішно оновлено.";
     } catch (error) {
         showProfileError(getApiErrorMessage(error));
     } finally {
@@ -92,7 +124,17 @@ async function loadBookings() {
         const data = await TravelApi.get(API_BOOKINGS + "/my");
         renderBookings(Array.isArray(data) ? data : data?.items || []);
     } catch (error) {
-        grid.innerHTML = `<div class="empty-state"><p>${getApiErrorMessage(error)}</p></div>`;
+        grid.innerHTML = "";
+
+        const message = document.createElement("p");
+        message.textContent = getApiErrorMessage(error);
+        grid.appendChild(message);
+
+        const retry = document.createElement("button");
+        retry.className = "btn-save";
+        retry.textContent = "Повторити";
+        retry.onclick = loadBookings;
+        grid.appendChild(retry);
     }
 }
 
@@ -114,20 +156,39 @@ function renderBookings(list) {
         const card = document.createElement("div");
         card.className = "booking-card";
 
-        const status = String(booking.status || "").toLowerCase();
-        card.innerHTML = `
-            <div class="booking-info">
-                <h4>${booking.tourName || "Тур"}</h4>
-                <span>Початок: ${booking.startDate || ""} · Заброньовано: ${formatDate(booking.bookingDate)}</span>
-            </div>
-            <div class="booking-right">
-                <span class="status-badge status-${status}">${booking.status || ""}</span>
-                <button class="btn-cancel-booking">Скасувати</button>
-            </div>
-        `;
+        const info = document.createElement("div");
+        info.className = "booking-info";
 
-        card.querySelector(".btn-cancel-booking").onclick =
-            () => cancelBooking(booking.bookingId);
+        const title = document.createElement("h4");
+        title.textContent = booking.tourName || "Тур";
+
+        const dates = document.createElement("span");
+        dates.textContent =
+            `Початок: ${formatDate(booking.startDate)} · ` +
+            `Заброньовано: ${formatDate(booking.bookingDate)}`;
+
+        info.append(title, dates);
+
+        const right = document.createElement("div");
+        right.className = "booking-right";
+
+        const statusValue = String(booking.status || "").toLowerCase();
+
+        const status = document.createElement("span");
+        status.className = `status-badge status-${statusValue}`;
+        status.textContent = booking.status || "—";
+
+        right.appendChild(status);
+
+        if (statusValue !== "cancelled") {
+            const cancel = document.createElement("button");
+            cancel.className = "btn-cancel-booking";
+            cancel.textContent = "Скасувати";
+            cancel.onclick = () => cancelBooking(booking.bookingId);
+            right.appendChild(cancel);
+        }
+
+        card.append(info, right);
         grid.appendChild(card);
     });
 }
@@ -141,15 +202,6 @@ async function cancelBooking(id) {
     } catch (error) {
         alert(getApiErrorMessage(error));
     }
-}
-
-function formatDate(dateString) {
-    if (!dateString) return "";
-    return new Date(dateString).toLocaleDateString("uk-UA", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit"
-    });
 }
 
 async function logout() {
