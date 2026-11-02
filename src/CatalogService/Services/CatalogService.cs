@@ -80,11 +80,11 @@ public class CatalogServiceManager : ICatalogService
 
     public async Task<CatalogItemDto> CreateAsync(CreateCatalogItemDto dto)
     {
-        if (dto.AvailableFrom > dto.AvailableTo)
-            throw new ArgumentException("Дата початку не може бути пізніше дати завершення");
-
         if (!await _repository.CategoryExistsAsync(dto.TypeId))
             throw new ArgumentException("Вказано неіснуючу категорію");
+
+        var availableFrom = dto.AvailableFrom.Date;
+        var availableTo = availableFrom.AddDays(dto.DurationDays - 1);
 
         var tour = new Tour
         {
@@ -92,8 +92,8 @@ public class CatalogServiceManager : ICatalogService
             Description = dto.Description,
             Price = dto.Price,
             DurationDays = dto.DurationDays,
-            AvailableFrom = dto.AvailableFrom,
-            AvailableTo = dto.AvailableTo,
+            AvailableFrom = availableFrom,
+            AvailableTo = availableTo,
             TypeId = dto.TypeId
         };
 
@@ -112,18 +112,18 @@ public class CatalogServiceManager : ICatalogService
         if (tour == null)
             return false;
 
-        if (dto.AvailableFrom > dto.AvailableTo)
-            throw new ArgumentException("Дата початку не може бути пізніше дати завершення");
-
         if (!await _repository.CategoryExistsAsync(dto.TypeId))
             throw new ArgumentException("Вказано неіснуючу категорію");
+
+        var availableFrom = dto.AvailableFrom.Date;
+        var availableTo = availableFrom.AddDays(dto.DurationDays - 1);
 
         tour.Name = dto.Name;
         tour.Description = dto.Description;
         tour.Price = dto.Price;
         tour.DurationDays = dto.DurationDays;
-        tour.AvailableFrom = dto.AvailableFrom;
-        tour.AvailableTo = dto.AvailableTo;
+        tour.AvailableFrom = availableFrom;
+        tour.AvailableTo = availableTo;
         tour.TypeId = dto.TypeId;
 
         await _repository.SaveChangesAsync();

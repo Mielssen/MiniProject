@@ -1,6 +1,19 @@
 {
     "Routes": [
         {
+            "DownstreamPathTemplate": "/uploads/{everything}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 5002
+                }
+            ],
+            "UpstreamPathTemplate": "/uploads/{everything}",
+            "UpstreamHttpMethod": [ "GET" ],
+            "Priority": 30
+        },
+        {
             "DownstreamPathTemplate": "/api/v1/auth/logout",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [

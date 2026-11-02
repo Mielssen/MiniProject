@@ -71,12 +71,18 @@
                 );
 
                 if (firstImage) {
-                    const image = document.createElement("img");
-                    image.className = "tour-card-img";
-                    image.src = firstImage.url || firstImage.Url;
-                    image.alt = window.getTourName(tour);
-                    card.appendChild(image);
-                } else {
+    const image = document.createElement("img");
+    image.className = "tour-card-img";
+
+    const imageUrl = firstImage.url || firstImage.Url;
+
+    image.src = imageUrl.startsWith("http")
+        ? imageUrl
+        : `http://localhost:5000${imageUrl.startsWith("/") ? "" : "/"}${imageUrl}`;
+
+    image.alt = window.getTourName(tour);
+    card.appendChild(image);
+} else {
                     const placeholder = document.createElement("div");
                     placeholder.className = "tour-card-img-placeholder";
                     placeholder.textContent = "🌍";

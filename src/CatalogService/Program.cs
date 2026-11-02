@@ -109,9 +109,19 @@ builder.WebHost.ConfigureKestrel(options =>
 
 var app = builder.Build();
 
+var uploadsPath = Path.Combine(
+    app.Environment.ContentRootPath,
+    "wwwroot",
+    "uploads"
+);
+
+Directory.CreateDirectory(uploadsPath);
+
 app.UseSwagger();
 app.UseSwaggerUI();
+app.UseStaticFiles();
 
+app.UseStaticFiles();
 app.UseMiddleware<GlobalExceptionMiddleware>();
 app.UseMiddleware<RequestLoggingMiddleware>();
 app.UseAuthentication();

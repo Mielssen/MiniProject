@@ -26,37 +26,42 @@
         },
 
         renderSlider() {
-            const state = window.DashboardState;
-            const container = document.getElementById("sliderContainer");
+    const state = window.DashboardState;
+    const container = document.getElementById("sliderContainer");
 
-            if (!state.sliderItems.length) {
-                container.innerHTML = '<div class="slider-placeholder">🌍</div>';
-                return;
-            }
+    if (!state.sliderItems.length) {
+        container.innerHTML = '<div class="slider-placeholder">🌍</div>';
+        return;
+    }
 
-            const slides = state.sliderItems.map(asset => {
-                const url = asset.url || asset.Url;
-                const type = asset.assetType || asset.AssetType;
-                return type === "image"
-                    ? `<img src="${url}" alt="Зображення туру">`
-                    : `<video src="${url}" controls></video>`;
-            }).join("");
+    const slides = state.sliderItems.map(asset => {
+        const url = asset.url || asset.Url;
+        const type = asset.assetType || asset.AssetType;
 
-            const dots = state.sliderItems.map((_, index) =>
-                `<button class="slider-dot ${index === 0 ? "active" : ""}" onclick="goToSlide(${index})"></button>`
-            ).join("");
+        const imageUrl = url.startsWith("http")
+            ? url
+            : `http://localhost:5000${url.startsWith("/") ? "" : "/"}${url}`;
 
-            container.innerHTML = `
-                <div class="slider">
-                    <div class="slider-track" id="sliderTrack">${slides}</div>
-                    ${state.sliderItems.length > 1 ? `
-                        <button class="slider-btn prev" onclick="prevSlide()">❮</button>
-                        <button class="slider-btn next" onclick="nextSlide()">❯</button>
-                        <div class="slider-dots" id="sliderDots">${dots}</div>
-                    ` : ""}
-                </div>
-            `;
-        },
+        return type === "image"
+            ? `<img src="${imageUrl}" alt="Зображення туру">`
+            : `<video src="${imageUrl}" controls></video>`;
+    }).join("");
+
+    const dots = state.sliderItems.map((_, index) =>
+        `<button class="slider-dot ${index === 0 ? "active" : ""}" onclick="goToSlide(${index})"></button>`
+    ).join("");
+
+    container.innerHTML = `
+        <div class="slider">
+            <div class="slider-track" id="sliderTrack">${slides}</div>
+            ${state.sliderItems.length > 1 ? `
+                <button class="slider-btn prev" onclick="prevSlide()">❮</button>
+                <button class="slider-btn next" onclick="nextSlide()">❯</button>
+                <div class="slider-dots" id="sliderDots">${dots}</div>
+            ` : ""}
+        </div>
+    `;
+},
 
         goToSlide(index) {
             const state = window.DashboardState;

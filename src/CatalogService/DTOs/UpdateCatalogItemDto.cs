@@ -20,9 +20,6 @@ public class UpdateCatalogItemDto
     [Required]
     public DateTime AvailableFrom { get; set; }
 
-    [Required]
-    public DateTime AvailableTo { get; set; }
-
     [Range(1, int.MaxValue)]
     public int TypeId { get; set; }
 }

@@ -62,7 +62,9 @@ function renderPreview() {
 
         if (asset.assetType === "image") {
             const image = document.createElement("img");
-            image.src = asset.url;
+            image.src = asset.url.startsWith("http")
+    ? asset.url
+    : `http://localhost:5000${asset.url.startsWith("/") ? "" : "/"}${asset.url}`;
             image.className = "preview-item";
             image.alt = "Попередній перегляд";
             wrapper.appendChild(image);
@@ -169,7 +171,9 @@ function renderTours(list) {
         (tour.assets || []).forEach(asset => {
             if (asset.assetType === "image") {
                 const image = document.createElement("img");
-                image.src = asset.url;
+                image.src = asset.url.startsWith("http")
+    ? asset.url
+    : `http://localhost:5000${asset.url.startsWith("/") ? "" : "/"}${asset.url}`;
                 image.alt = tour.name || "Фото туру";
                 image.style.cssText =
                     "width:60px;height:60px;object-fit:cover;border-radius:10px;border:1px solid #eee;";
@@ -293,7 +297,7 @@ function openModal(isEdit = false) {
     if (!isEdit) {
         editId = null;
 
-        ["name", "description", "price", "days", "from", "to"]
+        ["name", "description", "price", "days", "from"]
             .forEach(id => {
                 document.getElementById(id).value = "";
             });
@@ -324,8 +328,6 @@ function editTour(tour) {
     document.getElementById("days").value = tour.durationDays ?? "";
     document.getElementById("from").value =
         tour.availableFrom?.split("T")[0] || "";
-    document.getElementById("to").value =
-        tour.availableTo?.split("T")[0] || "";
     document.getElementById("typeId").value = tour.typeId ?? "";
 
     document.getElementById("preview").innerHTML = "";
@@ -342,16 +344,15 @@ async function saveTour() {
     const price = Number(document.getElementById("price").value);
     const days = Number(document.getElementById("days").value);
     const from = document.getElementById("from").value;
-    const to = document.getElementById("to").value;
     const typeId = Number(document.getElementById("typeId").value);
 
-    if (!name || !price || !days || !from || !to || !typeId) {
+    if (!name || !price || !days || !from || !typeId) {
         alert("Заповніть усі обов'язкові поля.");
         return;
     }
 
-    if (price <= 0 || days <= 0 || from > to) {
-        alert("Перевірте ціну, тривалість і дати туру.");
+    if (price <= 0 || days < 1 || days > 365) {
+        alert("Перевірте ціну та тривалість туру.");
         return;
     }
 
@@ -361,9 +362,7 @@ async function saveTour() {
         price,
         durationDays: days,
         availableFrom: from,
-        availableTo: to,
-        typeId,
-        assets: assets.filter(asset => !asset._file)
+        typeId
     };
 
     button.disabled = true;
@@ -375,16 +374,24 @@ async function saveTour() {
             await TravelApi.put(`${API_TOURS}/${editId}`, tourData);
         } else {
             const created = await TravelApi.post(API_TOURS, tourData);
-            currentId = created?.tourId ?? created?.TourId;
+            currentId = created?.id;
         }
 
-        if (!currentId && assets.some(asset => asset._file)) {
-            throw new Error("Не вдалося отримати ID створеного туру для завантаження файлів.");
+        if (currentId) {
+            editId = currentId;
         }
 
-        for (const asset of assets) {
-            if (!asset._file) continue;
+        const newAssets = assets.filter(
+            asset => asset._file && !asset._uploaded
+        );
 
+        if (newAssets.length > 0 && !currentId) {
+            throw new Error(
+                "Тур збережено, але сервер не повернув його ID для завантаження файлів."
+            );
+        }
+
+        for (const asset of newAssets) {
             const formData = new FormData();
             formData.append("file", asset._file);
 
@@ -392,10 +399,13 @@ async function saveTour() {
                 `${API_TOURS}/${currentId}/images`,
                 formData
             );
+
+            asset._uploaded = true;
         }
 
         closeModal();
         await loadTours();
+
     } catch (error) {
         alert(getErrorMessage(error));
     } finally {
