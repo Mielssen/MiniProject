@@ -92,26 +92,30 @@
         },
 
         async prefillFirstPerson() {
-            const forms = document.querySelectorAll(".person-form");
-            if (!forms.length) return;
+    const forms = document.querySelectorAll(".person-form");
+    if (!forms.length) return;
 
-            try {
-                const profile = await TravelApi.get("/api/auth/profile");
-                forms[0].querySelector(".person-name").value =
-                    profile.name ?? profile.Name ?? "";
-                forms[0].querySelector(".person-passport").value =
-                    profile.passportData ?? profile.PassportData ?? "";
-                forms[0].querySelector(".person-birth").value =
-                    window.dateInputValue(profile.dateOfBirth ?? profile.DateOfBirth);
-            } catch {
-                window.showMessage(
-                    "Не вдалося завантажити ваші дані профілю. Перевірте їх перед бронюванням."
-                );
-                forms[0].querySelector(".person-name").readOnly = false;
-                forms[0].querySelector(".person-passport").readOnly = false;
-                forms[0].querySelector(".person-birth").readOnly = false;
-            }
-        },
+    try {
+        const profile = await TravelApi.get("/api/v1/users/me");
+
+        forms[0].querySelector(".person-name").value =
+            profile.displayName ?? "";
+
+        forms[0].querySelector(".person-passport").value =
+            profile.passportData ?? "";
+
+        forms[0].querySelector(".person-birth").value =
+            window.dateInputValue(profile.dateOfBirth);
+    } catch {
+        window.showMessage(
+            "Не вдалося завантажити ваші дані профілю. Перевірте їх перед бронюванням."
+        );
+
+        forms[0].querySelector(".person-name").readOnly = false;
+        forms[0].querySelector(".person-passport").readOnly = false;
+        forms[0].querySelector(".person-birth").readOnly = false;
+    }
+},
 
         async saveSelected() {
             const forms = document.querySelectorAll(".person-form");

@@ -1,4 +1,5 @@
-const API_TOURS = "/api/tours";
+const API_TOURS = "/api/v1/catalog/items";
+const API_TOUR_TYPES = "/api/v1/catalog/categories";
 const API_BOOKINGS = "/api/bookings";
 
 let editId = null;
@@ -37,21 +38,19 @@ function formatDate(value) {
 }
 
 async function loadTourTypes() {
-    const result = await TravelApi.get(`${API_TOURS}/types`);
+    const result = await TravelApi.get(API_TOUR_TYPES);
     tourTypes = Array.isArray(result) ? result : [];
 
     const select = document.getElementById("typeId");
-
     select.innerHTML = "";
 
     tourTypes.forEach(type => {
         const option = document.createElement("option");
-        option.value = type.typeId ?? type.TypeId;
-        option.textContent = type.name ?? type.Name;
+        option.value = type.id;
+        option.textContent = type.name;
         select.appendChild(option);
     });
 }
-
 function renderPreview() {
     const preview = document.getElementById("preview");
     preview.innerHTML = "";
@@ -134,7 +133,7 @@ async function loadTours(search = "") {
             : API_TOURS;
 
         const result = await TravelApi.get(path);
-        renderTours(Array.isArray(result) ? result : []);
+        renderTours(result?.items ?? []);
     } catch (error) {
         grid.innerHTML = "";
 
@@ -192,11 +191,7 @@ function renderTours(list) {
         title.textContent = tour.name || "Тур";
 
         const type = document.createElement("span");
-        const tourType = tourTypes.find(item =>
-            (item.typeId ?? item.TypeId) === tour.typeId
-        );
-        type.textContent =
-            tourType?.name ?? tourType?.Name ?? tour.typeId ?? "—";
+        type.textContent = tour.typeName || "—";
 
         header.append(title, type);
 
@@ -231,7 +226,7 @@ function renderTours(list) {
         const deleteButton = document.createElement("button");
         deleteButton.className = "btn-delete";
         deleteButton.textContent = "Видалити";
-        deleteButton.onclick = () => deleteTour(tour.tourId);
+        deleteButton.onclick = () => deleteTour(tour.id);
 
         actions.append(editButton, deleteButton);
         card.append(header, media, description, priceDuration, dates, actions);
@@ -315,7 +310,7 @@ function closeModal() {
 }
 
 function editTour(tour) {
-    editId = tour.tourId;
+    editId = tour.id;
 
     assets = (tour.assets || []).map(asset => ({
         assetType: String(asset.assetType || "").toLowerCase(),

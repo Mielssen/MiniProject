@@ -49,5 +49,9 @@ public class RegisterRequestDto
     /// <summary>
     /// Паспортні дані користувача.
     /// </summary>
-    public string? PassportData { get; set; }
+    [Required(ErrorMessage = "Паспортні дані обов'язкові")]
+    [RegularExpression(
+    @"^\d{6}$",
+    ErrorMessage = "Паспортні дані мають містити рівно 6 цифр")]
+    public string PassportData { get; set; } = null!;
 }

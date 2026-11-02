@@ -49,8 +49,8 @@ public class UsersController : ControllerBase
             return BadRequest("Користувач має бути старше 18 років");
 
         if (!string.IsNullOrWhiteSpace(dto.PassportData) &&
-            !System.Text.RegularExpressions.Regex.IsMatch(dto.PassportData, @"^\d+$"))
-            return BadRequest("Паспортні дані мають містити тільки цифри");
+            !System.Text.RegularExpressions.Regex.IsMatch(dto.PassportData, @"^\d{6}$"))
+            return BadRequest("Паспортні дані мають містити рівно 6 цифр");
 
         credential.UserDetail.Name = dto.Name;
 
@@ -157,8 +157,8 @@ public class UsersController : ControllerBase
             return BadRequest("Користувач має бути старше 18 років");
 
         if (!string.IsNullOrWhiteSpace(dto.PassportData) &&
-            !System.Text.RegularExpressions.Regex.IsMatch(dto.PassportData, @"^\d+$"))
-            return BadRequest("Паспортні дані мають містити тільки цифри");
+            !System.Text.RegularExpressions.Regex.IsMatch(dto.PassportData, @"^\d{6}$"))
+            return BadRequest("Паспортні дані мають містити рівно 6 цифр");
 
         credential.UserDetail.Name = dto.Name;
 

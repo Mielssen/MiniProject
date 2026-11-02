@@ -94,9 +94,7 @@ async function saveProfile() {
         const data = await TravelApi.put(API_PROFILE_UPDATE, {
             name,
             phone,
-            passportData,
-            dateOfBirth:
-                document.getElementById("profileBirth").value || null
+            passportData
         });
 
         document.getElementById("profileName").value =

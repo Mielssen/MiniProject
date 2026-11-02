@@ -27,6 +27,11 @@ public class AuthentificationService : IAuthentificationService
 
     public async Task<TokenResponceDto> Register(RegisterRequestDto dto)
     {
+        if (dto.DateOfBirth.Date > DateTime.Today.AddYears(-18))
+            throw new AppException(
+                "UNDERAGE_USER",
+                "Для реєстрації потрібно бути не молодше 18 років.");
+
         if (await _userRepository.EmailExists(dto.Email))
             throw new AppException("EMAIL_EXISTS", "Email already exists.");
 
