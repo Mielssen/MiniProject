@@ -1,110 +1,168 @@
-﻿const API = "https://localhost:7041/api/auth";
+﻿const LOGIN_MESSAGES = {
+    INVALID_CREDENTIALS: "Неправильний email або пароль.",
+    USER_DELETED: "Цей обліковий запис видалено.",
+    EMAIL_EXISTS: "Користувач із таким email вже існує."
+};
 
 function get(id) {
     return document.getElementById(id);
 }
 
-function getRoleFromToken(token) {
-    const payload = JSON.parse(atob(token.split('.')[1]));
-    return payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+function clearErrors() {
+    document.querySelectorAll(".error").forEach(element => {
+        element.innerText = "";
+    });
 }
 
-async function safeJson(res) {
-    try {
-        return await res.json();
-    } catch {
-        return null;
+function showError(id, error) {
+    const element = get(id);
+    if (!element) return;
+
+    const data = error?.data || error;
+
+    if (data?.errors) {
+        element.innerText = Object.values(data.errors).flat().join("\n");
+        return;
     }
+
+    if (data?.title && LOGIN_MESSAGES[data.title]) {
+        element.innerText = LOGIN_MESSAGES[data.title];
+        return;
+    }
+
+    if (data?.detail) {
+        element.innerText = data.detail;
+        return;
+    }
+
+    if (data?.message) {
+        element.innerText = data.message;
+        return;
+    }
+
+    if (error?.status === 401) {
+        element.innerText = "Неправильний email або пароль.";
+        return;
+    }
+
+    if (error?.status >= 500) {
+        element.innerText = "Помилка сервера. Спробуйте пізніше.";
+        return;
+    }
+
+    element.innerText = error?.message || "Не вдалося виконати запит.";
 }
 
 async function login() {
     clearErrors();
 
-    const email = get("loginEmail").value;
+    const email = get("loginEmail").value.trim();
     const password = get("loginPassword").value;
 
-    const res = await fetch(API + "/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
-    });
-
-    const data = await safeJson(res);
-
-    if (!res.ok) {
-        showError("loginError", data);
+    if (!email || !password) {
+        showError("loginError", {
+            message: "Заповніть email і пароль."
+        });
         return;
     }
 
-    localStorage.setItem("token", data.token);
-    
-    const role = getRoleFromToken(data.token);
+    const button = document.querySelector("#loginBox button");
+    button.disabled = true;
 
-    if (role === "manager") {
-    window.location.href = "manager.html";
-} else if (role === "admin") {
-    window.location.href = "admin.html";
-} else {
-    window.location.href = "dashboard.html";
-}
+    try {
+        await TravelApi.login(email, password);
+
+        const role = TravelApi.getRole();
+
+        if (role === "manager") {
+            window.location.href = "manager.html";
+        } else if (role === "admin") {
+            window.location.href = "admin.html";
+        } else {
+            window.location.href = "dashboard.html";
+        }
+    } catch (error) {
+        showError("loginError", error);
+    } finally {
+        button.disabled = false;
+    }
 }
 
 async function register() {
     clearErrors();
 
-    const res = await fetch(API + "/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            email: get("regEmail").value,
-            password: get("regPassword").value,
-            name: get("regName").value,
-            phone: get("regPhone").value,
-            passportData: get("regPassport").value,
-            dateOfBirth: get("regBirth").value
-        })
-    });
+    const name = get("regName").value.trim();
+    const email = get("regEmail").value.trim();
+    const password = get("regPassword").value;
+    const phone = get("regPhone").value.trim();
+    const passportData = get("regPassport").value.trim();
+    const dateOfBirth = get("regBirth").value;
 
-    const data = await safeJson(res);
-
-    if (!res.ok) {
-        showError("registerError", data);
+    if (!name || !email || !password || !phone || !passportData || !dateOfBirth) {
+        showError("registerError", {
+            message: "Заповніть усі поля."
+        });
         return;
     }
 
-    localStorage.setItem("token", data.token);
-    alert("Реєстрація успішна");
-}
+    const button = document.querySelector("#registerBox button");
+    button.disabled = true;
 
-function showError(id, data) {
-    let msg = "";
+    try {
+        await TravelApi.register({
+            email,
+            password,
+            name,
+            phone,
+            passportData,
+            dateOfBirth
+        });
 
-    if (data?.errors) {
-        for (let key in data.errors) {
-            msg += data.errors[key].join("\n") + "\n";
+        if (TravelApi.isAuthenticated()) {
+            const role = TravelApi.getRole();
+
+            if (role === "manager") {
+                window.location.href = "manager.html";
+            } else if (role === "admin") {
+                window.location.href = "admin.html";
+            } else {
+                window.location.href = "dashboard.html";
+            }
+        } else {
+            showLogin();
+            showError("loginError", {
+                message: "Реєстрація успішна. Тепер увійдіть у свій акаунт."
+            });
         }
-    } 
-    else if (data?.message) {
-        msg = data.message;
-    } 
-    else {
-        msg = "Невідома помилка сервера";
+    } catch (error) {
+        showError("registerError", error);
+    } finally {
+        button.disabled = false;
     }
-
-    get(id).innerText = msg;
-}
-
-function clearErrors() {
-    const errors = document.querySelectorAll(".error");
-    errors.forEach(e => e.innerText = "");
 }
 
 function showRegister() {
+    clearErrors();
     get("loginBox").classList.add("hidden");
     get("registerBox").classList.remove("hidden");
 }
 
 function showLogin() {
+    clearErrors();
     get("registerBox").classList.add("hidden");
     get("loginBox").classList.remove("hidden");
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (TravelApi.isAuthenticated()) {
+        const role = TravelApi.getRole();
+
+        if (role === "manager") {
+            window.location.href = "manager.html";
+        } else if (role === "admin") {
+            window.location.href = "admin.html";
+        } else {
+            window.location.href = "dashboard.html";
+        }
+    }
+});

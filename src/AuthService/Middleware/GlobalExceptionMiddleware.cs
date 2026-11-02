@@ -34,6 +34,7 @@ public class GlobalExceptionMiddleware
                 "NOT_FOUND" => StatusCodes.Status404NotFound,
                 "UNDERAGE" => StatusCodes.Status400BadRequest,
                 "INVALID_EMAIL" => StatusCodes.Status400BadRequest,
+                "INVALID_CREDENTIALS" => StatusCodes.Status401Unauthorized,
                 "INVALID_REFRESH_TOKEN" => StatusCodes.Status401Unauthorized,
                 "WRONG_PASSWORD" => StatusCodes.Status401Unauthorized,
                 "ACCOUNT_DISABLED" => StatusCodes.Status401Unauthorized,

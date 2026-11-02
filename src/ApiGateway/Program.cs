@@ -392,15 +392,10 @@ app.Use(async (context, next) =>
 
         var statusCode = context.Response.StatusCode;
 
-        if (statusCode >= 400)
+        if (statusCode >= 400 && buffer.Length == 0)
         {
-            buffer.SetLength(0);
-
             context.Response.ContentType = "application/problem+json";
             context.Response.ContentLength = null;
-
-            context.Response.Headers.Remove("Content-Encoding");
-            context.Response.Headers.Remove("Transfer-Encoding");
 
             var (title, detail) = statusCode switch
             {
