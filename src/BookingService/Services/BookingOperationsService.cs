@@ -110,7 +110,7 @@ public class BookingOperationsService
         }
 
         var startDate = DateOnly.FromDateTime(dto.StartDate);
-        var endDate = startDate.AddDays(tour.DurationDays);
+        var endDate = startDate.AddDays(tour.DurationDays - 1);
         var availableFrom = DateOnly.FromDateTime(DateTime.Parse(tour.AvailableFrom));
         var availableTo = DateOnly.FromDateTime(DateTime.Parse(tour.AvailableTo));
 
@@ -392,6 +392,9 @@ public class BookingOperationsService
             UserPassportData = userPassportData,
             UserDateOfBirth = userDateOfBirth,
             StartDate = booking.StartDate,
+            EndDate = tourDurationDays > 0
+                ? booking.StartDate.AddDays(tourDurationDays - 1)
+                : null,
             BookingDate = booking.BookingDate,
             Status = booking.Status,
             NumberOfPeople = booking.NumberOfPeople,

@@ -2,11 +2,13 @@
     const API_BOOKINGS = "/api/bookings";
 
     function calcEndDate(startDate, durationDays) {
-        if (!startDate) return "";
-        const date = new Date(`${startDate}T00:00:00`);
-        date.setDate(date.getDate() + Number(durationDays));
-        return window.dateInputValue(date.toISOString());
-    }
+    if (!startDate) return "";
+
+    const date = new Date(`${startDate}T00:00:00`);
+    date.setDate(date.getDate() + Number(durationDays) - 1);
+
+    return window.dateInputValue(date.toISOString());
+}
 
     function clearFieldErrors() {
         document.querySelectorAll(".booking-field-error").forEach(el => el.remove());
@@ -139,12 +141,16 @@
 
             state.pendingBookingAttempt = null;
             const from = window.dateInputValue(window.getTourAvailableFrom(state.currentTour));
-            const to = window.dateInputValue(window.getTourAvailableTo(state.currentTour));
-            const start = document.getElementById("bookingStartDate");
+const to = window.dateInputValue(window.getTourAvailableTo(state.currentTour));
+const duration = window.getTourDuration(state.currentTour);
+const start = document.getElementById("bookingStartDate");
 
-            start.value = from;
-            start.min = from;
-            start.max = to;
+const lastStartDate = new Date(`${to}T00:00:00`);
+lastStartDate.setDate(lastStartDate.getDate() - duration + 1);
+
+start.value = from;
+start.min = from;
+start.max = window.dateInputValue(lastStartDate.toISOString());
 
             document.getElementById("bookingEndDate").value =
                 calcEndDate(from, window.getTourDuration(state.currentTour));
@@ -204,6 +210,14 @@
                 alert("Оберіть дату початку туру.");
                 return;
             }
+
+            const startInput = document.getElementById("bookingStartDate");
+
+            if (startDate < startInput.min || startDate > startInput.max) {
+                alert("Обрана дата не підходить для повної тривалості подорожі.");
+                return;
+            }
+
             if (!Number.isInteger(adults) || !Number.isInteger(children) ||
                 adults < 1 || children < 0 || adults + children > 20) {
                 alert("Перевірте кількість дорослих і дітей. Допустимо від 1 до 20 учасників.");

@@ -297,10 +297,10 @@ function openModal(isEdit = false) {
     if (!isEdit) {
         editId = null;
 
-        ["name", "description", "price", "days", "from"]
-            .forEach(id => {
-                document.getElementById(id).value = "";
-            });
+        ["name", "description", "price", "days", "from", "to"]
+    .forEach(id => {
+        document.getElementById(id).value = "";
+    });
 
         if (tourTypes.length) {
             document.getElementById("typeId").value =
@@ -327,8 +327,12 @@ function editTour(tour) {
     document.getElementById("price").value = tour.price ?? "";
     document.getElementById("days").value = tour.durationDays ?? "";
     document.getElementById("from").value =
-        tour.availableFrom?.split("T")[0] || "";
-    document.getElementById("typeId").value = tour.typeId ?? "";
+    tour.availableFrom?.split("T")[0] || "";
+
+document.getElementById("to").value =
+    tour.availableTo?.split("T")[0] || "";
+
+document.getElementById("typeId").value = tour.typeId ?? "";
 
     document.getElementById("preview").innerHTML = "";
     document.getElementById("modal").classList.remove("hidden");
@@ -344,9 +348,10 @@ async function saveTour() {
     const price = Number(document.getElementById("price").value);
     const days = Number(document.getElementById("days").value);
     const from = document.getElementById("from").value;
+    const to = document.getElementById("to").value;
     const typeId = Number(document.getElementById("typeId").value);
 
-    if (!name || !price || !days || !from || !typeId) {
+    if (!name || !price || !days || !from || !to || !typeId) {
         alert("Заповніть усі обов'язкові поля.");
         return;
     }
@@ -355,15 +360,27 @@ async function saveTour() {
         alert("Перевірте ціну та тривалість туру.");
         return;
     }
+if (to < from) {
+    alert("Дата завершення доступності не може бути раніше дати початку.");
+    return;
+}
 
+const lastAvailableDate = new Date(`${to}T00:00:00`);
+lastAvailableDate.setDate(lastAvailableDate.getDate() - days + 1);
+
+if (lastAvailableDate < new Date(`${from}T00:00:00`)) {
+    alert("Період доступності має вміщувати щонайменше одну повну подорож.");
+    return;
+}
     const tourData = {
-        name,
-        description,
-        price,
-        durationDays: days,
-        availableFrom: from,
-        typeId
-    };
+    name,
+    description,
+    price,
+    durationDays: days,
+    availableFrom: from,
+    availableTo: to,
+    typeId
+};
 
     button.disabled = true;
 

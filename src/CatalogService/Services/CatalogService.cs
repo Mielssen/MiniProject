@@ -84,7 +84,19 @@ public class CatalogServiceManager : ICatalogService
             throw new ArgumentException("Вказано неіснуючу категорію");
 
         var availableFrom = dto.AvailableFrom.Date;
-        var availableTo = availableFrom.AddDays(dto.DurationDays - 1);
+        var availableTo = dto.AvailableTo.Date;
+
+        if (availableTo < availableFrom)
+            throw new ArgumentException(
+                "Дата завершення доступності не може бути раніше дати початку");
+
+        if (dto.DurationDays < 1)
+            throw new ArgumentException(
+                "Тривалість туру має бути не менше одного дня");
+
+        if (availableTo < availableFrom.AddDays(dto.DurationDays - 1))
+            throw new ArgumentException(
+                "Період доступності має вміщувати щонайменше одну повну подорож");
 
         var tour = new Tour
         {
@@ -116,7 +128,19 @@ public class CatalogServiceManager : ICatalogService
             throw new ArgumentException("Вказано неіснуючу категорію");
 
         var availableFrom = dto.AvailableFrom.Date;
-        var availableTo = availableFrom.AddDays(dto.DurationDays - 1);
+        var availableTo = dto.AvailableTo.Date;
+
+        if (availableTo < availableFrom)
+            throw new ArgumentException(
+                "Дата завершення доступності не може бути раніше дати початку");
+
+        if (dto.DurationDays < 1)
+            throw new ArgumentException(
+                "Тривалість туру має бути не менше одного дня");
+
+        if (availableTo < availableFrom.AddDays(dto.DurationDays - 1))
+            throw new ArgumentException(
+                "Період доступності має вміщувати щонайменше одну повну подорож");
 
         tour.Name = dto.Name;
         tour.Description = dto.Description;

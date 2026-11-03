@@ -49,14 +49,21 @@
                 const meta1 = document.createElement("div");
                 meta1.className = "meta";
 
-                const start = document.createElement("span");
-                start.textContent =
-                    `Початок: ${window.formatDate(booking.startDate ?? booking.StartDate)}`;
+                const startDate = booking.startDate ?? booking.StartDate;
+const endDate = booking.endDate ?? booking.EndDate;
+
+const start = document.createElement("span");
+start.textContent =
+    `Початок: ${window.formatDate(startDate)}`;
+
+const end = document.createElement("span");
+end.textContent =
+    `Завершення: ${window.formatDate(endDate)}`;
 
                 const people = document.createElement("span");
                 people.textContent =
                     `${booking.numberOfPeople ?? booking.NumberOfPeople ?? 0} ос.`;
-                meta1.append(start, people);
+                meta1.append(start, end, people);
 
                 const meta2 = document.createElement("div");
                 meta2.className = "meta";

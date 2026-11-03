@@ -15,6 +15,7 @@ public class BookingDto
     public DateTime? UserDateOfBirth { get; set; }
 
     public DateOnly StartDate { get; set; }
+    public DateOnly? EndDate { get; set; }
     public DateTime? BookingDate { get; set; }
     public string Status { get; set; } = null!;
     public int NumberOfPeople { get; set; }
